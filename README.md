@@ -21,3 +21,7 @@ Thiw repo is my home base for my dotfiles. I am using Stow to make sure I am ver
 ## Links
 
 - https://www.gnu.org/software/stow
+
+## Things to install
+
+- Alacritty themes `git clone https://github.com/alacritty/alacritty-theme .config/alacritty/themes`
