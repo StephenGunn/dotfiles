@@ -9,7 +9,9 @@ size = 14.5
 family = "JetBrainsMono Nerd Font"
 
 [shell]
+args = ['--login']
 program = "/bin/zsh"
+
 
 [window.padding]
 x = 10
