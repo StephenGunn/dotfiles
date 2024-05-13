@@ -92,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='code -w'
+   export EDITOR='vim'
  fi
 
 # Compilation flags
@@ -109,27 +109,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias vim=nvim
 
-alias cod="/usr/bin/code"
-
-# pnpm
-# pnpm end
-# bun completions
-[ -s "/home/stephen/.bun/_bun" ] && source "/home/stephen/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# opam configuration
-[[ ! -r /home/stephen/.opam/opam-init/init.zsh ]] || source /home/stephen/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-# Turso
-export PATH="/home/stephen/.turso:$PATH"
-export PATH="/usr/bin:$PATH"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # pnpm
 export PNPM_HOME="/home/stephen/.local/share/pnpm"
@@ -138,6 +119,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
