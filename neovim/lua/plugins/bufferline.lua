@@ -4,7 +4,7 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
 		require("bufferline").setup({
-			optioni = {
+			options = {
 				numbers = "ordinal",
 				close_command = "bdelete! %d",
 				right_mouse_command = "bdelete! %d",

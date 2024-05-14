@@ -1,7 +1,14 @@
+-- tab styles
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+
+-- auto indent
+vim.cmd("set autoindent")
+vim.cmd("set smartindent")
+
+-- basic vim options
 vim.g.mapleader  = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -13,6 +20,13 @@ vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
 vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
--- styles
+-- Jump between buffers
+vim.keymap.set('n', '<leader>l', ':BufferLineCycleNext<CR>')
+vim.keymap.set('n', '<leader>h', ':BufferLineCyclePrev<CR>')
+
+-- Clear search highlights
+vim.keymap.set('n', '<leader>c', ':nohlsearch<CR>')
+
+
+
 

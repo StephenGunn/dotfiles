@@ -15,6 +15,3 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 -- auto load plugins from /lua/plugins folder
 require("lazy").setup("plugins")
-
-
-
