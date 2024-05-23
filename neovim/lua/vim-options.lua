@@ -14,6 +14,14 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
 
+-- scrolloff
+vim.opt.scrolloff = 6
+
+-- Set up diagnostics
+vim.keymap.set({ "n", "v" }, "<leader>F", vim.diagnostic.open_float, {})
+vim.keymap.set({ "n", "v" }, "<leader>r", vim.diagnostic.goto_next, {})
+vim.keymap.set({ "n", "v" }, "<leader>e", vim.diagnostic.goto_prev, {})
+
 -- add clipboard support
 vim.opt.clipboard = "unnamedplus"
 
@@ -34,12 +42,7 @@ let g:user_emmet_leader_key=','
 ]])
 
 -- Rebind Ctrl + PageDown to move the current buffer to a new vertical split and close the original buffer
-vim.api.nvim_set_keymap(
-  "n",
-  "<C-PageDown>",
-  ":vsplit<CR>:wincmd l<CR>:b #<CR>:wincmd q<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<C-PageDown>", ":vsplit<CR>", { noremap = true, silent = true })
 
 -- Rebind Ctrl + PageUp to move the current buffer to the left split
 vim.api.nvim_set_keymap("n", "<C-PageUp>", ":wincmd h<CR>", { noremap = true, silent = true })

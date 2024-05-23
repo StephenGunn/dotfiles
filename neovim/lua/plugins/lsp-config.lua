@@ -16,6 +16,8 @@ return {
           "emmet_ls",
           "html",
           "cssls",
+          "svelte",
+          "somesass_ls",
         },
       })
     end,
@@ -31,6 +33,13 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
+      lspconfig.somesass_ls.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "sass",
+          "svelte",
+        },
+      })
       lspconfig.jsonls.setup({
         capabilities = capabilities,
       })
@@ -40,6 +49,9 @@ return {
       lspconfig.cssls.setup({
         capabilities = capabilities,
       })
+      lspconfig.svelte.setup({
+        capabilities = capabilities,
+      })
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
         filetypes = {
@@ -47,7 +59,6 @@ return {
           "typescriptreact",
           "javascriptreact",
           "css",
-          "sass",
           "svelte",
           "scss",
           "less",
