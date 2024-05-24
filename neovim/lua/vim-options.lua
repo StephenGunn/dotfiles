@@ -17,6 +17,33 @@ vim.opt.signcolumn = "number"
 -- scrolloff
 vim.opt.scrolloff = 6
 
+-- Function to display diagnostics with their sources
+local function show_diagnostics_with_source()
+  -- Fetch diagnostics for the current buffer
+  local bufnr = vim.api.nvim_get_current_buf()
+  local diagnostics = vim.diagnostic.get(bufnr)
+
+  if not diagnostics or #diagnostics == 0 then
+    print("No diagnostics found")
+    return
+  end
+
+  -- Iterate through diagnostics
+  for _, diagnostic in ipairs(diagnostics) do
+    -- Get the client ID from the diagnostic
+    local client_id = diagnostic.client_id
+    local lsp_client = vim.lsp.get_client_by_id(client_id)
+    local source = lsp_client and lsp_client.name or "Unknown"
+    local message = string.format("%s [%s]: %s", source, diagnostic.severity, diagnostic.message)
+
+    -- Print the diagnostic message
+    print(message)
+  end
+end
+
+-- Command to run the function
+vim.api.nvim_create_user_command("ShowDiagnosticsWithSource", show_diagnostics_with_source, {})
+
 -- Set up diagnostics
 vim.keymap.set({ "n", "v" }, "<leader>F", vim.diagnostic.open_float, {})
 vim.keymap.set({ "n", "v" }, "<leader>r", vim.diagnostic.goto_next, {})
@@ -28,6 +55,9 @@ vim.opt.clipboard = "unnamedplus"
 -- change the active line number color to something a little brighter
 vim.o.cursorline = true
 vim.cmd([[highlight CursorLineNr guifg=#5c53bd guibg=NONE]])
+
+-- Quickly close the current buffer
+vim.api.nvim_set_keymap("n", "<leader>Q", ":bw<CR>", { silent = true })
 
 -- Delete word without adding to register
 vim.api.nvim_set_keymap("n", "<leader>d", '"_d', { silent = true })
