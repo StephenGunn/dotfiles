@@ -4,18 +4,62 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
--- auto indent
-vim.cmd("set autoindent")
-vim.cmd("set smartindent")
+-- Enable auto-indentation
+vim.o.autoindent = true
+vim.o.smartindent = true
+
+-- Function to paste with auto-indentation without affecting the default register
+local function paste_with_indent()
+  -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
+  vim.cmd("set paste")
+  -- Paste from the system clipboard ('+ register) in normal mode
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+p', true, false, true), "n", false)
+  -- Disable paste mode after pasting
+  vim.cmd("set nopaste")
+  -- Reselect the pasted text and indent it
+  vim.cmd("normal! `[v`]=")
+end
+
+-- Function to paste before the current line with auto-indentation without affecting the default register
+local function paste_with_indent_before()
+  -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
+  vim.cmd("set paste")
+  -- Paste from the system clipboard ('+ register) before the current line in normal mode
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+P', true, false, true), "n", false)
+  -- Disable paste mode after pasting
+  vim.cmd("set nopaste")
+  -- Reselect the pasted text and indent it
+  vim.cmd("normal! `[v`]=")
+end
+
+-- Create user commands to call the functions
+vim.api.nvim_create_user_command("PasteWithIndent", paste_with_indent, {})
+vim.api.nvim_create_user_command("PasteWithIndentBefore", paste_with_indent_before, {})
+
+-- Keybinding to paste with auto-indentation without affecting the default register
+vim.api.nvim_set_keymap("n", "<Leader>p", ":PasteWithIndent<CR>", { noremap = true, silent = true })
+
+-- Keybinding to paste before the current line with auto-indentation without affecting the default register
+vim.api.nvim_set_keymap("n", "<Leader>P", ":PasteWithIndentBefore<CR>", { noremap = true, silent = true })
 
 -- basic vim options
 vim.g.mapleader = " "
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
-
+vim.opt.swapfile = false
 -- scrolloff
 vim.opt.scrolloff = 6
+
+-- move lines up and down
+vim.api.nvim_set_keymap("n", "<S-k>", ":m .-2<CR>==", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-j>", ":m .+1<CR>==", { noremap = true, silent = true })
+
+-- Move selected block of lines up
+vim.api.nvim_set_keymap("x", "<S-k>", ":move '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+-- Move selected block of lines down
+vim.api.nvim_set_keymap("x", "<S-j>", ":move '>+1<CR>gv=gv", { noremap = true, silent = true })
 
 -- Function to display diagnostics with their sources
 local function show_diagnostics_with_source()
@@ -110,10 +154,6 @@ vim.api.nvim_set_hl(0, "TSParameter", { fg = "#1E90FF", bg = "NONE", italic = tr
 
 -- Change the color of the indent character
 vim.cmd("highlight IndentChar guifg=#4b5263")
-
--- Move lines up and down
-vim.keymap.set("n", "<S-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<S-k>", ":m .-1<CR>==")
 
 -- Clear search highlights
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>")
