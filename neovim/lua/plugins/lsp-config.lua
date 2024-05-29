@@ -1,3 +1,4 @@
+-- lsp_config.lua
 return {
   {
     "williamboman/mason.nvim",
@@ -27,6 +28,7 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
+
       lspconfig.tsserver.setup({
         capabilities = capabilities,
       })
@@ -51,6 +53,17 @@ return {
       })
       lspconfig.svelte.setup({
         capabilities = capabilities,
+        settings = {
+          svelte = {
+            plugin = {
+              sass = {
+                enable = true,
+                diagnostics = true,
+                lint = true,
+              },
+            },
+          },
+        },
       })
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
@@ -69,15 +82,14 @@ return {
         init_options = {
           html = {
             options = {
-              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
               ["bem.enabled"] = true,
+              ["output.inlineBreak"] = 1,
             },
           },
         },
       })
 
-      lspconfig.lua_ls.setup({})
-      lspconfig.tsserver.setup({})
+      -- Additional keybindings for LSP
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -87,6 +99,15 @@ return {
       vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+    end,
+  },
+  {
+    -- Plugin for SASS syntax highlighting
+    "cameron-wags/rainbow_csv.nvim",
+    config = function()
+      vim.cmd([[
+        autocmd BufNewFile,BufRead *.sass set syntax=sass
+      ]])
     end,
   },
 }
