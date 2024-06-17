@@ -8,6 +8,7 @@ vim.cmd("set shiftwidth=4")
 vim.o.autoindent = true
 vim.o.smartindent = true
 
+
 -- Function to paste with auto-indentation without affecting the default register
 local function paste_with_indent()
 	-- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
