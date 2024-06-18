@@ -112,6 +112,9 @@ alias vim=nvim
 # alias server
 alias server="ssh stephen@192.168.86.32"
 
+# insta dotfiles babeee
+alias dotfiles="cd ~/dotfiles"
+
 export TERM="tmux-256color"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

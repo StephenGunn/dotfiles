@@ -1,8 +1,8 @@
 -- tab styles
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
 
 -- Enable auto-indentation
 vim.o.autoindent = true
@@ -10,26 +10,26 @@ vim.o.smartindent = true
 
 -- Function to paste with auto-indentation without affecting the default register
 local function paste_with_indent()
-	-- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
-	vim.cmd("set paste")
-	-- Paste from the system clipboard ('+ register) in normal mode
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+p', true, false, true), "n", false)
-	-- Disable paste mode after pasting
-	vim.cmd("set nopaste")
-	-- Reselect the pasted text and indent it
-	vim.cmd("normal! `[v`]=")
+    -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
+    vim.cmd("set paste")
+    -- Paste from the system clipboard ('+ register) in normal mode
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+p', true, false, true), "n", false)
+    -- Disable paste mode after pasting
+    vim.cmd("set nopaste")
+    -- Reselect the pasted text and indent it
+    vim.cmd("normal! `[v`]=")
 end
 
 -- Function to paste before the current line with auto-indentation without affecting the default register
 local function paste_with_indent_before()
-	-- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
-	vim.cmd("set paste")
-	-- Paste from the system clipboard ('+ register) before the current line in normal mode
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+P', true, false, true), "n", false)
-	-- Disable paste mode after pasting
-	vim.cmd("set nopaste")
-	-- Reselect the pasted text and indent it
-	vim.cmd("normal! `[v`]=")
+    -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
+    vim.cmd("set paste")
+    -- Paste from the system clipboard ('+ register) before the current line in normal mode
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+P', true, false, true), "n", false)
+    -- Disable paste mode after pasting
+    vim.cmd("set nopaste")
+    -- Reselect the pasted text and indent it
+    vim.cmd("normal! `[v`]=")
 end
 
 -- Create user commands to call the functions
@@ -54,14 +54,26 @@ vim.opt.scrolloff = 6
 -- Define the keymap for replacing the current word under the cursor with what ever is in the first register
 vim.api.nvim_set_keymap("n", "<leader>z", [[:%s/<C-R><C-W>/<C-R>0/g<CR>]], { noremap = true, silent = true })
 
--- Define the function to replace the word under the cursor
-function replace_word_under_cursor()
-	local current_word = vim.fn.expand("<cword>")
-	local replacement = vim.fn.input('Replace "' .. current_word .. '" with: ')
-	if replacement ~= "" then
-		vim.cmd("%s/\\v<" .. current_word .. ">/" .. replacement .. "/g")
-	end
-end
+-- Open the quickfix list
+vim.api.nvim_set_keymap("n", "<leader>o", ":copen<CR>", { noremap = true, silent = true })
+
+-- Open the next file in the quickfix list in a full window
+vim.api.nvim_set_keymap("n", "<leader>j", ":cn<CR>:cclose<CR>:only<CR>", { noremap = true, silent = true })
+
+-- Open the previous file in the quickfix list in a full window
+vim.api.nvim_set_keymap("n", "<leader>k", ":cp<CR>:cclose<CR>:only<CR>", { noremap = true, silent = true })
+
+-- shortcut to close current buffer
+vim.api.nvim_set_keymap("n", "<leader>w", ":bd<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>W", ":bd!<CR>", { noremap = true, silent = true })
+
+-- In the quickfix list, open the selected file in a full window
+vim.cmd([[
+    augroup quickfix_full_window
+        autocmd!
+        autocmd FileType qf nnoremap <buffer><silent> <CR> <CR>:cclose<CR>:only<CR>
+    augroup END
+]])
 
 -- move lines up and down
 vim.api.nvim_set_keymap("n", "<S-k>", ":m .-2<CR>==", { noremap = true, silent = true })
@@ -72,33 +84,6 @@ vim.api.nvim_set_keymap("x", "<S-k>", ":move '<-2<CR>gv=gv", { noremap = true, s
 
 -- Move selected block of lines down
 vim.api.nvim_set_keymap("x", "<S-j>", ":move '>+1<CR>gv=gv", { noremap = true, silent = true })
-
--- Function to display diagnostics with their sources
-local function show_diagnostics_with_source()
-	-- Fetch diagnostics for the current buffer
-	local bufnr = vim.api.nvim_get_current_buf()
-	local diagnostics = vim.diagnostic.get(bufnr)
-
-	if not diagnostics or #diagnostics == 0 then
-		print("No diagnostics found")
-		return
-	end
-
-	-- Iterate through diagnostics
-	for _, diagnostic in ipairs(diagnostics) do
-		-- Get the client ID from the diagnostic
-		local client_id = diagnostic.client_id
-		local lsp_client = vim.lsp.get_client_by_id(client_id)
-		local source = lsp_client and lsp_client.name or "Unknown"
-		local message = string.format("%s [%s]: %s", source, diagnostic.severity, diagnostic.message)
-
-		-- Print the diagnostic message
-		print(message)
-	end
-end
-
--- Command to run the function
-vim.api.nvim_create_user_command("ShowDiagnosticsWithSource", show_diagnostics_with_source, {})
 
 -- Set up diagnostics
 vim.keymap.set({ "n", "v" }, "<leader>F", vim.diagnostic.open_float, {})
