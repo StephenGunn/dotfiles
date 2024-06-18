@@ -1,0 +1,228 @@
+
+
+n  <CR>        *@<Lua 314: ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha.lua:715>
+n  c           *@:e $MYVIMRC <CR>
+n  e           *@:ene | startinsert <CR>
+n  f           *@:cd $HOME/dotfiles | Telescope find_files<CR>
+n  g           *@:Telescope live_grep<CR>
+n  l           *@:Lazy<CR>
+n  m           *@:Mason<CR>
+n  q           *@:qa<CR>
+n  r           *@:Telescope oldfiles<CR>
+n  u           *@<Cmd>lua require('lazy').sync()<CR>
+n  <M-CR>      *@<Lua 313: ~/.local/share/nvim/lazy/alpha-nvim/lua/alpha.lua:718>
+n  <Space>n    * :Neotree toggle right<CR>
+n  <Space>N    * :Neotree reveal right<CR>
+n  <Space>f    * <Lua 168: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:216>
+n  <Space>gf   * <Lua 134: ~/.local/share/nvim/lazy/telescope.nvim/lua/telescope/builtin/init.lua:501>
+n  <Space>t    * <Lua 133: ~/.local/share/nvim/lazy/telescope.nvim/lua/telescope/builtin/init.lua:501>
+v  <Space>ca   * <Lua 91: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:830>
+n  <Space>ca   * <Lua 90: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:830>
+n  <Space>rn   * <Lua 31: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:298>
+n  <Space>c    * :nohlsearch<CR>
+n  <Space>p    * "_dP
+n  <Space>dd     "_dd
+n  <Space>d      "_d
+n  <Space>Q      :bw<CR>
+v  <Space>e    * <Lua 32: /usr/share/nvim/runtime/lua/vim/diagnostic.lua:1145>
+n  <Space>e    * <Lua 89: /usr/share/nvim/runtime/lua/vim/diagnostic.lua:1694>
+v  <Space>r    * <Lua 30: /usr/share/nvim/runtime/lua/vim/diagnostic.lua:1222>
+n  <Space>r    * <Lua 29: /usr/share/nvim/runtime/lua/vim/diagnostic.lua:1222>
+v  <Space>F    * <Lua 28: /usr/share/nvim/runtime/lua/vim/diagnostic.lua:1694>
+n  <Space>F    * <Lua 23: /usr/share/nvim/runtime/lua/vim/diagnostic.lua:1694>
+n  <Space>z    * :%s/<C-R><C-W>/<C-R>0/g<CR>
+x  #           * <Lua 7: vim/_defaults.lua:0>
+                 :help v_#-default
+o  %             <Plug>(MatchitOperationForward)
+x  %             <Plug>(MatchitVisualForward)
+n  %             <Plug>(MatchitNormalForward)
+n  &           * :&&<CR>
+                 :help &-default
+x  *           * <Lua 3: vim/_defaults.lua:0>
+                 :help v_star-default
+x  @           * mode() == 'V' ? ':normal! @'.getcharstr().'<CR>' : '@'
+                 :help v_@-default
+n  H           * :BufferLineCyclePrev<CR>
+x  J           * :move '>+1<CR>gv=gv
+n  J           * :m .+1<CR>==
+x  K           * :move '<-2<CR>gv=gv
+n  K           * <Lua 85: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:33>
+n  L           * :BufferLineCycleNext<CR>
+x  Q           * mode() == 'V' ? ':normal! @<C-R>=reg_recorded()<CR><CR>' : 'Q'
+                 :help v_Q-default
+x  S           * <Plug>(nvim-surround-visual)
+                 Add a surrounding pair around a visual selection
+n  Y           * y$
+                 :help Y-default
+o  [%            <Plug>(MatchitOperationMultiBackward)
+x  [%            <Plug>(MatchitVisualMultiBackward)
+n  [%            <Plug>(MatchitNormalMultiBackward)
+n  [d          * <Lua 15: vim/_defaults.lua:0>
+                 Jump to the previous diagnostic
+x  \\c           <Plug>(VM-Visual-Cursors)
+n  \\gS          <Plug>(VM-Reselect-Last)
+n  \\/           <Plug>(VM-Start-Regex-Search)
+n  \\\           <Plug>(VM-Add-Cursor-At-Pos)
+x  \\a           <Plug>(VM-Visual-Add)
+x  \\f           <Plug>(VM-Visual-Find)
+x  \\/           <Plug>(VM-Visual-Regex)
+x  \\A           <Plug>(VM-Visual-All)
+n  \\A           <Plug>(VM-Select-All)
+n  \P          * :PasteWithIndentBefore<CR>
+n  \p          * :PasteWithIndent<CR>
+o  ]%            <Plug>(MatchitOperationMultiForward)
+x  ]%            <Plug>(MatchitVisualMultiForward)
+n  ]%            <Plug>(MatchitNormalMultiForward)
+n  ]d          * <Lua 14: vim/_defaults.lua:0>
+                 Jump to the next diagnostic
+x  a%            <Plug>(MatchitVisualTextObject)
+n  cS          * <Plug>(nvim-surround-change-line)
+                 Change a surrounding pair, putting replacements on new lines
+n  cs          * <Plug>(nvim-surround-change)
+                 Change a surrounding pair
+n  ds          * <Plug>(nvim-surround-delete)
+                 Delete a surrounding pair
+x  gS          * <Plug>(nvim-surround-visual-line)
+                 Add a surrounding pair around a visual selection, on new lines
+o  g%            <Plug>(MatchitOperationBackward)
+x  g%            <Plug>(MatchitVisualBackward)
+n  g%            <Plug>(MatchitNormalBackward)
+n  gr          * <Lua 88: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:418>
+n  gi          * <Lua 86: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:108>
+n  gd          * <Lua 84: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:93>
+n  gD          * <Lua 38: /usr/share/nvim/runtime/lua/vim/lsp/buf.lua:86>
+o  gc          * <Lua 13: vim/_defaults.lua:0>
+                 Comment textobject
+n  gcc         * <Lua 12: vim/_defaults.lua:0>
+                 Toggle comment line
+x  gc          * <Lua 11: vim/_defaults.lua:0>
+                 Toggle comment
+n  gc          * <Lua 10: vim/_defaults.lua:0>
+                 Toggle comment
+x  gx          * <Lua 9: vim/_defaults.lua:0>
+                 Opens filepath or URI under cursor with the system handler (file explorer, web browser, …)
+n  gx          * <Lua 8: vim/_defaults.lua:0>
+                 Opens filepath or URI under cursor with the system handler (file explorer, web browser, …)
+n  ySS         * <Plug>(nvim-surround-normal-cur-line)
+                 Add a surrounding pair around the current line, on new lines (normal mode)
+n  yS          * <Plug>(nvim-surround-normal-line)
+                 Add a surrounding pair around a motion, on new lines (normal mode)
+n  yss         * <Plug>(nvim-surround-normal-cur)
+                 Add a surrounding pair around the current line (normal mode)
+n  ys          * <Plug>(nvim-surround-normal)
+                 Add a surrounding pair around a motion (normal mode)
+n  <Plug>(nvim-surround-change-line) * <Lua 274: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:743>
+                 Change a surrounding pair, putting replacements on new lines
+n  <Plug>(nvim-surround-change) * <Lua 273: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:730>
+                 Change a surrounding pair
+n  <Plug>(nvim-surround-delete) * <Lua 271: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/init.lua:161>
+                 Delete a surrounding pair
+x  <Plug>(nvim-surround-visual-line) * <Lua 270: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:701>
+                 Add a surrounding pair around a visual selection, on new lines
+x  <Plug>(nvim-surround-visual) * <Lua 268: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:682>
+                 Add a surrounding pair around a visual selection
+n  <Plug>(nvim-surround-normal-cur-line) * <Lua 267: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:669>
+                 Add a surrounding pair around the current line, on new lines (normal mode)
+n  <Plug>(nvim-surround-normal-line) * <Lua 260: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:656>
+                 Add a surrounding pair around a motion, on new lines (normal mode)
+n  <Plug>(nvim-surround-normal-cur) * <Lua 150: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:643>
+                 Add a surrounding pair around the current line (normal mode)
+n  <Plug>(nvim-surround-normal) * <Lua 196: ~/.local/share/nvim/lazy/nvim-surround/lua/nvim-surround/config.lua:630>
+                 Add a surrounding pair around a motion (normal mode)
+x  <Plug>(MatchitVisualTextObject)   <Plug>(MatchitVisualMultiBackward)o<Plug>(MatchitVisualMultiForward)
+o  <Plug>(MatchitOperationMultiForward) * :<C-U>call matchit#MultiMatch("W",  "o")<CR>
+o  <Plug>(MatchitOperationMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "o")<CR>
+x  <Plug>(MatchitVisualMultiForward) * :<C-U>call matchit#MultiMatch("W",  "n")<CR>m'gv``
+x  <Plug>(MatchitVisualMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "n")<CR>m'gv``
+n  <Plug>(MatchitNormalMultiForward) * :<C-U>call matchit#MultiMatch("W",  "n")<CR>
+n  <Plug>(MatchitNormalMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "n")<CR>
+o  <Plug>(MatchitOperationBackward) * :<C-U>call matchit#Match_wrapper('',0,'o')<CR>
+o  <Plug>(MatchitOperationForward) * :<C-U>call matchit#Match_wrapper('',1,'o')<CR>
+x  <Plug>(MatchitVisualBackward) * :<C-U>call matchit#Match_wrapper('',0,'v')<CR>m'gv``
+x  <Plug>(MatchitVisualForward) * :<C-U>call matchit#Match_wrapper('',1,'v')<CR>:if col("''") != col("$") | exe ":normal! m'" | endif<CR>gv``
+n  <Plug>(MatchitNormalBackward) * :<C-U>call matchit#Match_wrapper('',0,'n')<CR>
+n  <Plug>(MatchitNormalForward) * :<C-U>call matchit#Match_wrapper('',1,'n')<CR>
+n  <C-Down>      <Plug>(VM-Add-Cursor-Down)
+x  <C-N>         <Plug>(VM-Find-Subword-Under)
+n  <C-Up>        <Plug>(VM-Add-Cursor-Up)
+n  <S-Right>     <Plug>(VM-Select-l)
+n  <S-Left>      <Plug>(VM-Select-h)
+n  <C-N>         <Plug>(VM-Find-Under)
+n  <Plug>(VM-Select-BBW) * :<C-U>call vm#commands#motion('BBW', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-gE) * :<C-U>call vm#commands#motion('gE', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-ge) * :<C-U>call vm#commands#motion('ge', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-E) * :<C-U>call vm#commands#motion('E', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-e) * :<C-U>call vm#commands#motion('e', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-B) * :<C-U>call vm#commands#motion('B', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-b) * :<C-U>call vm#commands#motion('b', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-W) * :<C-U>call vm#commands#motion('W', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-w) * :<C-U>call vm#commands#motion('w', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-l) * :<C-U>call vm#commands#motion('l', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-k) * :<C-U>call vm#commands#motion('k', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-j) * :<C-U>call vm#commands#motion('j', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Select-h) * :<C-U>call vm#commands#motion('h', v:count1, 1, 0)<CR>
+n  <Plug>(VM-Mouse-Column) * :call vm#commands#mouse_column()<CR>
+n  <Plug>(VM-Mouse-Word)   <Plug>(VM-Left-Mouse)<Plug>(VM-Find-Under)
+n  <Plug>(VM-Mouse-Cursor)   <Plug>(VM-Left-Mouse)<Plug>(VM-Add-Cursor-At-Pos)
+n  <Plug>(VM-Left-Mouse) * <LeftMouse>
+x  <Plug>(VM-Visual-Regex) * :call vm#commands#find_by_regex(2)<CR>:call feedkeys('/', 'n')<CR>
+n  <Plug>(VM-Slash-Search) * @=vm#commands#find_by_regex(3)<CR>
+n  <Plug>(VM-Start-Regex-Search) * @=vm#commands#find_by_regex(1)<CR>
+x  <Plug>(VM-Find-Subword-Under) * <SNR>31_Visual('under')
+n  <Plug>(VM-Find-Under) * :<C-U>call vm#commands#ctrln(v:count1)<CR>
+x  <Plug>(VM-Visual-Reduce) * :<C-U>call vm#visual#reduce()<CR>
+x  <Plug>(VM-Visual-Add) * <Esc>:call vm#commands#visual_add()<CR>
+x  <Plug>(VM-Visual-Cursors) * <Esc>:call vm#commands#visual_cursors()<CR>
+x  <Plug>(VM-Visual-All) * <SNR>31_Visual('all')
+n  <Plug>(VM-Select-All) * :call vm#commands#find_all(0, 1)<CR>
+n  <Plug>(VM-Reselect-Last) * :call vm#commands#reselect_last()<CR>
+n  <Plug>(VM-Select-Cursor-Up) * :<C-U>call vm#commands#add_cursor_up(1, v:count1)<CR>
+n  <Plug>(VM-Select-Cursor-Down) * :<C-U>call vm#commands#add_cursor_down(1, v:count1)<CR>
+n  <Plug>(VM-Add-Cursor-Up) * :<C-U>call vm#commands#add_cursor_up(0, v:count1)<CR>
+n  <Plug>(VM-Add-Cursor-Down) * :<C-U>call vm#commands#add_cursor_down(0, v:count1)<CR>
+n  <Plug>(VM-Add-Cursor-At-Word) * :call vm#commands#add_cursor_at_word(1, 1)<CR>
+n  <Plug>(VM-Add-Cursor-At-Pos) * :call vm#commands#add_cursor_at_pos(0)<CR>
+x  <Plug>(VM-Visual-Find)   vm#operators#find(1, 1)
+s  <Plug>luasnip-jump-prev * <Lua 141: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:57>
+                 LuaSnip: Jump to the previous node
+s  <Plug>luasnip-jump-next * <Lua 140: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:54>
+                 LuaSnip: Jump to the next node
+s  <Plug>luasnip-prev-choice * <Lua 139: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:51>
+                 LuaSnip: Change to the previous choice from the choiceNode
+s  <Plug>luasnip-next-choice * <Lua 138: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:48>
+                 LuaSnip: Change to the next choice from the choiceNode
+s  <Plug>luasnip-expand-snippet * <Lua 137: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:45>
+                 LuaSnip: Expand the current snippet
+s  <Plug>luasnip-expand-or-jump * <Lua 136: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:42>
+                 LuaSnip: Expand or jump in the current snippet
+   <Plug>luasnip-expand-repeat * <Lua 130: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:35>
+                 LuaSnip: Repeat last node expansion
+n  <Plug>luasnip-delete-check * <Lua 126: ~/.local/share/nvim/lazy/LuaSnip/plugin/luasnip.lua:28>
+                 LuaSnip: Removes current snippet from jumplist
+n  <Plug>PlenaryTestFile * :lua require('plenary.test_harness').test_file(vim.fn.expand("%:p"))<CR>
+x  <Plug>(comment_toggle_blockwise_visual) * <Esc><Cmd>lua require("Comment.api").locked("toggle.blockwise")(vim.fn.visualmode())<CR>
+                 Comment toggle blockwise (visual)
+x  <Plug>(comment_toggle_linewise_visual) * <Esc><Cmd>lua require("Comment.api").locked("toggle.linewise")(vim.fn.visualmode())<CR>
+                 Comment toggle linewise (visual)
+n  <Plug>(comment_toggle_blockwise_count) * <Lua 100: ~/.local/share/nvim/lazy/Comment.nvim/lua/Comment/api.lua:246>
+                 Comment toggle blockwise with count
+n  <Plug>(comment_toggle_linewise_count) * <Lua 99: ~/.local/share/nvim/lazy/Comment.nvim/lua/Comment/api.lua:246>
+                 Comment toggle linewise with count
+n  <Plug>(comment_toggle_blockwise_current) * <Lua 98: ~/.local/share/nvim/lazy/Comment.nvim/lua/Comment/api.lua:246>
+                 Comment toggle current block
+n  <Plug>(comment_toggle_linewise_current) * <Lua 97: ~/.local/share/nvim/lazy/Comment.nvim/lua/Comment/api.lua:246>
+                 Comment toggle current line
+n  <Plug>(comment_toggle_blockwise) * <Lua 96: ~/.local/share/nvim/lazy/Comment.nvim/lua/Comment/api.lua:246>
+                 Comment toggle blockwise
+n  <Plug>(comment_toggle_linewise) * <Lua 95: ~/.local/share/nvim/lazy/Comment.nvim/lua/Comment/api.lua:246>
+                 Comment toggle linewise
+n  <C-H>       * <Cmd>NvimTmuxNavigateLeft<CR>
+n  <C-J>       * <Cmd>NvimTmuxNavigateDown<CR>
+n  <C-K>       * <Cmd>NvimTmuxNavigateUp<CR>
+n  <C-PageUp>  * :wincmd h<CR>
+n  <C-PageDown> * :vsplit<CR>
+n  <C-W><C-D>    <C-W>d
+                 Show diagnostics under the cursor
+n  <C-W>d      * <Lua 16: vim/_defaults.lua:0>
+                 Show diagnostics under the cursor
+n  <C-L>       * <Cmd>NvimTmuxNavigateRight<CR>

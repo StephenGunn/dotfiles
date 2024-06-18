@@ -8,7 +8,6 @@ vim.cmd("set shiftwidth=4")
 vim.o.autoindent = true
 vim.o.smartindent = true
 
-
 -- Function to paste with auto-indentation without affecting the default register
 local function paste_with_indent()
 	-- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
@@ -52,9 +51,8 @@ vim.opt.swapfile = false
 -- scrolloff
 vim.opt.scrolloff = 6
 
--- replace all instances --
--- Define the keymap for replacing the current word under the cursor
-vim.api.nvim_set_keymap("n", "<leader>a", [[:lua replace_word_under_cursor()<CR>]], { noremap = true, silent = true })
+-- Define the keymap for replacing the current word under the cursor with what ever is in the first register
+vim.api.nvim_set_keymap("n", "<leader>z", [[:%s/<C-R><C-W>/<C-R>0/g<CR>]], { noremap = true, silent = true })
 
 -- Define the function to replace the word under the cursor
 function replace_word_under_cursor()
