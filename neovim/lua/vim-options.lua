@@ -4,32 +4,38 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
--- Enable auto-indentation
+-- basic vim options
+vim.g.mapleader = " "
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "number"
+vim.opt.swapfile = false
+vim.opt.scrolloff = 8
 vim.o.autoindent = true
 vim.o.smartindent = true
 
 -- Function to paste with auto-indentation without affecting the default register
 local function paste_with_indent()
-    -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
-    vim.cmd("set paste")
-    -- Paste from the system clipboard ('+ register) in normal mode
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+p', true, false, true), "n", false)
-    -- Disable paste mode after pasting
-    vim.cmd("set nopaste")
-    -- Reselect the pasted text and indent it
-    vim.cmd("normal! `[v`]=")
+	-- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
+	vim.cmd("set paste")
+	-- Paste from the system clipboard ('+ register) in normal mode
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+p', true, false, true), "n", false)
+	-- Disable paste mode after pasting
+	vim.cmd("set nopaste")
+	-- Reselect the pasted text and indent it
+	vim.cmd("normal! `[v`]=")
 end
 
 -- Function to paste before the current line with auto-indentation without affecting the default register
 local function paste_with_indent_before()
-    -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
-    vim.cmd("set paste")
-    -- Paste from the system clipboard ('+ register) before the current line in normal mode
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+P', true, false, true), "n", false)
-    -- Disable paste mode after pasting
-    vim.cmd("set nopaste")
-    -- Reselect the pasted text and indent it
-    vim.cmd("normal! `[v`]=")
+	-- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
+	vim.cmd("set paste")
+	-- Paste from the system clipboard ('+ register) before the current line in normal mode
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('"+P', true, false, true), "n", false)
+	-- Disable paste mode after pasting
+	vim.cmd("set nopaste")
+	-- Reselect the pasted text and indent it
+	vim.cmd("normal! `[v`]=")
 end
 
 -- Create user commands to call the functions
@@ -41,15 +47,6 @@ vim.api.nvim_set_keymap("n", "<Leader>p", ":PasteWithIndent<CR>", { noremap = tr
 
 -- Keybinding to paste before the current line with auto-indentation without affecting the default register
 vim.api.nvim_set_keymap("n", "<Leader>P", ":PasteWithIndentBefore<CR>", { noremap = true, silent = true })
-
--- basic vim options
-vim.g.mapleader = " "
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
-vim.opt.swapfile = false
--- scrolloff
-vim.opt.scrolloff = 6
 
 -- Define the keymap for replacing the current word under the cursor with what ever is in the first register
 vim.api.nvim_set_keymap("n", "<leader>z", [[:%s/<C-R><C-W>/<C-R>0/g<CR>]], { noremap = true, silent = true })
@@ -67,6 +64,9 @@ vim.api.nvim_set_keymap("n", "<leader>k", ":cp<CR>:cclose<CR>:only<CR>", { norem
 vim.api.nvim_set_keymap("n", "<leader>w", ":bd<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>W", ":bd!<CR>", { noremap = true, silent = true })
 
+-- shortcut to save --
+vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", { noremap = true, silent = true })
+
 -- In the quickfix list, open the selected file in a full window
 vim.cmd([[
     augroup quickfix_full_window
@@ -81,6 +81,33 @@ vim.api.nvim_set_keymap("n", "<S-j>", ":m .+1<CR>==", { noremap = true, silent =
 
 -- Move selected block of lines up
 vim.api.nvim_set_keymap("x", "<S-k>", ":move '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+-- Set a key mapping in normal mode to yank the diagnostic error
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>E",
+	[[:lua YankDiagnosticError()<CR>]],
+	{ noremap = true, silent = true, desc = "Copy error" }
+)
+
+function YankDiagnosticError()
+	-- Get the diagnostics for the current cursor position
+	local diagnostics = vim.diagnostic.get()
+
+	if #diagnostics == 0 then
+		print("No diagnostics found at the cursor position.")
+		return
+	end
+
+	-- Extract the first diagnostic message
+	local diagnostic_message = diagnostics[1].message
+
+	-- Optionally, you could yank it to a specific register like the `+` register (clipboard) with:
+	vim.fn.setreg("+", diagnostic_message)
+
+	-- Print a confirmation message
+	print("Error has been yanked: " .. diagnostic_message)
+end
 
 -- Move selected block of lines down
 vim.api.nvim_set_keymap("x", "<S-j>", ":move '>+1<CR>gv=gv", { noremap = true, silent = true })
