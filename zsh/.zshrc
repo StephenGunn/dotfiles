@@ -115,6 +115,12 @@ alias server="ssh stephen@192.168.86.32"
 # insta dotfiles babeee
 alias dotfiles="cd ~/dotfiles"
 
+# insta CR 
+alias cr="cd ~/Projects/craftroulette"
+
+# insta projects 
+alias p="cd ~/Projects"
+
 export TERM="tmux-256color"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -127,3 +133,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#
+# asdf 
+. /opt/asdf-vm/asdf.sh

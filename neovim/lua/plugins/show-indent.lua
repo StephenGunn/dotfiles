@@ -1,28 +1,30 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
-  opts = {},
+  event = "VeryLazy",
   config = function()
     local hooks = require("ibl.hooks")
 
-    -- Register hook for highlight setup
     hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-      vim.api.nvim_set_hl(0, "IndentLine", { fg = "#1e1e1e" })
-      vim.api.nvim_set_hl(0, "ScopeLine", { fg = "#28203e" })
-      vim.api.nvim_set_hl(0, "WhiteSpaceChar", { fg = "#232323" })
-      vim.api.nvim_set_hl(0, "ScopeStartLine", { underline = true, sp = "#FF5733" }) -- Set underline for scope start
+      vim.api.nvim_set_hl(0, "IndentLine", { fg = "#32324b" })
+      vim.api.nvim_set_hl(0, "ScopeLine", { fg = "#52527c" })
+      vim.api.nvim_set_hl(0, "WhiteSpaceChar", { fg = "#32324b" })
+      vim.api.nvim_set_hl(0, "ScopeStartLine", { underline = true, sp = "#FF5733" })
     end)
-
-    -- Setup indent-blankline with custom highlight groups
     require("ibl").setup({
-      indent = { highlight = { "IndentLine" } },
+      scope = {
+        show_start = true,
+        highlight = "ScopeLine",
+      },
+      indent = {
+        char = "┊",
+        tab_char = "┊",
+        smart_indent_cap = true,
+        highlight = "IndentLine",
+      },
       whitespace = {
         highlight = { "WhiteSpaceChar" },
-        remove_blankline_trail = false,
-      },
-      scope = {
-        highlight = { "ScopeLine" },
-        show_start = true,
+        remove_blankline_trail = true,
       },
     })
   end,
