@@ -1,25 +1,25 @@
 return {
-	"nvimtools/none-ls.nvim",
-	dependencies = {
-		"nvimtools/none-ls-extras.nvim",
-	},
-	config = function()
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier,
-			},
-		})
+  "nvimtools/none-ls.nvim",
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+  },
+  config = function()
+    local null_ls = require("null-ls")
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettier,
+      },
+    })
 
-		vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
+    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
 
-		-- Automatically format code on save using LSP
-		vim.api.nvim_exec(
-			[[
+    -- Automatically format code on save using LSP
+    vim.api.nvim_exec(
+      [[
   autocmd BufWritePre * :lua vim.lsp.buf.format()
 ]],
-			false
-		)
-	end,
+      false
+    )
+  end,
 }
