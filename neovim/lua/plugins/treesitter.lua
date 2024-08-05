@@ -1,92 +1,104 @@
 -- treesitter_config.lua
+
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			local config = require("nvim-treesitter.configs")
-			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-			require("nvim-treesitter.install").prefer_git = true
-			-- Ensure the custom query is registered
-			-- parser_config.svelte = {
-			--   install_info = {
-			--     url = "https://github.com/Himujjal/tree-sitter-svelte", -- Replace with the correct URL if needed
-			--     files = { "src/parser.c", "src/scanner.cc" },
-			--   },
-			--   filetype = "svelte",
-			-- }
-			--
-			config.setup({
-				auto_install = true,
-				autopairs = {
-					enable = true,
-				},
-				sync_install = false,
-				autotag = { enable = true },
-				module = {
-					ensure_installed = "all",
-					ignore_install = {},
-					disable = {},
-				},
-				highlight = {
-					additional_vim_regex_highlighting = false,
-				},
-				indent = { enable = true },
-				ensure_installed = {
-					"svelte",
-					"css",
-					"scss",
-					"typescript",
-					"javascript",
-					"json",
-					"html",
-					"lua",
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<c-space>",
-						node_incremental = "<c-space>",
-						scope_incremental = "<c-s>",
-						node_decremental = "<c-backspace>",
-					},
-				},
-				textobjects = {
-					select = {
-						enable = true,
-						lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
-							["aa"] = "@parameter.outer",
-							["ia"] = "@parameter.inner",
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
-						},
-					},
-					move = {
-						enable = true,
-						set_jumps = true, -- whether to set jumps in the jumplist
-						goto_next_start = {
-							["]m"] = "@function.outer",
-							["]]"] = "@class.outer",
-						},
-						goto_next_end = {
-							["]M"] = "@function.outer",
-							["]["] = "@class.outer",
-						},
-						goto_previous_start = {
-							["[m"] = "@function.outer",
-							["[["] = "@class.outer",
-						},
-						goto_previous_end = {
-							["[M"] = "@function.outer",
-							["[]"] = "@class.outer",
-						},
-					},
-				},
-			})
-		end,
-	},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      local configs = require("nvim-treesitter.configs")
+
+      require("nvim-treesitter.install").prefer_git = true
+
+      configs.setup({
+        -- Automatically install missing parsers when entering buffer
+        auto_install = true,
+
+        -- Ensure specific parsers are installed
+        ensure_installed = {
+          "svelte",
+          "css",
+          "scss",
+          "typescript",
+          "javascript",
+          "json",
+          "html",
+          "lua",
+        },
+
+        -- Parsers to ignore when installing all
+        ignore_install = {},
+
+        -- Enable tree-sitter based highlighting
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+
+        -- Enable tree-sitter based indentation
+        indent = { enable = true },
+
+        -- Enable and configure incremental selection
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "<c-space>",
+            node_incremental = "<c-space>",
+            scope_incremental = "<c-s>",
+            node_decremental = "<c-backspace>",
+          },
+        },
+
+        -- Enable and configure text objects
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["aa"] = "@parameter.outer",
+              ["ia"] = "@parameter.inner",
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+              ["]m"] = "@function.outer",
+              ["]]"] = "@class.outer",
+            },
+            goto_next_end = {
+              ["]M"] = "@function.outer",
+              ["]["] = "@class.outer",
+            },
+            goto_previous_start = {
+              ["[m"] = "@function.outer",
+              ["[["] = "@class.outer",
+            },
+            goto_previous_end = {
+              ["[M"] = "@function.outer",
+              ["[]"] = "@class.outer",
+            },
+          },
+        },
+
+        -- Enable auto-pairs integration (if using a compatible plugin)
+        autopairs = {
+          enable = true,
+        },
+
+        -- Enable autotagging of HTML tags (requires `windwp/nvim-ts-autotag` plugin)
+        autotag = {
+          enable = true,
+        },
+
+        -- Configure modules (new field requirement)
+        modules = {}, -- This field can be customized if you use additional modules
+
+        sync_install = false,
+      })
+    end,
+  },
 }

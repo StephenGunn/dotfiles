@@ -26,7 +26,6 @@ local function paste_with_indent()
   vim.cmd("normal! `[v`]=")
 end
 
-
 -- Function to paste before the current line with auto-indentation without affecting the default register
 local function paste_with_indent_before()
   -- Temporarily enable paste mode to avoid unwanted auto-indentation during the paste
@@ -38,7 +37,6 @@ local function paste_with_indent_before()
   -- Reselect the pasted text and indent it
   vim.cmd("normal! `[v`]=")
 end
-
 
 -- Create user commands to call the functions
 vim.api.nvim_create_user_command("PasteWithIndent", paste_with_indent, {})
@@ -184,5 +182,5 @@ vim.api.nvim_set_hl(0, "TSParameter", { fg = "#1E90FF", bg = "NONE", italic = tr
 -- Change the color of the indent character
 vim.cmd("highlight IndentChar guifg=#4b5263")
 
--- Clear search highlights
-vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>")
+-- Bind Esc to clear search highlights
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { noremap = true, silent = true })
