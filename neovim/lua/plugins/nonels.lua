@@ -28,8 +28,8 @@ return {
       local extension = vim.fn.expand("%:e")
 
       -- List of filenames and extensions to exclude from formatting
-      local exclude_filenames = { ".env", ".bashrc", ".bash_profile" }
-      local exclude_extensions = { "env" }
+      local exclude_filenames = { ".env", ".bashrc", ".bash_profile", ".http" }
+      local exclude_extensions = { "env", "http" }
 
       -- Check if the filename or extension is in the exclusion list
       return not vim.tbl_contains(exclude_filenames, filename)

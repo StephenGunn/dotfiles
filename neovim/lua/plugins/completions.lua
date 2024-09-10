@@ -21,12 +21,17 @@ return {
     },
     config = function()
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local luasnip = require("luasnip")
+      require("luasnip").config.set_config({
+        -- Example config settings
+        history = true,
+        updateevents = "TextChanged,TextChangedI",
+        enable_autosnippets = true,
+      })
+      require("luasnip.loaders.from_vscode").lazy_load()
       local lspkind = require("lspkind")
       local cmp = require("cmp")
 
       -- Load snippets
-      require("luasnip.loaders.from_vscode").lazy_load()
 
       -- Integrate nvim-autopairs with cmp
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -65,7 +70,7 @@ return {
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({
-          { name = "nvim_lsp",               group_index = 1 },                     -- lsp
+          { name = "nvim_lsp",               group_index = 1 }, -- lsp
           { name = "buffer",                 max_item_count = 5, group_index = 2 }, -- text within current buffer
           { name = "path",                   max_item_count = 3, group_index = 3 }, -- file system paths
           { name = "luasnip",                max_item_count = 3, group_index = 5 }, -- snippets
@@ -85,9 +90,6 @@ return {
               luasnip = "[LuaSnip]",
             },
           }),
-        },
-        experimental = {
-          ghost_text = true,
         },
       })
     end,

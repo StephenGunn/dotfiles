@@ -184,3 +184,15 @@ vim.cmd("highlight IndentChar guifg=#4b5263")
 
 -- Bind Esc to clear search highlights
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { noremap = true, silent = true })
+
+-- Automatically set LuaRocks paths
+local function add_luarocks_paths()
+  local lua_path = vim.fn.system("luarocks path --lr-path"):gsub("\n", "")
+  local lua_cpath = vim.fn.system("luarocks path --lr-cpath"):gsub("\n", "")
+
+  -- Prepend LuaRocks paths
+  package.path = package.path .. ";" .. lua_path
+  package.cpath = package.cpath .. ";" .. lua_cpath
+end
+
+add_luarocks_paths()
