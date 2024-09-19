@@ -1,0 +1,141 @@
+format = """
+[](#cba6f7)\
+$os\
+$username\
+[](bg:#f38ba8 fg:#cba6f7)\
+$directory\
+[](fg:#f38ba8 bg:#fab387)\
+$git_branch\
+$git_status\
+[](fg:#fab387 bg:#89b4fa)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#89b4fa bg:#94e2d5)\
+$docker_context\
+[](fg:#94e2d5 bg:#74c7ec)\
+$time\
+[ ](fg:#74c7ec)\n
+"""
+
+# Disable the blank line at the start of the prompt (so the bar is at the top)
+add_newline = false
+
+[line_break]
+disabled = false 
+
+# Username configuration
+[username]
+show_always = true
+style_user = "fg:#1e1e2e bg:#cba6f7"  # Dark text color
+style_root = "fg:#1e1e2e bg:#cba6f7"  # Dark text color
+format = '[$user ]($style)'
+disabled = false
+
+# OS configuration (if enabled)
+[os]
+style = "fg:#1e1e2e bg:#cba6f7"  # Dark text color with Catppuccin Mocha colors
+format = '[  $os ]($style)'  # Use the Arch logo
+disabled = false  # Enable the OS module
+
+# Directory module
+[directory]
+style = "fg:#1e1e2e bg:#f38ba8"  # Dark text color
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+# Programming language modules (with dark text)
+[c]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "fg:#1e1e2e bg:#94e2d5"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "fg:#1e1e2e bg:#fab387"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#1e1e2e bg:#fab387"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "fg:#1e1e2e bg:#89b4fa"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:#1e1e2e bg:#74c7ec"
+format = '[ ♥ $time ]($style)'
