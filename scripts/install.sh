@@ -19,6 +19,8 @@ PROGRAMS=(
     "wl-clipboard"
     "xsel"
     "discord"
+    "fastfetch"
+    "borg"
     # Add any other programs you need
 )
 
