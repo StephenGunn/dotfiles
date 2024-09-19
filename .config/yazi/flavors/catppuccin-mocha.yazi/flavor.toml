@@ -1,9 +1,9 @@
 # vim:fileencoding=utf-8:foldmethod=marker
+
 # : Manager {{{
 
 [manager]
 cwd = { fg = "#94e2d5" }
-
 
 # Hovered
 hovered         = { reversed = true }

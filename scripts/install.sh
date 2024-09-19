@@ -24,6 +24,7 @@ PROGRAMS=(
     "grim"
     "hyprpaper"
     "hypridle"
+    "inotify-tools"
     # Add any other programs you need
 )
 
