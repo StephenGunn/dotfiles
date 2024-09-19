@@ -10,7 +10,13 @@ return {
         lualine_c = {
           {
             "filename",
-            path = 1,
+            path = 1, -- Shows the full path to the file
+          },
+          {
+            function()
+              return vim.fn.getcwd() -- Returns the current working directory
+            end,
+            icon = "", -- Optional: add an icon for the CWD
           },
         },
       },
