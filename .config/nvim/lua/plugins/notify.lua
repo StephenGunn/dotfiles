@@ -13,7 +13,8 @@ return {
         local merged_opts = vim.tbl_extend("force", {
           on_open = function(win)
             local buf = vim.api.nvim_win_get_buf(win)
-            vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+            -- Use set_option_value instead of the deprecated set_option
+            vim.api.nvim_buf_set_option_value(buf, "filetype", "markdown")
           end,
         }, opts or {})
 
@@ -25,7 +26,12 @@ return {
         return notify(message, level, merged_opts)
       end
 
-      -- Update colors to use catpuccino colors
+      -- Keybinding to dismiss all notifications with <leader><Esc>
+      vim.keymap.set("n", "<leader><Esc>", function()
+        require("notify").dismiss({ silent = true, pending = true })
+      end, { noremap = true, silent = true })
+
+      -- Update colors to use catppuccin colors
       vim.cmd([[
         highlight NotifyERRORBorder guifg=#ed8796
         highlight NotifyERRORIcon guifg=#ed8796

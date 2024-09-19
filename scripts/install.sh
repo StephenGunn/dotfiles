@@ -14,9 +14,11 @@ PROGRAMS=(
     "yazi"
     "fish"
     "fisher"
+    "starship"
     "xclip"
     "wl-clipboard"
     "xsel"
+    "discord"
     # Add any other programs you need
 )
 
