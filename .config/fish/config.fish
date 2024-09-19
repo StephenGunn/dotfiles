@@ -23,3 +23,4 @@ end
 # Set Neovim as the default editor
 set -Ux EDITOR "nvim"
 set -Ux VISUAL "nvim"
+
