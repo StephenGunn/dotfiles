@@ -19,3 +19,7 @@ function fish_right_prompt
             echo -n (set_color yellow)" VISUAL "(set_color normal)
     end
 end
+
+# Set Neovim as the default editor
+set -Ux EDITOR "nvim"
+set -Ux VISUAL "nvim"

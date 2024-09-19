@@ -21,6 +21,9 @@ PROGRAMS=(
     "discord"
     "fastfetch"
     "borg"
+    "grim"
+    "hyprpaper"
+    "hypridle"
     # Add any other programs you need
 )
 
