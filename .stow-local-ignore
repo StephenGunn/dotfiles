@@ -1,2 +1,8 @@
-scripts/
-README.md
+# Ignore specific files and directories. For more info on regular expressions in Stow, see the documentation:
+# https://www.gnu.org/software/stow/manual/stow.html
+
+^scripts/
+^README\.md
+^\.git
+^\.gitignore
+^link\.sh
