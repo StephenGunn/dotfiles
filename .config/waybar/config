@@ -1,10 +1,11 @@
-{
+[{
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
+    "output": "DP-2", // main monitor
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio",  "clock", "tray", "custom/lock", "custom/power"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "tray", "custom/lock", "custom/power"],
     "hyprland/workspaces": {
         "format": "{name}",
         "hyprland": true,
@@ -28,8 +29,7 @@
     "clock": {
         "timezone": "America/Chicago",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%m/%d/%Y}",
-        "format": " {:%H:%M}"
+        "format": " {:%m/%d/%Y      %H:%M}",
     },
     "backlight": {
         "device": "intel_backlight",
@@ -66,4 +66,72 @@
         "on-click": "wlogout",
         "format": "⏻"
     }
-}
+}, {
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "output": "DP-3", // vert monitor
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/music"],
+    "modules-right": ["pulseaudio",  "clock", "tray", "custom/lock", "custom/power"],
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "hyprland": true,
+        "icon-padding": 2,
+        "on-click": "hyprctl dispatch workspace {index}",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
+    },
+    "clock": {
+        "timezone": "America/Chicago",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%m/%d/%Y      %H:%M}",
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{icon}",
+        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "hyprctl dispatch exit",
+        "format": "",
+    },
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "wlogout",
+        "format": "⏻"
+    }
+}]

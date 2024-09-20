@@ -18,24 +18,24 @@
 #workspaces {
   border-radius: 1rem;
   margin: 5px 10px;
-  padding: 0 10px;
-  background-color: rgba(0,0,0,0.5); 
   margin-left: 1rem;
 }
 
 #workspaces button {
-  color: @lavender;
   border-radius: 1rem;
-  padding: 0.4rem;
+  background-color: rgba(0,0,0,0.5); 
+  padding: 0.4rem .75rem;
+  margin-right: .5rem;
+  color: #b4befe;
 }
 
 #workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+  background-color: rgba(0,0,0,1); 
+  color: #74c7ec;
 }
 
 #workspaces button:hover {
-  color: @sapphire;
+  color: @sapphre;
   border-radius: 1rem;
 }
 
@@ -48,14 +48,13 @@
 #custom-lock,
 #custom-power {
   background-color: rgba(0,0,0,0.5); 
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
   margin: 5px 0;
 }
 
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+  border-radius: 1rem 1rem;
 }
 
 #battery {
@@ -81,8 +80,8 @@
 
 #pulseaudio {
   color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
 }
 
 #custom-music {
