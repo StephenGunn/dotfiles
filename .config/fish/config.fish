@@ -25,3 +25,5 @@ set -Ux EDITOR "nvim"
 set -Ux VISUAL "nvim"
 
 set -Ux fish_user_paths $HOME/.cargo/bin $fish_user_paths
+
+eval $(opam env)
