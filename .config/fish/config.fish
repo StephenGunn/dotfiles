@@ -27,3 +27,9 @@ set -Ux VISUAL "nvim"
 set -Ux fish_user_paths $HOME/.cargo/bin $fish_user_paths
 
 eval $(opam env)
+
+# postgresql setup
+set -Ux PATH /usr/bin/postgres /usr/bin/psql $PATH
+
+# Created by `pipx` on 2024-10-15 22:41:40
+set PATH $PATH /home/stephen/.local/bin
