@@ -1,10 +1,17 @@
 return {
   "ahmedkhalf/project.nvim",
   config = function()
-    require("project_nvim").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
+    require("project_nvim").setup({
+      detection_methods = { "pattern", "lsp" },
+      patterns = {
+        "svelte.config.js",
+        "package.json",
+        "pnpm-workspace.yaml",
+        "tsconfig.json",
+        "Dockerfile",
+        "docker-compose.yml",
+        "README.md",
+      },
+    })
+  end,
 }
