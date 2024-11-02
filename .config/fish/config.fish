@@ -33,3 +33,14 @@ set -Ux PATH /usr/bin/postgres /usr/bin/psql $PATH
 
 # Created by `pipx` on 2024-10-15 22:41:40
 set PATH $PATH /home/stephen/.local/bin
+
+# pnpm
+set -gx PNPM_HOME "/home/stephen/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
