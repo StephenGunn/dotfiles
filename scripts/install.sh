@@ -6,6 +6,7 @@ PROGRAMS=(
     "neovim"
     "tmux"
     "waybar"
+    "yay"
     "wezterm"
     "zsh"
     "kitty"
@@ -24,6 +25,7 @@ PROGRAMS=(
     "grim"
     "hyprpaper"
     "hypridle"
+    "hyprlock"
     "inotify-tools"
     # Add any other core programs you need
 )

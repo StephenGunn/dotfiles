@@ -1,10 +1,11 @@
+# fast program access
+alias yy="yazi"
+alias gg="lazygit"
+
 # dotfile aliases
-alias df="cd ~/dotfiles"
+alias dots_link="bash ~/dotfiles/link.sh"
 
-alias df_link="bash ~/dotfiles/link.sh"
-
-alias df="cd ~/dotfiles"
+alias dots="cd ~/dotfiles"
 
 # backups
-
 alias timeshift="sudo -E timeshift-gtk"
