@@ -2,7 +2,7 @@
   "SvelteKit Server Page Load": {
     "prefix": "sk-load",
     "body": [
-      "import type { PageServerLoad } from './$types';",
+      "import type { PageServerLoad } from '.\\/\\$types';",
       "",
       "export const load: PageServerLoad = async (${1:{locals}}) => {",
       "  ${2}",
@@ -10,5 +10,20 @@
       "};"
     ],
     "description": "SvelteKit Server Page Load"
+  },
+  "cr-server": {
+    "prefix": "cr-server",
+    "body": [
+      "import type { RequestHandler } from \"@sveltejs/kit\";",
+      "import { api } from \"\\$api/api\";",
+      "import { json } from \"@sveltejs/kit\";",
+      "",
+      "export const POST = (async ({ request }) => {",
+      "  return json({",
+      "    message: \"Hello, world!\",",
+      "  });",
+      "}) satisfies RequestHandler;"
+    ],
+    "description": "Craft Roulette SvelteKit Server POST Handler"
   }
 }

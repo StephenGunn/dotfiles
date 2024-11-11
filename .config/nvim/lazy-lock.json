@@ -20,6 +20,7 @@
   "harpoon": { "branch": "master", "commit": "1bc17e3e42ea3c46b33c0bbad6a880792692a1b3" },
   "hydra.nvim": { "branch": "main", "commit": "7f5341643107d05a8d7d4fdea00b29af28517380" },
   "indent-blankline.nvim": { "branch": "master", "commit": "04e44b09ee3ff189c69ab082edac1ef7ae2e256c" },
+  "key-analyzer.nvim": { "branch": "main", "commit": "4b3a317467d22360491854d3fed3688c7ffa8a3e" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "d51725a6b71d65dd9df83ddc07903de2fb2736ee" },
   "kulala.nvim": { "branch": "main", "commit": "9bfa4e9ac82ca3429bd2edcc70e15623545c8d3f" },
   "lazy.nvim": { "branch": "main", "commit": "cf8ecc2c5e4332760431a33534240b0cbc6680ab" },
