@@ -79,19 +79,19 @@ return {
             validate = true,
             lint = {
               unknownAtRules = "ignore",
-            }
+            },
           },
           scss = {
             validate = true,
             lint = {
               unknownAtRules = "ignore",
-            }
+            },
           },
           less = {
             validate = true,
             lint = {
               unknownAtRules = "ignore",
-            }
+            },
           },
         },
       })
@@ -100,28 +100,13 @@ return {
       })
 
       -- Svelte LSP
-      local lsp_capabilities = vim.lsp.protocol.make_client_capabilities() --or whatever your setup requires
-      lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-      -- whatever your other plugin requires, for example:
-      -- lsp_capabilities.textDocument.completion = require('cmp_nvim_lsp').default_capabilities().textDocument.completion
-
+      local svelte_lsp_capabilities = vim.tbl_deep_extend("force", {}, capabilities)
+      svelte_lsp_capabilities.workspace = { didChangeWatchedFiles = false }
       lspconfig.svelte.setup({
-        capabilities = lsp_capabilities,
-        on_attach = function(client)
-          if client.name == "svelte" then
-            vim.api.nvim_create_autocmd("BufWritePost", {
-              pattern = { "*.js", "*.ts" },
-              group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
-              callback = function(ctx)
-                -- Here use ctx.match instead of ctx.file
-                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-              end,
-            })
-          end
-
-          -- attach keymaps if needed
-        end,
+        capabilities = svelte_lsp_capabilities,
+        filetypes = { "svelte" },
       })
+
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
         filetypes = {
