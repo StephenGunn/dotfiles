@@ -4,7 +4,7 @@ fish_vi_key_bindings
 
 starship init fish | source
 
-set -U fish_greeting "🌎 🚀    🪐"
+set -U fish_greeting "🌎 🚀 JovianMoon.io  🪐"
 
 source ~/.config/fish/aliases.fish
 
