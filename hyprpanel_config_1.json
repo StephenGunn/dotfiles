@@ -1,0 +1,13 @@
+{
+  "bar.customModules.updates.pollingInterval": 1440000,
+  "hyprpanel.restartCommand": "agsv1 -q; agsv1",
+  "menus.clock.weather.location": "64131",
+  "theme.bar.buttons.padding_x": "0.7rem",
+  "theme.bar.outer_spacing": "0.4em",
+  "theme.bar.floating": true,
+  "bar.scrollSpeed": 2,
+  "menus.clock.weather.key": "3f5b758c084d4ab5883154022242011",
+  "menus.dashboard.powermenu.avatar.name": "Jovian Moon",
+  "theme.bar.opacity": 70,
+  "menus.dashboard.powermenu.avatar.image": "/home/stephen/dotfiles/login_image.jpg"
+}

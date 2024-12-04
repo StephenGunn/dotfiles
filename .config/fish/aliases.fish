@@ -9,3 +9,7 @@ alias dots="cd ~/dotfiles"
 
 # backups
 alias timeshift="sudo -E timeshift-gtk"
+
+# grub customizer run
+alias grub-customizer 'sudo -E QT_QPA_PLATFORM=xcb grub-customizer'
+
