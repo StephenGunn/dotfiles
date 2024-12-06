@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
-SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/stephen/\x2ebun/bin
+SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/functions/_autopair_backspace\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_left\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_right\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_same\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_tab\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/autopair\x2efish
@@ -39,4 +39,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR --export fish_user_paths:/home/stephen/\x2ecargo/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin
+SETUVAR --export fish_user_paths:/home/stephen/\x2elocal/bin\x1e/home/stephen/\x2ecargo/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin

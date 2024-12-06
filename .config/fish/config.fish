@@ -54,3 +54,6 @@ function y
 	end
 	rm -f -- "$tmp"
 end
+
+# Add ~/.local/bin to the PATH for stream deck
+set -U fish_user_paths $HOME/.local/bin $fish_user_paths
