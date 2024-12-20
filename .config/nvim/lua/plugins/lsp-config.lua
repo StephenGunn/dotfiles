@@ -71,6 +71,10 @@ return {
       })
       lspconfig.html.setup({
         capabilities = capabilities,
+        filetypes = {
+          "html",
+          "liquid",
+        },
       })
       lspconfig.cssls.setup({
         capabilities = capabilities,
