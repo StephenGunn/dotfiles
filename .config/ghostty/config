@@ -1,0 +1,19 @@
+# visual
+theme=catppuccin-mocha
+background-opacity=0.95
+window-padding-x=4
+window-padding-y=4
+window-decoration=false
+font-size=15
+
+# launch new ghostty window in same location
+keybind=super+w=new_window
+
+# shell features 
+cursor-style=block
+window-save-state=always
+mouse-hide-while-typing=true
+shell-integration=fish
+shell-integration-features=no-cursor
+
+

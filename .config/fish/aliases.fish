@@ -14,6 +14,7 @@ alias timeshift="sudo -E timeshift-gtk"
 alias grub-customizer 'sudo -E QT_QPA_PLATFORM=xcb grub-customizer'
 
 alias pi "ssh 192.168.86.27"
-
 alias server "ssh 192.168.86.250"
 
+# a better ls
+alias ls "eza -l --icons -a --group-directories-first"

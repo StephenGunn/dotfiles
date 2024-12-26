@@ -8,15 +8,15 @@ set -U fish_greeting "🌎 🚀 JovianMoon.io  🪐"
 
 source ~/.config/fish/aliases.fish
 
-# This function shows the vi mode dynamically in the right prompt
-function fish_right_prompt
+# Set cursor style based on vi mode
+function fish_vi_cursor --on-variable fish_bind_mode
     switch $fish_bind_mode
-        case insert
-            echo -n (set_color green)" INSERT "(set_color normal)
         case default
-            echo -n (set_color red)" NORMAL "(set_color normal)
+            echo -en "\e[2 q" # block cursor
+        case insert
+            echo -en "\e[6 q" # line cursor
         case visual
-            echo -n (set_color yellow)" VISUAL "(set_color normal)
+            echo -en "\e[2 q" # block cursor
     end
 end
 
@@ -58,5 +58,3 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
-
-
