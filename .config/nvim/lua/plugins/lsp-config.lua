@@ -20,6 +20,7 @@ return {
 					"somesass_ls",
 					"elixirls",
 					"rust_analyzer",
+					"gopls",
 				},
 			})
 		end,
@@ -66,6 +67,9 @@ return {
 			lspconfig.gleam.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
@@ -109,6 +113,15 @@ return {
 			lspconfig.svelte.setup({
 				capabilities = svelte_lsp_capabilities,
 				filetypes = { "svelte" },
+				settings = {
+					svelte = {
+						plugin = {
+							svelte = {
+								defaultScriptLanguage = "ts",
+							},
+						},
+					},
+				},
 			})
 
 			lspconfig.emmet_ls.setup({

@@ -18,3 +18,8 @@ alias server "ssh 192.168.86.250"
 
 # a better ls
 alias ls "eza -l --icons -a --group-directories-first"
+
+# fun programs
+alias stars 'astroterm --city "Kansas City" --color -u'
+alias bonsai 'cbonsai -l -i'
+
