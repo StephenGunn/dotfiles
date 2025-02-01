@@ -20,11 +20,26 @@ function fish_vi_cursor --on-variable fish_bind_mode
     end
 end
 
+# set folder on exit of yazi
+function y
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		builtin cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
+
 # Set Neovim as the default editor
 set -Ux EDITOR "nvim"
 set -Ux VISUAL "nvim"
 
 set -Ux fish_user_paths $HOME/.cargo/bin $fish_user_paths
+
+# open images in krita
+set -Ux XDG_DATA_HOME "$HOME/.local/share"
+set -Ux MIME_TYPES_PATH "$XDG_DATA_HOME/mime/types"
+xdg-mime default org.kde.krita.desktop image/jpeg image/png image/gif
 
 eval $(opam env)
 
@@ -33,6 +48,12 @@ set -Ux PATH /usr/bin/postgres /usr/bin/psql $PATH
 
 # Created by `pipx` on 2024-10-15 22:41:40
 set PATH $PATH /home/stephen/.local/bin
+
+ # open to last used directory
+set -q fish_most_recent_dir && [ -d "$fish_most_recent_dir" ] && cd "$fish_most_recent_dir"
+function save_dir --on-variable PWD
+    set -U fish_most_recent_dir $PWD
+end
 
 
 # bun

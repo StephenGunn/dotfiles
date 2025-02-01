@@ -1,5 +1,4 @@
 # fast program access
-alias yy="yazi"
 alias gg="lazygit"
 
 # dotfile aliases

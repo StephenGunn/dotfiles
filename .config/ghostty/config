@@ -5,11 +5,11 @@ window-padding-y=4
 window-decoration=false
 font-size=15
 
-keybind=super+w=new_window
-keybind=super+x=write_scrollback_file:open
-
 cursor-style=block
 window-save-state=always
 mouse-hide-while-typing=true
 shell-integration=fish
 shell-integration-features=no-cursor
+confirm-close-surface=false
+
+
