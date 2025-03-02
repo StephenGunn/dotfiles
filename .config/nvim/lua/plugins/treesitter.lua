@@ -1,117 +1,158 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      local configs = require("nvim-treesitter.configs")
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+			local parsers = require("nvim-treesitter.parsers")
 
-      -- Prefer git for fetching parsers and use SSH instead of HTTPS
-      require("nvim-treesitter.install").prefer_git = true
+			-- Prefer git for fetching parsers and use SSH instead of HTTPS
+			require("nvim-treesitter.install").prefer_git = true
+			require("nvim-treesitter.install").command_extra_args = {}
 
-      -- Set the command used by Treesitter to clone repositories via SSH
-      require("nvim-treesitter.install").command_extra_args = {}
+			-- Add custom query for code title syntax
+			local query = [[
+				(fenced_code_block
+				(info_string) @language
+				(#match? @language "^(typescript):.*$"))
+			]]
+			vim.treesitter.query.set("markdown", "highlights", query)
 
-      -- Adjust the repository URL to use SSH instead of HTTPS
-      -- require("nvim-treesitter.install").url = function(repo)
-      --   return string.format("git@github.com:%s", repo)
-      -- end
-      configs.setup({
-        -- Automatically install missing parsers when entering buffer
-        auto_install = true,
+			-- Add custom highlight group for code titles
+			vim.api.nvim_set_hl(0, "CodeTitle", { fg = "#61afef", bold = true })
 
-        -- Ensure specific parsers are installed
-        ensure_installed = {
-          "svelte",
-          "css",
-          "scss",
-          "typescript",
-          "javascript",
-          "json",
-          "html",
-          "lua",
-          "http",
-          "xml",
-          "graphql",
-          "elixir",
-          "heex",
-          "eex",
-          "rust",
-        },
+			-- Configure parser for markdown with typescript
+			local parser_config = parsers.get_parser_configs()
+			parser_config.markdown.filetype_to_parsername =
+				vim.tbl_extend("force", parser_config.markdown.filetype_to_parsername or {}, {
+					markdown = "markdown",
+					typescript = "typescript",
+				})
 
-        -- Parsers to ignore when installing all
-        ignore_install = {},
+			configs.setup({
+				auto_install = true,
+				ensure_installed = {
+					"svelte",
+					"css",
+					"scss",
+					"typescript",
+					"javascript",
+					"json",
+					"html",
+					"lua",
+					"http",
+					"xml",
+					"graphql",
+					"elixir",
+					"heex",
+					"eex",
+					"markdown",
+					"markdown_inline",
+				},
+				ignore_install = {},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = { "markdown" },
+				},
+				parser_config = {
+					markdown = {
+						additional_vim_regex_highlighting = { "markdown" },
+						enable = true,
+						fenced_code_blocks = {
+							enable = true,
+							extended_info = true,
+						},
+					},
+					typescript = {
+						install_info = {
+							url = "https://github.com/tree-sitter/tree-sitter-typescript",
+							files = { "src/parser.c", "src/scanner.c" },
+						},
+						filetype = { "typescript", "typescript.tsx" },
+						used_by = { "javascript", "tsx" },
+					},
+				},
+				indent = { enable = true },
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<c-space>",
+						node_incremental = "<c-space>",
+						scope_incremental = "<c-s>",
+						node_decremental = "<c-backspace>",
+					},
+				},
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							["aa"] = "@parameter.outer",
+							["ia"] = "@parameter.inner",
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = "@class.inner",
+						},
+					},
+					move = {
+						enable = true,
+						set_jumps = true,
+						goto_next_start = {
+							["]m"] = "@function.outer",
+							["]]"] = "@class.outer",
+						},
+						goto_next_end = {
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
+					},
+				},
+				autopairs = {
+					enable = true,
+				},
+				autotag = {
+					enable = true,
+				},
+				modules = {},
+				sync_install = false,
+			})
 
-        -- Enable tree-sitter based highlighting
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
+			-- Add filetype detection for code title syntax
+			vim.filetype.add({
+				pattern = {
+					[".*%.ts"] = function(_, bufnr)
+						local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1]
+						if first_line and first_line:match("^```typescript:") then
+							return "typescript"
+						end
+						return "typescript"
+					end,
+				},
+			})
 
-        -- Enable tree-sitter based indentation
-        indent = { enable = true },
-
-        -- Enable and configure incremental selection
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<c-space>",
-            node_incremental = "<c-space>",
-            scope_incremental = "<c-s>",
-            node_decremental = "<c-backspace>",
-          },
-        },
-
-        -- Enable and configure text objects
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-          },
-        },
-
-        -- Enable auto-pairs integration (if using a compatible plugin)
-        autopairs = {
-          enable = true,
-        },
-
-        -- Enable autotagging of HTML tags (requires `windwp/nvim-ts-autotag` plugin)
-        autotag = {
-          enable = true,
-        },
-
-        -- Configure modules (new field requirement)
-        modules = {}, -- This field can be customized if you use additional modules
-
-        sync_install = false,
-      })
-    end,
-  },
+			-- Add syntax highlighting for code titles in markdown files
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "markdown",
+				callback = function()
+					vim.fn.matchadd("CodeTitle", "```typescript:\\S\\+")
+				end,
+			})
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 }

@@ -3,10 +3,10 @@
 SETUVAR --export EDITOR:nvim
 SETUVAR LAST_DIR:/home/stephen/dotfiles
 SETUVAR --export --path MIME_TYPES_PATH:/home/stephen/\x2elocal/share/mime/types
-SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2elocal/share/pnpm\x1e/home/stephen/\x2ebun/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/stephen/\x2elocal/bin
+SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2elocal/share/pnpm\x1e/home/stephen/\x2ebun/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/stephen/\x2elocal/bin
 SETUVAR --export VISUAL:nvim
 SETUVAR --export XDG_DATA_HOME:/home/stephen/\x2elocal/share
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/functions/_autopair_backspace\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_left\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_right\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_same\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_tab\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/autopair\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
@@ -30,7 +30,7 @@ SETUVAR fish_color_operator:brcyan
 SETUVAR fish_color_param:cyan
 SETUVAR fish_color_quote:yellow
 SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen

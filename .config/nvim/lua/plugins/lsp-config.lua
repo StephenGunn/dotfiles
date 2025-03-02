@@ -21,6 +21,7 @@ return {
 					"elixirls",
 					"rust_analyzer",
 					"gopls",
+					"marksman",
 				},
 			})
 		end,
@@ -63,6 +64,10 @@ return {
 				filetypes = {
 					"sass",
 				},
+			})
+			lspconfig.marksman.setup({
+				capabilities = capabilities,
+				filetypes = { "markdown", "markdown.mdx" },
 			})
 			lspconfig.gleam.setup({
 				capabilities = capabilities,
