@@ -82,3 +82,41 @@ require("lazy").setup("plugins", {
 
 vim.g.python3_host_prog = "/usr/bin/python3"
 log_event("Initialization complete")
+
+-- () for navigating to the START of code blocks and functions
+vim.keymap.set("n", ")", function()
+	local ts_move = require("nvim-treesitter.textobjects.move")
+	-- Try function start first, then block start
+	local ok = pcall(ts_move.goto_next_start, "@function.outer")
+	if not ok then
+		pcall(ts_move.goto_next_start, "@block.outer")
+	end
+end, { desc = "Next block/function start" })
+
+vim.keymap.set("n", "(", function()
+	local ts_move = require("nvim-treesitter.textobjects.move")
+	-- Try function start first, then block start
+	local ok = pcall(ts_move.goto_previous_start, "@function.outer")
+	if not ok then
+		pcall(ts_move.goto_previous_start, "@block.outer")
+	end
+end, { desc = "Previous block/function start" })
+
+-- [] for navigating to the END of code blocks and functions
+vim.keymap.set("n", "]", function()
+	local ts_move = require("nvim-treesitter.textobjects.move")
+	-- Try function end first, then block end
+	local ok = pcall(ts_move.goto_next_end, "@function.outer")
+	if not ok then
+		pcall(ts_move.goto_next_end, "@block.outer")
+	end
+end, { desc = "Next block/function end" })
+
+vim.keymap.set("n", "[", function()
+	local ts_move = require("nvim-treesitter.textobjects.move")
+	-- Try function end first, then block end
+	local ok = pcall(ts_move.goto_previous_end, "@function.outer")
+	if not ok then
+		pcall(ts_move.goto_previous_end, "@block.outer")
+	end
+end, { desc = "Previous block/function end" })
