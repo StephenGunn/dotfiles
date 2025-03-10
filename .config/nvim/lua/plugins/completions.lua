@@ -22,10 +22,9 @@ return {
 		},
 		config = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			require("luasnip").config.set_config({
-				-- Example config settings
+			require("luasnip").setup({
 				history = true,
-				updateevents = "TextChanged,TextChangedI",
+				update_events = { "TextChanged", "TextChangedI" },
 				enable_autosnippets = true,
 			})
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -38,7 +37,6 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 			require("nvim-autopairs").setup()
-			require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/snippets" })
 
 			cmp.setup({
