@@ -17,6 +17,7 @@ return {
 					"html",
 					"cssls",
 					"svelte",
+					"ocamllsp",
 					"somesass_ls",
 					"elixirls",
 					"rust_analyzer",
@@ -65,6 +66,19 @@ return {
 					"sass",
 				},
 			})
+			lspconfig.ocamllsp.setup({
+				cmd = { "ocamllsp" },
+				filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+				root_dir = lspconfig.util.root_pattern(
+					"*.opam",
+					"esy.json",
+					"package.json",
+					".git",
+					"dune-project",
+					"dune-workspace"
+				),
+				capabilities = capabilities,
+			})
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
 				filetypes = { "markdown", "markdown.mdx" },
@@ -108,8 +122,64 @@ return {
 					},
 				},
 			})
+			-- TypeScript LSP with enhanced settings for interfaces and type information
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
+				-- Make sure lsp name is "tsserver" not "ts_ls" (which might be a custom alias)
+				filetypes = {
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+				},
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+						implementationsCodeLens = {
+							enabled = true,
+						},
+						referencesCodeLens = {
+							enabled = true,
+						},
+						preferences = {
+							quoteStyle = "double",
+						},
+						suggest = {
+							completeFunctionCalls = true,
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+						},
+					},
+				},
+				commands = {
+					OrganizeImports = {
+						function()
+							vim.lsp.buf.execute_command({
+								command = "_typescript.organizeImports",
+								arguments = { vim.api.nvim_buf_get_name(0) },
+							})
+						end,
+						description = "Organize Imports",
+					},
+				},
 			})
 
 			-- Svelte LSP

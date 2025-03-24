@@ -57,6 +57,9 @@ vim.api.nvim_set_keymap("n", "<leader>o", ":copen<CR>", { noremap = true, silent
 -- Open the next file in the quickfix list in a full window
 vim.api.nvim_set_keymap("n", "<leader>j", ":cn<CR>:cclose<CR>:only<CR>", { noremap = true, silent = true })
 
+-- A get types
+vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {})
+
 -- Open the previous file in the quickfix list in a full window
 vim.api.nvim_set_keymap("n", "<leader>k", ":cp<CR>:cclose<CR>:only<CR>", { noremap = true, silent = true })
 
