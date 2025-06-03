@@ -27,6 +27,15 @@ PROGRAMS=(
     "hypridle"
     "hyprlock"
     "inotify-tools"
+    "firefox"
+    "hyprland"
+    "git"
+    "dunst"
+    "rofi"
+    "wofi"
+    "zoxide"
+    "ripgrep"
+    "fd"
     # Add any other core programs you need
 )
 
@@ -47,6 +56,24 @@ ADDITIONAL_PACMAN_PACKAGES=(
     "pacman-contrib"
     "power-profiles-daemon"
     "gvfs"
+    "btrbk"
+    "timeshift"
+    "tailscale"
+    "php"
+    "composer"
+    "nodejs"
+    "npm"
+    "python-pip"
+    "direnv"
+    "stylua"
+    "docker"
+    "base"
+    "base-devel"
+    "wireplumber"
+    "upower"
+    "gtksourceview3"
+    "libsoup3"
+    "wf-recorder"
 )
 
 # AUR packages to install with yay
@@ -57,6 +84,13 @@ AUR_PACKAGES=(
     "matugen-bin"
     "python-gpustat"
     "aylurs-gtk-shell-git"
+    "obsidian"
+    "ghostty-git"
+    "1password"
+    "1password-cli"
+    "ventoy-bin"
+    "agsv1"
+    "hyprsunset-git"
 )
 
 # Update the package database and upgrade the system
@@ -101,6 +135,26 @@ echo "Installing HyprPanel..."
 if [ ! -d "$HOME/.local/share/HyprPanel" ]; then
     git clone https://github.com/Jas-SinghFSU/HyprPanel.git "$HOME/.local/share/HyprPanel"
     ln -s "$HOME/.local/share/HyprPanel" "$HOME/.config/ags"
+    
+    # Install NerdFonts needed by HyprPanel
+    if [ -f "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh" ]; then
+        echo "Installing NerdFonts for HyprPanel..."
+        chmod +x "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh"
+        "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh"
+    fi
+    
+    # Build and install HyprPanel if needed
+    if [ -x "$(command -v meson)" ]; then
+        echo "Building HyprPanel with meson..."
+        cd "$HOME/.local/share/HyprPanel"
+        meson setup build
+        meson compile -C build
+        meson install -C build
+    else
+        echo "Meson not found. Install meson to build HyprPanel from source."
+        echo "You can install meson with: sudo pacman -S meson"
+    fi
+    
     echo "HyprPanel installed successfully!"
 else
     echo "HyprPanel is already installed."
