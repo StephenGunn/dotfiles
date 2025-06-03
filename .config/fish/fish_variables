@@ -3,7 +3,7 @@
 SETUVAR --export EDITOR:nvim
 SETUVAR LAST_DIR:/home/stephen/dotfiles
 SETUVAR --export --path MIME_TYPES_PATH:/home/stephen/\x2elocal/share/mime/types
-SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2elocal/share/pnpm\x1e/home/stephen/\x2ebun/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/stephen/\x2elocal/bin
+SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2eturso/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2elocal/share/pnpm\x1e/home/stephen/\x2ebun/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/stephen/\x2eturso\x1e/home/stephen/\x2eturso\x1e/home/stephen/\x2elocal/bin\x1e/home/stephen/\x2eturso\x1e/home/stephen/\x2elocal/bin\x1e/home/stephen/\x2eturso
 SETUVAR --export VISUAL:nvim
 SETUVAR --export XDG_DATA_HOME:/home/stephen/\x2elocal/share
 SETUVAR __fish_initialized:3800
@@ -43,4 +43,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR --export fish_user_paths:/home/stephen/\x2elocal/bin\x1e/home/stephen/\x2ecargo/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin
+SETUVAR --export fish_user_paths:/home/stephen/\x2elocal/bin\x1e/home/stephen/\x2ecargo/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2eturso/bin

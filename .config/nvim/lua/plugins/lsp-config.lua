@@ -18,6 +18,7 @@ return {
           "cssls",
           "svelte",
           "ocamllsp",
+          "tailwindcss",
           "somesass_ls",
           "elixirls",
           "rust_analyzer",
@@ -65,6 +66,9 @@ return {
         filetypes = {
           "sass",
         },
+      })
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
       })
       lspconfig.ocamllsp.setup({
         cmd = { "ocamllsp" },

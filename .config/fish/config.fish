@@ -85,3 +85,8 @@ zoxide init fish | source
 # fly ctl
 set -x FLYCTL_INSTALL /home/stephen/.fly
 set -x PATH $FLYCTL_INSTALL/bin $PATH
+set -U fish_user_paths $fish_user_paths $HOME/.turso/bin
+
+# man pages
+set -gx MANPAGER "nvim +Man!"
+set -gx MANWIDTH 999

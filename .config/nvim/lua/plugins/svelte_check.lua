@@ -1,12 +1,10 @@
 return {
-	dir = "~/projects/nvim-svelte-check",
-	branch = "dev",
-	config = function()
-		local sc = require("svelte-check")
-		sc.setup({
-			command = "pnpm run check",
-			debug_mode = true,
-		})
-	end,
-	dev = true,
+  {
+    "nvim-svelte/nvim-svelte-check",
+    config = function()
+      require("svelte-check").setup({
+        command = "pnpm run check", -- Default command for pnpm
+      })
+    end,
+  },
 }
