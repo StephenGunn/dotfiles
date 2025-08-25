@@ -103,9 +103,6 @@ return {
 				autopairs = {
 					enable = true,
 				},
-				autotag = {
-					enable = true,
-				},
 				modules = {},
 				sync_install = false,
 			})

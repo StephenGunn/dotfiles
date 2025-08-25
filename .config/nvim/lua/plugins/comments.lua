@@ -30,7 +30,8 @@ return {
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("A ", true, false, true), "n", true)
     end
 
+    -- Keybindings moved to which-key.lua
     -- Map <leader>/ to insert a new comment line and enter insert mode
-    vim.keymap.set("n", "<leader>/", insert_comment_line, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<leader>/", insert_comment_line, { noremap = true, silent = true })
   end,
 }

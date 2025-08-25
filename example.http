@@ -1,0 +1,47 @@
+# REST Client Example File
+# You can run requests with <leader>rr when cursor is on a request
+
+### Get all users
+GET https://jsonplaceholder.typicode.com/users
+
+### Get single user
+GET https://jsonplaceholder.typicode.com/users/1
+
+### Create a new post
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+  "title": "Test Post",
+  "body": "This is a test post from Neovim!",
+  "userId": 1
+}
+
+### Update a post
+PUT https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Updated Post",
+  "body": "This post has been updated",
+  "userId": 1
+}
+
+### Delete a post
+DELETE https://jsonplaceholder.typicode.com/posts/1
+
+### Using environment variables
+# Create a .env file with:
+# API_URL=https://api.example.com
+# AUTH_TOKEN=your-token-here
+
+# GET {{API_URL}}/users
+# Authorization: Bearer {{AUTH_TOKEN}}
+
+### GitHub API Example
+GET https://api.github.com/users/github
+Accept: application/vnd.github.v3+json
+
+### Query parameters
+GET https://jsonplaceholder.typicode.com/posts?userId=1&_limit=5

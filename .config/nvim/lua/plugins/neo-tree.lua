@@ -7,8 +7,9 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    vim.keymap.set("n", "<leader>N", ":Neotree reveal right<CR>")
-    vim.keymap.set("n", "<leader>n", ":Neotree toggle right<CR>")
+    -- Keybindings moved to which-key.lua
+    -- vim.keymap.set("n", "<leader>N", ":Neotree reveal right<CR>")
+    -- vim.keymap.set("n", "<leader>n", ":Neotree toggle right<CR>")
 
     require("neo-tree").setup({
       auto_open = true,
@@ -16,10 +17,9 @@ return {
         enable = true,
       },
       update_cwd = true,
-      view = {
+      window = {
+        position = "right",
         width = 35,
-        side = "right",
-        auto_resize = true,
       },
       filesystem = {
         follow_current_file = { enable = true },
