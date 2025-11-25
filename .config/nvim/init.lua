@@ -120,3 +120,6 @@ vim.keymap.set("n", "[", function()
 		pcall(ts_move.goto_previous_end, "@block.outer")
 	end
 end, { desc = "Previous block/function end" })
+
+-- fancy lsp hover
+-- require("lsp_hover").setup()

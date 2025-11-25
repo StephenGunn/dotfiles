@@ -90,3 +90,7 @@ set -U fish_user_paths $fish_user_paths $HOME/.turso/bin
 # man pages
 set -gx MANPAGER "nvim +Man!"
 set -gx MANWIDTH 999
+
+set -gx MOZ_ENABLE_WAYLAND 1
+set -gx MOZ_WAYLAND_USE_VAAPI 1
+set -gx MOZ_DISABLE_RDD_SANDBOX 1

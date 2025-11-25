@@ -126,7 +126,6 @@ return {
 					},
 				},
 			})
-			-- TypeScript LSP is now handled by typescript-tools.nvim
 
 			-- Svelte LSP
 			local svelte_lsp_capabilities = vim.tbl_deep_extend("force", {}, capabilities)

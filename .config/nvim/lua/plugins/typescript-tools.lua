@@ -5,7 +5,7 @@ return {
   config = function()
     -- First, remove the ts_ls setup to avoid conflicts
     local lspconfig = require("lspconfig")
-    
+
     require("typescript-tools").setup({
       settings = {
         -- spawn additional tsserver instance to calculate diagnostics on it
@@ -30,13 +30,13 @@ return {
           allowRenameOfImportPath = false,
         },
         tsserver_file_preferences = {
-          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHints = false,
           includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionParameterTypeHints = false,
+          includeInlayVariableTypeHints = false,
+          includeInlayPropertyDeclarationTypeHints = false,
+          includeInlayFunctionLikeReturnTypeHints = false,
+          includeInlayEnumMemberValueHints = false,
           includeCompletionsForModuleExports = true,
           quotePreference = "double",
           -- Import organization preferences
@@ -54,7 +54,7 @@ return {
       -- Add the same keymaps as other LSPs
       -- on_attach keybindings are now handled by which-key.lua globally
     })
-    
+
     -- TypeScript keybindings moved to which-key.lua
     -- vim.keymap.set("n", "<leader>io", "<cmd>TSToolsOrganizeImports<cr>", { desc = "Organize imports" })
     -- vim.keymap.set("n", "<leader>is", "<cmd>TSToolsSortImports<cr>", { desc = "Sort imports" })
@@ -67,3 +67,4 @@ return {
     -- vim.keymap.set("n", "<leader>iF", "<cmd>TSToolsRenameFile<cr>", { desc = "Rename file and update imports" })
   end,
 }
+
