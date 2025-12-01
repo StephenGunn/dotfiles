@@ -1,0 +1,141 @@
+format = """
+[](fg:#{background.strip} bg:#{color5.strip})\
+$os\
+$username\
+[](bg:#{color1.strip} fg:#{color5.strip})\
+$directory\
+[](fg:#{color1.strip} bg:#{color3.strip})\
+$git_branch\
+$git_status\
+[](fg:#{color3.strip} bg:#{color4.strip})\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#{color4.strip} bg:#{color6.strip})\
+$docker_context\
+[](fg:#{color6.strip} bg:#{color14.strip})\
+$time\
+[ ](fg:#{color14.strip})\n
+"""
+
+# Disable the blank line at the start of the prompt (so the bar is at the top)
+add_newline = false
+
+[line_break]
+disabled = false
+
+# Username configuration
+[username]
+show_always = true
+style_user = "fg:#{background.strip} bg:#{color5.strip}"  # Dark text color
+style_root = "fg:#{background.strip} bg:#{color5.strip}"  # Dark text color
+format = '[$user ]($style)'
+disabled = false
+
+# OS configuration (if enabled)
+[os]
+style = "fg:#{background.strip} bg:#{color5.strip}"  # Dark text color with pywal colors
+format = '[  $os ]($style)'  # Use the Arch logo
+disabled = false  # Enable the OS module
+
+# Directory module
+[directory]
+style = "fg:#{background.strip} bg:#{color1.strip}"  # Dark text color
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+# Programming language modules
+[c]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color6.strip}"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "fg:#{background.strip} bg:#{color3.strip}"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#{background.strip} bg:#{color3.strip}"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "fg:#{background.strip} bg:#{color4.strip}"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:#{background.strip} bg:#{color14.strip}"
+format = '[ ♥ $time ]($style)'

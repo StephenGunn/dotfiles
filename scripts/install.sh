@@ -36,6 +36,8 @@ PROGRAMS=(
     "zoxide"
     "ripgrep"
     "fd"
+    "jq"
+    "libnotify"
     # Add any other core programs you need
 )
 
@@ -74,6 +76,12 @@ ADDITIONAL_PACMAN_PACKAGES=(
     "gtksourceview3"
     "libsoup3"
     "wf-recorder"
+    "python-pywal"
+    "kvantum"
+    "qt5ct"
+    "qt6ct"
+    "breeze-icons"
+    "waypaper"
 )
 
 # AUR packages to install with yay
@@ -91,6 +99,9 @@ AUR_PACKAGES=(
     "ventoy-bin"
     "agsv1"
     "hyprsunset-git"
+    "catppuccin-gtk-theme-mocha"
+    "kvantum-theme-catppuccin-git"
+    "bibata-cursor-theme"
 )
 
 # Update the package database and upgrade the system

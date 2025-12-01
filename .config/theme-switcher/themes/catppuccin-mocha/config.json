@@ -1,0 +1,39 @@
+{
+  "name": "Catppuccin Mocha",
+  "description": "Soothing pastel theme for the high-spirited",
+  "apps": {
+    "neovim": {
+      "colorscheme": "catppuccin",
+      "flavor": "mocha"
+    },
+    "lualine": {
+      "theme": "catppuccin"
+    },
+    "ghostty": {
+      "theme": "Catppuccin Mocha"
+    },
+    "hyprland": {
+      "colors_file": "catppuccin-mocha.conf"
+    },
+    "hyprpanel": {
+      "theme_file": "hyprpanel.json"
+    },
+    "rofi": {
+      "theme_file": "catppuccin-mocha.rasi"
+    },
+    "gtk": {
+      "theme_name": "Catppuccin-Mocha-Standard-Rosewater-Dark",
+      "icon_theme": "breeze-dark",
+      "cursor_theme": "Bibata-Modern-Ice",
+      "note": "Install: yay -S catppuccin-gtk-theme-mocha"
+    },
+    "kvantum": {
+      "theme_name": "Catppuccin-Mocha",
+      "note": "Install: yay -S kvantum kvantum-theme-catppuccin-git"
+    }
+  },
+  "pywal": {
+    "colors_file": "colors.json",
+    "apps": ["starship", "dunst"]
+  }
+}

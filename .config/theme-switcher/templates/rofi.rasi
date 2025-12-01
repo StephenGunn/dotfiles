@@ -1,0 +1,69 @@
+/* Pywal colors for Rofi */
+
+* {{
+    background:     {background};
+    background-alt: {color0};
+    foreground:     {foreground};
+    selected:       {color4};
+    active:         {color2};
+    urgent:         {color1};
+    border:         {color6};
+}}
+
+window {{
+    background-color: @background;
+    border-color:     @border;
+    border:           2px;
+    padding:          10px;
+}}
+
+mainbox {{
+    background-color: @background;
+}}
+
+inputbar {{
+    background-color: @background-alt;
+    text-color:       @foreground;
+    padding:          10px;
+    margin:           0px 0px 10px 0px;
+}}
+
+prompt {{
+    background-color: @background-alt;
+    text-color:       @selected;
+    padding:          0px 10px 0px 0px;
+}}
+
+entry {{
+    background-color: @background-alt;
+    text-color:       @foreground;
+    placeholder:      "Search...";
+    placeholder-color: @background-alt;
+}}
+
+listview {{
+    background-color: @background;
+    lines:            10;
+    spacing:          5px;
+}}
+
+element {{
+    background-color: @background;
+    text-color:       @foreground;
+    padding:          8px;
+}}
+
+element selected {{
+    background-color: @selected;
+    text-color:       @background;
+}}
+
+element-text {{
+    background-color: inherit;
+    text-color:       inherit;
+}}
+
+element-icon {{
+    background-color: inherit;
+    size:             1.5em;
+}}
