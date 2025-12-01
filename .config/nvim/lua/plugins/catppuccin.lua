@@ -1,22 +1,29 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
-	enabled = false, -- Disabled in favor of wal.vim for pywal integration
+	enabled = true, -- Re-enabled for native theme support
 	priority = 1000,
 
 	config = function()
 		require("catppuccin").setup({
 			flavour = "mocha", -- Set to Mocha flavour
-			transparent_background = false, -- Disable global transparency
+			transparent_background = true, -- Transparent editor background
 			integrations = {
 				treesitter = true,
 				nvimtree = true,
-				bufferline = true, -- Enable bufferline integration with default Catppuccin colors
+				bufferline = true, -- Enable bufferline integration
 			},
+			custom_highlights = function(colors)
+				return {
+					-- Ensure bufferline gets proper solid background
+					BufferLineFill = { bg = colors.base }, -- Catppuccin base background
+					BufferLineBackground = { bg = colors.base },
+					TabLineFill = { bg = colors.base },
+				}
+			end,
 			highlight_overrides = {
 				mocha = {
-					-- Make only the editing area and the line number column transparent
-					BufferLineFill = { bg = "#1b1b29" }, -- Even darker background for the bufferline fill area
+					-- Keep UI elements with solid backgrounds
 					Normal = { bg = "NONE" }, -- Transparent background for the main editing area
 					LineNr = { bg = "NONE" }, -- Transparent background for line numbers (gutter)
 
@@ -28,7 +35,7 @@ return {
 			},
 		})
 
-		-- Apply Catppuccin colorscheme
-		vim.cmd.colorscheme("catppuccin")
+		-- Don't auto-apply, let theme-switcher control it
+		-- vim.cmd.colorscheme("catppuccin")
 	end,
 }

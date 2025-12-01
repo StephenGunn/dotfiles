@@ -5,9 +5,18 @@ return {
 		config = function()
 			local notify = require("notify")
 
+			-- Get background color from current colorscheme
+			local function get_bg_color()
+				local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+				if normal_bg then
+					return string.format("#%06x", normal_bg)
+				end
+				return "#000000" -- Fallback
+			end
+
 			-- Add the background_colour option here
 			notify.setup({
-				background_colour = "#1e1e2e", -- Replace with a color that suits your theme
+				background_colour = get_bg_color(),
 			})
 
 			local filtered_message = { "No information available" }
@@ -36,18 +45,50 @@ return {
 				require("notify").dismiss({ silent = true, pending = true })
 			end, { noremap = true, silent = true })
 
-			-- Update colors to use Catppuccin colors
-			vim.cmd([[
-        highlight NotifyERRORBorder guifg=#ed8796
-        highlight NotifyERRORIcon guifg=#ed8796
-        highlight NotifyERRORTitle  guifg=#ed8796
-        highlight NotifyINFOBorder guifg=#8aadf4
-        highlight NotifyINFOIcon guifg=#8aadf4
-        highlight NotifyINFOTitle guifg=#8aadf4
-        highlight NotifyWARNBorder guifg=#f5a97f
-        highlight NotifyWARNIcon guifg=#f5a97f
-        highlight NotifyWARNTitle guifg=#f5a97f
-      ]])
+			-- Update colors to match active colorscheme
+			local function apply_notify_colors()
+				local function get_hl(name)
+					local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+					return ok and hl or {}
+				end
+
+				local error_color = get_hl("DiagnosticError").fg or get_hl("Error").fg
+				local info_color = get_hl("DiagnosticInfo").fg or get_hl("Function").fg
+				local warn_color = get_hl("DiagnosticWarn").fg or get_hl("WarningMsg").fg
+
+				if error_color then
+					vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = error_color })
+					vim.api.nvim_set_hl(0, "NotifyERRORIcon", { fg = error_color })
+					vim.api.nvim_set_hl(0, "NotifyERRORTitle", { fg = error_color })
+				end
+
+				if info_color then
+					vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = info_color })
+					vim.api.nvim_set_hl(0, "NotifyINFOIcon", { fg = info_color })
+					vim.api.nvim_set_hl(0, "NotifyINFOTitle", { fg = info_color })
+				end
+
+				if warn_color then
+					vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg = warn_color })
+					vim.api.nvim_set_hl(0, "NotifyWARNIcon", { fg = warn_color })
+					vim.api.nvim_set_hl(0, "NotifyWARNTitle", { fg = warn_color })
+				end
+			end
+
+			-- Apply colors when colorscheme changes
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "*",
+				callback = function()
+					vim.defer_fn(apply_notify_colors, 100)
+					-- Update background color too
+					vim.defer_fn(function()
+						notify.setup({ background_colour = get_bg_color() })
+					end, 100)
+				end,
+			})
+
+			-- Apply colors on initial load
+			vim.defer_fn(apply_notify_colors, 100)
 		end,
 	},
 }

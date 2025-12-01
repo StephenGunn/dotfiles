@@ -3,7 +3,7 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = "dracula",
+        theme = "auto", -- Auto-detect theme from colorscheme
       },
       sections = {
         lualine_c = {

@@ -80,6 +80,18 @@ require("lazy").setup("plugins", {
 	end,
 })
 
+-- Load current theme (set by theme-switcher)
+log_event("Loading current theme...")
+local theme_file = vim.fn.stdpath("config") .. "/lua/current-theme.lua"
+if vim.fn.filereadable(theme_file) == 1 then
+	pcall(function()
+		require("current-theme")
+		log_event("Theme loaded successfully")
+	end)
+else
+	log_event("No current-theme.lua found, using default colorscheme")
+end
+
 vim.g.python3_host_prog = "/usr/bin/python3"
 log_event("Initialization complete")
 

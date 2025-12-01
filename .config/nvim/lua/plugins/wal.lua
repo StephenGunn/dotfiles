@@ -1,10 +1,10 @@
 return {
 	"dylanaraps/wal.vim",
+	enabled = false, -- Disabled in favor of native colorscheme plugins (gruvbox, catppuccin, nord)
 	lazy = false,
-	priority = 1000, -- Load before other plugins
+	priority = 1000,
 
 	config = function()
-		-- Apply wal colorscheme
-		vim.cmd.colorscheme("wal")
+		-- Not used anymore
 	end,
 }
