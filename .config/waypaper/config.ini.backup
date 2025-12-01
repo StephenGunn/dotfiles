@@ -1,8 +1,8 @@
 [Settings]
 language = en
-folder = ~/projects/theme-switcher/themes/gruvbox-dark/wallpapers
+folder = ~/projects/theme-switcher/themes/nord/wallpapers
 monitors = All
-wallpaper = ~/projects/theme-switcher/themes/gruvbox-dark/wallpapers/Cat_at_Play.png
+wallpaper = ~/projects/theme-switcher/themes/nord/wallpapers/space_kitty.png
 show_path_in_tooltip = True
 backend = hyprpaper
 fill = fill

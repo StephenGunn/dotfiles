@@ -1,0 +1,6 @@
+[pyprland]
+plugins = [
+ "magnify",
+  "expose",
+]
+
