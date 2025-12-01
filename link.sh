@@ -6,10 +6,12 @@ DOTFILES_DIR="$HOME/dotfiles"
 # Change to the dotfiles directory
 cd "$DOTFILES_DIR" || { echo "Dotfiles directory not found!"; exit 1; }
 
-# check to see if hyprland.conf already exists (will be default) - if it does, and isn't a symlink, delete it and link our custom conf
+# check to see if hyprland.conf already exists (will be default) - if it does, and the hypr dir isn't already managed by stow, delete it
 HYPRLAND_CONFIG="$HOME/.config/hypr/hyprland.conf"
+HYPR_DIR="$HOME/.config/hypr"
 
-if [ -e "$HYPRLAND_CONFIG" ] && [ ! -L "$HYPRLAND_CONFIG" ]; then
+# Only remove the default config if the hypr directory is NOT already a symlink to our dotfiles
+if [ -e "$HYPRLAND_CONFIG" ] && [ ! -L "$HYPR_DIR" ]; then
 	echo "removing default hyprland config"
 	rm "$HYPRLAND_CONFIG"
 fi
