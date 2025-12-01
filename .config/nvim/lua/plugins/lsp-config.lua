@@ -33,13 +33,8 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			-- Suppress lspconfig deprecation warning (will migrate to vim.lsp.config later)
-			local notify = vim.notify
-			vim.notify = function() end
-			local lspconfig = require("lspconfig")
-			vim.notify = notify
-
-			lspconfig.lua_ls.setup({
+			-- Lua LSP
+			vim.lsp.config('lua_ls', {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
@@ -66,49 +61,68 @@ return {
 					},
 				},
 			})
-			lspconfig.somesass_ls.setup({
+			vim.lsp.enable('lua_ls')
+
+			-- SASS LSP
+			vim.lsp.config('somesass_ls', {
 				capabilities = capabilities,
 				filetypes = {
 					"sass",
 				},
 			})
-			lspconfig.tailwindcss.setup({
+			vim.lsp.enable('somesass_ls')
+
+			-- Tailwind CSS LSP
+			vim.lsp.config('tailwindcss', {
 				capabilities = capabilities,
 			})
-			lspconfig.ocamllsp.setup({
+			vim.lsp.enable('tailwindcss')
+
+			-- OCaml LSP
+			vim.lsp.config('ocamllsp', {
 				cmd = { "ocamllsp" },
 				filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
-				root_dir = lspconfig.util.root_pattern(
-					"*.opam",
-					"esy.json",
-					"package.json",
-					".git",
-					"dune-project",
-					"dune-workspace"
-				),
 				capabilities = capabilities,
 			})
-			lspconfig.marksman.setup({
+			vim.lsp.enable('ocamllsp')
+
+			-- Markdown LSP
+			vim.lsp.config('marksman', {
 				capabilities = capabilities,
 				filetypes = { "markdown", "markdown.mdx" },
 			})
-			lspconfig.gleam.setup({
+			vim.lsp.enable('marksman')
+
+			-- Gleam LSP
+			vim.lsp.config('gleam', {
 				capabilities = capabilities,
 			})
-			lspconfig.gopls.setup({
+			vim.lsp.enable('gleam')
+
+			-- Go LSP
+			vim.lsp.config('gopls', {
 				capabilities = capabilities,
 			})
-			lspconfig.jsonls.setup({
+			vim.lsp.enable('gopls')
+
+			-- JSON LSP
+			vim.lsp.config('jsonls', {
 				capabilities = capabilities,
 			})
-			lspconfig.html.setup({
+			vim.lsp.enable('jsonls')
+
+			-- HTML LSP
+			vim.lsp.config('html', {
 				capabilities = capabilities,
 				filetypes = {
 					"html",
 					"liquid",
 				},
 			})
-			lspconfig.cssls.setup({
+			vim.lsp.enable('html')
+
+			-- CSS LSP
+			vim.lsp.config('cssls', {
 				capabilities = capabilities,
 				settings = {
 					css = {
@@ -131,11 +145,12 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable('cssls')
 
 			-- Svelte LSP
 			local svelte_lsp_capabilities = vim.tbl_deep_extend("force", {}, capabilities)
 			svelte_lsp_capabilities.workspace = { didChangeWatchedFiles = false }
-			lspconfig.svelte.setup({
+			vim.lsp.config('svelte', {
 				capabilities = svelte_lsp_capabilities,
 				filetypes = { "svelte" },
 				settings = {
@@ -148,8 +163,10 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable('svelte')
 
-			lspconfig.emmet_ls.setup({
+			-- Emmet LSP
+			vim.lsp.config('emmet_ls', {
 				capabilities = capabilities,
 				filetypes = {
 					"html",
@@ -167,9 +184,10 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable('emmet_ls')
 
 			-- Elixir LSP
-			lspconfig.elixirls.setup({
+			vim.lsp.config('elixirls', {
 				capabilities = capabilities,
 				cmd = { "elixir-ls" },
 				on_attach = function(client)
@@ -183,6 +201,7 @@ return {
 					end
 				end,
 			})
+			vim.lsp.enable('elixirls')
 
 			-- LSP keybindings moved to which-key.lua
 			-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})

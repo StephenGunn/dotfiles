@@ -94,3 +94,8 @@ set -gx MANWIDTH 999
 set -gx MOZ_ENABLE_WAYLAND 1
 set -gx MOZ_WAYLAND_USE_VAAPI 1
 set -gx MOZ_DISABLE_RDD_SANDBOX 1
+
+# Theme colors (managed by theme-switcher)
+if test -e ~/.cache/wal/fish-colors.fish
+    source ~/.cache/wal/fish-colors.fish
+end

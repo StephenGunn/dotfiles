@@ -1,6 +1,7 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
+	enabled = false, -- Disabled in favor of wal.vim for pywal integration
 	priority = 1000,
 
 	config = function()

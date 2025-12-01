@@ -1,4 +1,9 @@
-theme = Catppuccin Mocha
+# theme = Catppuccin Mocha  # Replaced by theme-switcher
+
+# Theme colors (managed by theme-switcher)
+# Generated from pywal and saved to ~/.config/ghostty/themes/pywal
+theme = pywal
+
 background-opacity=0.95
 window-padding-x=4
 window-padding-y=4
