@@ -1,8 +1,8 @@
 [Settings]
 language = en
-folder = ~/projects/theme-switcher/themes/nord/wallpapers
+folder = ~/dotfiles/.config/theme-switcher/themes/nord/wallpapers
 monitors = All
-wallpaper = ~/projects/theme-switcher/themes/nord/wallpapers/space_kitty.png
+wallpaper = ~/dotfiles/.config/theme-switcher/themes/nord/wallpapers/audio-bunny.png
 show_path_in_tooltip = True
 backend = hyprpaper
 fill = fill

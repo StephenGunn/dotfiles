@@ -241,9 +241,31 @@ apply_hyprpanel() {
     log_info "Applying Hyprpanel theme"
 
     if command -v hyprpanel &> /dev/null; then
+        # Check if HyprPanel is running, start it if not
         if ! pgrep -x "gjs" > /dev/null || ! pgrep -f "hyprpanel" > /dev/null; then
-            log_warn "Hyprpanel is not running"
-            return 0
+            log_info "HyprPanel is not running, starting it..."
+            hyprpanel &>/dev/null &
+
+            # Wait for it to start (try up to 5 times)
+            local max_attempts=5
+            local attempt=1
+            while [ $attempt -le $max_attempts ]; do
+                sleep 2
+                if pgrep -x "gjs" > /dev/null && pgrep -f "hyprpanel" > /dev/null; then
+                    log_success "HyprPanel started successfully"
+                    break
+                fi
+                log_info "Waiting for HyprPanel to start (attempt $attempt/$max_attempts)..."
+                ((attempt++))
+            done
+
+            if [ $attempt -gt $max_attempts ]; then
+                log_error "Failed to start HyprPanel after $max_attempts attempts"
+                return 1
+            fi
+
+            # Give it a bit more time to fully initialize
+            sleep 2
         fi
 
         if hyprpanel useTheme "$hyprpanel_theme" 2>&1; then

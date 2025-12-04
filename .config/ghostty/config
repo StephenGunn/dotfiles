@@ -18,4 +18,4 @@ confirm-close-surface=false
 
 
 keybind = shift+enter=text:\n
-theme = Nord
+theme = Gruvbox Dark

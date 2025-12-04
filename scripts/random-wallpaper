@@ -37,4 +37,18 @@ fi
 # Use waypaper's built-in random selector with the theme's wallpaper folder
 waypaper --random --folder "$WALLPAPER_DIR" --backend hyprpaper
 
+# Create symlink at ~/.config/background for HyprPanel
+# Read the wallpaper path from waypaper's config
+WAYPAPER_CONFIG="$HOME/.config/waypaper/config.ini"
+if [ -f "$WAYPAPER_CONFIG" ]; then
+    SELECTED_WALLPAPER=$(grep "^wallpaper = " "$WAYPAPER_CONFIG" | cut -d'=' -f2- | xargs)
+    # Expand tilde to full path
+    SELECTED_WALLPAPER="${SELECTED_WALLPAPER/#\~/$HOME}"
+
+    if [ -n "$SELECTED_WALLPAPER" ] && [ -f "$SELECTED_WALLPAPER" ]; then
+        ln -sf "$SELECTED_WALLPAPER" "$HOME/.config/background"
+        echo "Created symlink: ~/.config/background -> $SELECTED_WALLPAPER"
+    fi
+fi
+
 notify-send "Random Wallpaper" "Applied random wallpaper from $THEME_NAME theme"
