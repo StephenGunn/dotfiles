@@ -132,13 +132,7 @@ return {
       
       { "K", vim.lsp.buf.hover, desc = "Hover documentation" },
       { "<C-k>", vim.lsp.buf.signature_help, desc = "Signature help" },
-      
-      -- Window navigation
-      { "<C-h>", ":wincmd h<CR>", desc = "Window left" },
-      { "<C-j>", ":wincmd j<CR>", desc = "Window down" },
-      -- Keep <C-k> for signature help, not window navigation
-      { "<C-l>", ":wincmd l<CR>", desc = "Window right" },
-      
+
       -- Buffer navigation
       { "<S-l>", ":BufferLineCycleNext<CR>", desc = "Next buffer" },
       { "<S-h>", ":BufferLineCyclePrev<CR>", desc = "Previous buffer" },

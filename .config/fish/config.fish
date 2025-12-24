@@ -60,6 +60,9 @@ end
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+# vim launcher
+set -gx LAUNCH_EDITOR launch-editor-nvim
+
 # yazi
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")

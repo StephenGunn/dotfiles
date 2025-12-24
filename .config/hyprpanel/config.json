@@ -432,5 +432,7 @@
     }
   },
   "bar.autoHide": "never",
-  "wallpaper.enable": true
+  "wallpaper.enable": true,
+  "menus.clock.weather.key": "3f5b758c084d4ab5883154022242011",
+  "menus.clock.weather.location": "64131"
 }

@@ -1,8 +1,8 @@
 [Settings]
 language = en
-folder = ~/dotfiles/.config/theme-switcher/themes/nord/wallpapers
+folder = ~/projects/theme-switcher/themes/gruvbox-dark/wallpapers
 monitors = All
-wallpaper = ~/dotfiles/.config/theme-switcher/themes/nord/wallpapers/audio-bunny.png
+wallpaper = ~/projects/theme-switcher/themes/gruvbox-dark/wallpapers/leaves-hard-pixelated.png
 show_path_in_tooltip = True
 backend = hyprpaper
 fill = fill
