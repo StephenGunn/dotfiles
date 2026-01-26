@@ -92,6 +92,39 @@ else
 	log_event("No current-theme.lua found, using default colorscheme")
 end
 
+-- Set up auto-reload of theme when current-theme.lua changes
+-- Using fs_event to watch for external file changes
+local function reload_theme()
+	log_event("Theme file changed, reloading...")
+	-- Clear the module cache to force reload
+	package.loaded["current-theme"] = nil
+	-- Reload the theme
+	pcall(function()
+		require("current-theme")
+		log_event("Theme reloaded successfully")
+	end)
+end
+
+-- Watch the theme file for changes using libuv fs_event
+local fs_event = vim.uv.new_fs_event()
+if fs_event then
+	fs_event:start(theme_file, {}, vim.schedule_wrap(function(err, filename, events)
+		if err then
+			log_event("Error watching theme file: " .. err)
+			return
+		end
+		reload_theme()
+	end))
+	log_event("Watching theme file for changes")
+end
+
+-- Also set up autocmd as fallback
+vim.api.nvim_create_autocmd({ "BufWritePost", "FileChangedShellPost" }, {
+	pattern = theme_file,
+	callback = reload_theme,
+	desc = "Auto-reload theme when current-theme.lua changes"
+})
+
 vim.g.python3_host_prog = "/usr/bin/python3"
 log_event("Initialization complete")
 

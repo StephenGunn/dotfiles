@@ -8,9 +8,8 @@ set -e
 
 # Configuration
 CURRENT_THEME_FILE="$HOME/.config/current-theme"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
-THEMES_DIR="$DOTFILES_DIR/.config/theme-switcher/themes"
+THEME_SWITCHER_DIR="$HOME/projects/theme-switcher"
+RANDOM_WALLPAPER_SCRIPT="$THEME_SWITCHER_DIR/scripts/random-wallpaper"
 
 # Logging
 LOG_FILE="/tmp/hypr-theme-init.log"
@@ -28,10 +27,10 @@ load_random_wallpaper() {
     local theme_name=$(cat "$CURRENT_THEME_FILE")
     log "Loading random wallpaper from theme: $theme_name"
 
-    if [ -x "$SCRIPT_DIR/random-wallpaper" ]; then
-        "$SCRIPT_DIR/random-wallpaper" 2>&1 | while read line; do log "$line"; done
+    if [ -x "$RANDOM_WALLPAPER_SCRIPT" ]; then
+        "$RANDOM_WALLPAPER_SCRIPT" 2>&1 | while read line; do log "$line"; done
     else
-        log "WARNING: random-wallpaper script not found or not executable"
+        log "WARNING: random-wallpaper script not found at $RANDOM_WALLPAPER_SCRIPT"
     fi
 }
 

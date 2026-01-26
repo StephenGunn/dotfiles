@@ -82,6 +82,9 @@ ADDITIONAL_PACMAN_PACKAGES=(
     "qt6ct"
     "breeze-icons"
     "waypaper"
+    "thunar"
+    "tumbler"
+    "ffmpegthumbnailer"
 )
 
 # AUR packages to install with yay

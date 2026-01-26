@@ -3,7 +3,7 @@
 SETUVAR --export EDITOR:nvim
 SETUVAR LAST_DIR:/home/stephen/dotfiles
 SETUVAR --export --path MIME_TYPES_PATH:/home/stephen/\x2elocal/share/mime/types
-SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2eturso/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2elocal/share/pnpm\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2elocal/share/\x2e\x2e/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/rustup/bin\x1e/home/stephen/\x2eturso\x1e/home/stephen/\x2eturso
+SETUVAR --export --path PATH:/usr/bin/postgres\x1e/usr/bin/psql\x1e/home/stephen/\x2eopam/default/bin\x1e/home/stephen/\x2ecargo/bin\x1e/home/stephen/\x2elocal/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2eturso/bin\x1e/home/stephen/\x2elocal/share/nvim/mason/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2efly/bin\x1e/home/stephen/\x2elocal/share/pnpm\x1e/home/stephen/\x2ebun/bin\x1e/home/stephen/\x2elocal/share/\x2e\x2e/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/var/lib/flatpak/exports/bin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/lib/rustup/bin\x1e/home/stephen/\x2eturso\x1e/home/stephen/\x2eturso\x1e/home/stephen/\x2elocal/bin\x1e/home/stephen/go/bin\x1e/home/stephen/\x2eturso
 SETUVAR --export VISUAL:nvim
 SETUVAR --export XDG_DATA_HOME:/home/stephen/\x2elocal/share
 SETUVAR __fish_initialized:4300
@@ -13,25 +13,25 @@ SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_f
 SETUVAR _fisher_plugins:zzhaolei/transient\x2efish\x1ejorgebucaran/autopair\x2efish\x1epatrickf1/fzf\x2efish\x1ejorgebucaran/nvm\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _fisher_zzhaolei_2F_transient_2E_fish_files:\x7e/\x2econfig/fish/functions/__fish_mode_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/__fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/__fish_right_prompt\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/transient\x2efish
-SETUVAR fish_color_autosuggestion:928374
-SETUVAR fish_color_command:458588
-SETUVAR fish_color_comment:928374
-SETUVAR fish_color_end:b16286
-SETUVAR fish_color_error:cc241d
-SETUVAR fish_color_escape:d79921
-SETUVAR fish_color_match:8ec07c
-SETUVAR fish_color_normal:ebdbb2
-SETUVAR fish_color_operator:689d6a
-SETUVAR fish_color_param:d3869b
-SETUVAR fish_color_quote:98971a
-SETUVAR fish_color_redirection:689d6a
-SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d928374
-SETUVAR fish_color_selection:\x2d\x2dbackground\x3d282828
+SETUVAR fish_color_autosuggestion:414868
+SETUVAR fish_color_command:7aa2f7
+SETUVAR fish_color_comment:414868
+SETUVAR fish_color_end:bb9af7
+SETUVAR fish_color_error:f7768e
+SETUVAR fish_color_escape:e0af68
+SETUVAR fish_color_match:7dcfff
+SETUVAR fish_color_normal:c0caf5
+SETUVAR fish_color_operator:7dcfff
+SETUVAR fish_color_param:bb9af7
+SETUVAR fish_color_quote:9ece6a
+SETUVAR fish_color_redirection:7dcfff
+SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d414868
+SETUVAR fish_color_selection:\x2d\x2dbackground\x3d15161e
 SETUVAR fish_greeting:\U0001f30e\x20\U0001f680\x20JovianMoon\x2eio\x20\x20\U0001fa90
 SETUVAR fish_most_recent_dir:/home/stephen/dotfiles
-SETUVAR fish_pager_color_completion:ebdbb2
-SETUVAR fish_pager_color_description:928374
-SETUVAR fish_pager_color_prefix:458588
-SETUVAR fish_pager_color_progress:928374
-SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d282828
+SETUVAR fish_pager_color_completion:c0caf5
+SETUVAR fish_pager_color_description:414868
+SETUVAR fish_pager_color_prefix:7aa2f7
+SETUVAR fish_pager_color_progress:414868
+SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d15161e
 SETUVAR --export fish_user_paths:/home/stephen/\x2elocal/bin\x1e/home/stephen/\x2ecargo/bin\x1e/usr/bin\x1e/usr/lib/jvm/java\x2d17\x2dopenjdk/bin\x1e/home/stephen/\x2econfig/composer/vendor/bin\x1e/home/stephen/\x2enpm\x2dglobal/bin\x1e/home/stephen/\x2eturso/bin
