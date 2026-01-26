@@ -10,20 +10,26 @@ This repo is my home base for my Arch Linux development environment dotfiles. I 
    cd ~/dotfiles
    ```
 
-2. Install essential packages:
+2. Clone the theme-switcher (separate project):
+   ```bash
+   git clone https://github.com/StephenGunn/theme-switcher.git ~/projects/theme-switcher
+   ln -sf ~/projects/theme-switcher/scripts/theme-switch ~/.local/bin/theme-switch
+   ```
+
+3. Install essential packages:
    ```bash
    # Install base packages
    ./scripts/install.sh
-   
+
    # Install configuration files
    ./link.sh
-   
+
    # Install Nerd Fonts
    ./scripts/install_nerd_fonts.sh
-   
+
    # Restore systemd services
    ./scripts/restore_systemd_services.sh
-   
+
    # Configure HyprPanel
    ./scripts/configure_hyprpanel.sh
    ```
@@ -61,6 +67,7 @@ This repo is my home base for my Arch Linux development environment dotfiles. I 
   - starship (prompt)
   - zoxide (smarter cd)
   - yazi (file manager)
+  - thunar (GTK file manager - **source of truth for bookmarks**)
   - lazygit (git TUI)
 
 ## Utility Scripts
@@ -69,6 +76,8 @@ The `scripts/` directory contains several helpful scripts:
 
 - **install.sh** - Installs all required packages (pacman and AUR)
 - **config.sh** - Sets up configuration for various tools
+- **configure_system_defaults.sh** - Sets up XDG default applications (file manager, browser, editor)
+- **sync_bookmarks.sh** - Syncs GTK bookmarks (Thunar) to Qt format (one-way)
 - **backup_systemd_services.sh** - Backs up enabled systemd user services
 - **restore_systemd_services.sh** - Restores systemd user services
 - **setup_systemd_backup_cron.sh** - Sets up weekly automatic backups of systemd services
@@ -122,6 +131,76 @@ dotfiles/
 - To set up automatic weekly backups: `./scripts/setup_systemd_backup_cron.sh`
 - To update package lists after installing new software: edit `scripts/install.sh`
 - After making changes, commit and push to your repository
+
+## Theme Switcher Integration
+
+This dotfiles repo integrates with a **separate theme-switcher project** for unified theming.
+
+### Setup
+```bash
+# Clone theme-switcher (separate git repo)
+git clone https://github.com/StephenGunn/theme-switcher.git ~/projects/theme-switcher
+
+# Create symlink for easy access
+ln -sf ~/projects/theme-switcher/scripts/theme-switch ~/.local/bin/theme-switch
+```
+
+### Usage
+- **Keybinding**: `Super + T` - Opens theme selector
+- **Command**: `theme-switch` - Opens theme selector
+- **Direct**: `theme-switch <theme-name>` - Switch directly
+
+### Available Themes
+1. Gruvbox Dark
+2. Catppuccin Mocha
+3. Nord
+4. Kanagawa Dark
+5. Everforest
+6. Tokyo Night
+
+### What Gets Themed
+- Ghostty (terminal)
+- Neovim (editor)
+- Hyprland (window manager)
+- HyprPanel (desktop panel)
+- Rofi (launcher)
+- Thunar (file manager via GTK themes)
+- Yazi (TUI file manager)
+- Starship (prompt)
+- Dunst (notifications)
+
+### More Info
+See the [theme-switcher repository](https://github.com/StephenGunn/theme-switcher) for documentation.
+
+## Bookmarks & File Dialogs
+
+**Source of Truth: Thunar (GTK Bookmarks)**
+
+- **Primary file**: `~/.config/gtk-3.0/bookmarks`
+- **Sync direction**: GTK → Qt (one-way, optional)
+- **Used by**: Thunar, Firefox file dialogs, most Linux apps
+
+### Managing Bookmarks
+
+1. **In Thunar**: Navigate to folder, press `Ctrl+D`
+2. **Edit directly**: `nvim ~/.config/gtk-3.0/bookmarks`
+3. **Sync to Qt apps** (optional): `./scripts/sync_bookmarks.sh`
+
+Bookmarks automatically appear in:
+- ✅ Thunar sidebar
+- ✅ Firefox/Zen save dialogs
+- ✅ Most application file dialogs
+- ✅ Any GTK file chooser
+
+See `BOOKMARKS_SYNC.md` for detailed documentation.
+
+## Documentation
+
+- **SYSTEM_DEFAULTS.md** - Default applications and XDG configuration
+- **BOOKMARKS_SYNC.md** - How bookmarks work across programs
+- **GTK_BOOKMARKS.md** - GTK bookmarks and file dialog configuration
+- **SETUP_COMPLETE.md** - Recent setup summary and installation steps
+- **CLAUDE.md** - Instructions for Claude Code when working with this repo
 
 ## Links & References
 

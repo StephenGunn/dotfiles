@@ -2,7 +2,7 @@
 alias gg="lazygit"
 
 # dotfile aliases
-alias dots_link="bash ~/dotfiles/link.sh"
+alias link_dots="bash ~/dotfiles/link.sh"
 
 alias dots="cd ~/dotfiles"
 

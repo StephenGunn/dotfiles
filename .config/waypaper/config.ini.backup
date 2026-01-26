@@ -1,8 +1,8 @@
 [Settings]
 language = en
-folder = ~/projects/theme-switcher/themes/gruvbox-dark/wallpapers
+folder = /home/stephen/projects/theme-switcher/themes/gruvbox-dark/wallpapers
 monitors = All
-wallpaper = ~/projects/theme-switcher/themes/gruvbox-dark/wallpapers/leaves-hard-pixelated.png
+wallpaper = ~/dotfiles/.config/theme-switcher/themes/gruvbox-dark/wallpapers/The_Artists_Garden_at_Eragny.png
 show_path_in_tooltip = True
 backend = hyprpaper
 fill = fill

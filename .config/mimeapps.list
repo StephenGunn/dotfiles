@@ -1,0 +1,50 @@
+[Added Associations]
+image/jpeg=org.kde.krita.desktop;
+video/quicktime=vlc.desktop;
+x-scheme-handler/chrome=zen.desktop;
+x-scheme-handler/http=zen.desktop;
+x-scheme-handler/https=zen.desktop;
+inode/directory=thunar.desktop;
+
+[Default Applications]
+# Web Browser - Zen
+application/x-extension-htm=zen.desktop
+application/x-extension-html=zen.desktop
+application/x-extension-shtml=zen.desktop
+application/x-extension-xht=zen.desktop
+application/x-extension-xhtml=zen.desktop
+application/xhtml+xml=zen.desktop
+text/html=zen.desktop
+x-scheme-handler/about=zen.desktop
+x-scheme-handler/chrome=zen.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+x-scheme-handler/unknown=zen.desktop
+
+# File Manager - Thunar
+inode/directory=thunar.desktop
+
+# Text Editor - Neovim
+text/plain=nvim.desktop
+text/x-shellscript=nvim.desktop
+application/x-shellscript=nvim.desktop
+text/x-python=nvim.desktop
+text/x-markdown=nvim.desktop
+application/json=nvim.desktop
+text/x-lua=nvim.desktop
+
+# Images - Krita
+image/gif=org.kde.krita.desktop
+image/jpeg=org.kde.krita.desktop
+image/png=org.kde.krita.desktop
+
+# Video - VLC
+video/quicktime=vlc.desktop
+video/mp4=vlc.desktop
+video/x-matroska=vlc.desktop
+
+# PDF
+application/pdf=zen.desktop
+
+# Email
+x-scheme-handler/mailto=gmail-firefox.desktop

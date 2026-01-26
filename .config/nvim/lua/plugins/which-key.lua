@@ -144,6 +144,12 @@ return {
       -- Window splits
       { "<C-PageDown>", ":vsplit<CR>", desc = "Vertical split" },
       { "<C-PageUp>", ":wincmd h<CR>", desc = "Go to left split" },
+
+      -- Window navigation (Ctrl+Alt+hjkl)
+      { "<C-A-h>", ":wincmd h<CR>", desc = "Go to left split" },
+      { "<C-A-l>", ":wincmd l<CR>", desc = "Go to right split" },
+      { "<C-A-k>", ":wincmd k<CR>", desc = "Go to upper split" },
+      { "<C-A-j>", ":wincmd j<CR>", desc = "Go to lower split" },
       
       -- Other
       { "<Esc>", ":nohlsearch<CR>", desc = "Clear search" },
