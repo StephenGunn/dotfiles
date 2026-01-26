@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Manual display sleep script for Hyprland
+# Turns off displays without suspending the system
+# Works with hypridle to ensure proper wake-up behavior
+
+# Turn off all displays
+hyprctl dispatch dpms off
+
+# Optional: Show notification
+notify-send -u low "Displays Off" "Move mouse or press any key to wake"

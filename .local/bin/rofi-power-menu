@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Rofi Power Menu with Suspend option
+
+options="󰒲 Suspend\n󰍃 Logout\n󰜉 Restart\n󰐥 Shutdown"
+
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power" -theme-str 'window {width: 250px;}')
+
+case $chosen in
+    "󰒲 Suspend")
+        systemctl suspend
+        ;;
+    "󰍃 Logout")
+        hyprctl dispatch exit
+        ;;
+    "󰜉 Restart")
+        systemctl reboot
+        ;;
+    "󰐥 Shutdown")
+        systemctl poweroff
+        ;;
+esac

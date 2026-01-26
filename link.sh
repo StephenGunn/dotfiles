@@ -29,3 +29,9 @@ fi
 stow -t ~ .
 
 echo "Dotfiles have been unlinked and re-linked!"
+
+# Reload Hyprland if running
+if pgrep -x Hyprland > /dev/null; then
+    echo "Reloading Hyprland configuration..."
+    hyprctl reload
+fi
