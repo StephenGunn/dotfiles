@@ -1,5 +1,5 @@
 return {
-  "ggandor/leap.nvim",
+  url = "https://codeberg.org/andyg/leap.nvim",
   enabled = true,
   -- Remove the keys section since it can cause issues per documentation
   config = function()

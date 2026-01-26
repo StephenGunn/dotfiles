@@ -16,6 +16,12 @@ shell-integration=fish
 shell-integration-features=no-cursor
 confirm-close-surface=false
 
+# Font size keybindings
+keybind = ctrl+equal=unbind
+keybind = ctrl+plus=unbind
+keybind = ctrl+shift+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+shift+minus=reset_font_size
 
 keybind = shift+enter=text:\n
 theme = Gruvbox Dark
