@@ -159,15 +159,31 @@ ln -sf ~/projects/theme-switcher/scripts/theme-switch ~/.local/bin/theme-switch
 6. Tokyo Night
 
 ### What Gets Themed
-- Ghostty (terminal)
-- Neovim (editor)
-- Hyprland (window manager)
-- HyprPanel (desktop panel)
-- Rofi (launcher)
-- Thunar (file manager via GTK themes)
-- Yazi (TUI file manager)
-- Starship (prompt)
-- Dunst (notifications)
+- Ghostty (terminal) - Custom theme files
+- Neovim (editor) - Native colorschemes (live reload)
+- Hyprland (window manager) - Color scheme files
+- HyprPanel (desktop panel) - Complete theme files
+- Rofi (launcher) - .rasi theme files
+- Thunar (file manager) - GTK themes
+- Yazi (TUI file manager) - Flavor system
+- Starship (prompt) - Pywal-generated colors
+- Dunst (notifications) - Pywal-generated config
+- Wallpapers - Random selection with smooth transitions (swww)
+
+### Adding New Themes
+Each theme needs the following files in `~/projects/theme-switcher/themes/<theme-name>/`:
+- `config.json` - Theme configuration
+- `hyprpanel.json` - HyprPanel colors (simplified 20-line or full 375-line format)
+- `colors.json` - Pywal color palette (16 colors)
+- `<theme-name>.conf` - Hyprland color definitions
+- `<theme-name>.rasi` - Rofi theme
+- `wallpapers/` - Directory with wallpaper images
+- Custom Ghostty theme in `~/.config/ghostty/themes/<ThemeName>`
+
+**HyprPanel Theme Format:**
+- Simplified (20 keys): Basic colors, HyprPanel auto-fills the rest
+- Complete (375 keys): Full control over every UI element
+- Both work! Simplified is easier to maintain.
 
 ### More Info
 See the [theme-switcher repository](https://github.com/StephenGunn/theme-switcher) for documentation.
