@@ -1,6 +1,6 @@
 [Settings]
 language = en
-folder = /home/stephen/projects/theme-switcher/themes/gruvbox-dark/wallpapers
+folder = /home/stephen/projects/theme-switcher/themes/kanagawa-dark/wallpapers
 monitors = All
 wallpaper = ~/dotfiles/.config/theme-switcher/themes/gruvbox-dark/wallpapers/The_Artists_Garden_at_Eragny.png
 show_path_in_tooltip = True
