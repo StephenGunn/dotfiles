@@ -28,7 +28,7 @@ SETUVAR fish_color_redirection:88c0d0
 SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d4c566a
 SETUVAR fish_color_selection:\x2d\x2dbackground\x3d3b4252
 SETUVAR fish_greeting:\U0001f30e\x20\U0001f680\x20JovianMoon\x2eio\x20\x20\U0001fa90
-SETUVAR fish_most_recent_dir:/home/stephen/dotfiles
+SETUVAR fish_most_recent_dir:/home/stephen/projects/theme\x2dswitcher
 SETUVAR fish_pager_color_completion:d8dee9
 SETUVAR fish_pager_color_description:4c566a
 SETUVAR fish_pager_color_prefix:81a1c1
