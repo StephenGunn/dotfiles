@@ -12,6 +12,24 @@ DOTFILES_DIR="$HOME/dotfiles"
 # Change to the dotfiles directory
 cd "$DOTFILES_DIR" || { echo "❌ Dotfiles directory not found!"; exit 1; }
 
+# ============================================================================
+# Helper Functions
+# ============================================================================
+
+# Check if a file is managed by dotfiles (via direct symlink OR tree folding)
+# Returns 0 if managed, 1 if not (safe to delete)
+is_dotfiles_managed() {
+    local file="$1"
+    [ ! -e "$file" ] && return 1  # File doesn't exist
+
+    local real_path
+    real_path=$(realpath "$file" 2>/dev/null)
+
+    # Check if the resolved path is inside the dotfiles directory
+    [[ "$real_path" == "$DOTFILES_DIR"* ]] && return 0
+    return 1
+}
+
 echo "🔍 Checking for conflicts..."
 
 # ============================================================================
@@ -19,16 +37,20 @@ echo "🔍 Checking for conflicts..."
 # ============================================================================
 # Some programs auto-generate default configs on first run. We need to remove
 # these BEFORE stowing, or they'll block our symlinks.
+#
+# IMPORTANT: We use is_dotfiles_managed() to check if a file is already ours.
+# This handles both direct symlinks AND stow's "tree folding" (directory symlinks).
 
 # Hyprland creates default config on first run
-if [ -f "$HOME/.config/hypr/hyprland.conf" ] && [ ! -L "$HOME/.config/hypr/hyprland.conf" ]; then
+if [ -f "$HOME/.config/hypr/hyprland.conf" ] && ! is_dotfiles_managed "$HOME/.config/hypr/hyprland.conf"; then
     echo "  → Removing auto-generated Hyprland config"
     rm -f "$HOME/.config/hypr/hyprland.conf"
 fi
 
 # Add other known auto-generated files here as you discover them
-# Example:
-# if [ -f "$HOME/.config/someapp/config" ] && [ ! -L "$HOME/.config/someapp/config" ]; then
+# Use the is_dotfiles_managed function to safely check:
+#
+# if [ -f "$HOME/.config/someapp/config" ] && ! is_dotfiles_managed "$HOME/.config/someapp/config"; then
 #     echo "  → Removing auto-generated someapp config"
 #     rm -f "$HOME/.config/someapp/config"
 # fi
