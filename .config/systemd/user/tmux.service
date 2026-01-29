@@ -1,0 +1,13 @@
+[Unit]
+Description=Tmux server
+Documentation=man:tmux(1)
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -d -s default
+ExecStop=/usr/bin/tmux kill-server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
