@@ -74,7 +74,7 @@ This repo is my home base for my Arch Linux development environment dotfiles. I 
 
 The `scripts/` directory contains several helpful scripts:
 
-- **install.sh** - Installs all required packages (pacman and AUR)
+- **install.sh** - Installs packages from `packages/core.md` + `packages/<hostname>.md`
 - **config.sh** - Sets up configuration for various tools
 - **configure_system_defaults.sh** - Sets up XDG default applications (file manager, browser, editor)
 - **sync_bookmarks.sh** - Syncs GTK bookmarks (Thunar) to Qt format (one-way)
@@ -96,33 +96,71 @@ Stow is used to create symlinks from this repository to your home directory:
 stow -t ~ .
 ```
 
-## Structure
+## Multi-Machine Support
 
-Each application's configuration is stored in its proper XDG directory structure under `.config/`:
+This repo supports multiple machines (desktop, tablet, etc.) using hostname-based configs.
+
+### Adding a New Machine
+
+1. **Create host-specific Hyprland config**:
+   ```bash
+   # Copy from existing host and modify
+   cp .config/hypr/hosts/jovian.conf .config/hypr/hosts/<hostname>.conf
+   # Edit monitors and workspaces for your hardware
+   nvim .config/hypr/hosts/<hostname>.conf
+   ```
+
+2. **Create host-specific packages** (optional):
+   ```bash
+   # Only needed if machine needs different packages than core
+   cp packages/jovian.md packages/<hostname>.md
+   # Edit to add/remove packages
+   nvim packages/<hostname>.md
+   ```
+
+3. **Run setup on the new machine**:
+   ```bash
+   ./scripts/install.sh   # Installs core.md + <hostname>.md
+   ./link.sh              # Links dotfiles + creates hosts/current.conf
+   ```
+
+### How It Works
+
+- **Hyprland**: `monitors.conf` sources `hosts/current.conf`, which is symlinked to `hosts/<hostname>.conf` by `link.sh`
+- **Packages**: `install.sh` reads `packages/core.md` (all machines) + `packages/<hostname>.md` (machine-specific)
+- **Single branch**: No need for separate branches per machine
+
+### Current Hosts
+
+| Hostname | Description | Notes |
+|----------|-------------|-------|
+| `jovian` | Desktop | Dual monitors, gaming, heavy apps |
+| `surfarch` | Surface Pro 8 | Single high-DPI display, tablet |
+
+## Structure
 
 ```
 dotfiles/
 ├── .config/
-│   ├── alacritty/
-│   ├── fish/
 │   ├── hypr/
-│   ├── kitty/
-│   ├── neovim/
-│   ├── systemd/
-│   ├── tmux/
-│   ├── waybar/
-│   └── wezterm/
-├── .ssh/
-│   └── config
+│   │   ├── hosts/           # Machine-specific configs
+│   │   │   ├── current.conf # Symlink to active host (gitignored)
+│   │   │   ├── jovian.conf  # Desktop config
+│   │   │   └── surfarch.conf # Tablet config
+│   │   ├── monitors.conf    # Sources hosts/current.conf
+│   │   ├── workspaces.conf  # (in host config)
+│   │   └── ...              # Shared configs
+│   ├── fish/
+│   ├── nvim/
+│   └── ...
+├── packages/
+│   ├── core.md              # Shared packages (all machines)
+│   ├── jovian.md            # Desktop-specific packages
+│   └── surfarch.md          # Tablet-specific packages
 ├── scripts/
-│   ├── install.sh
-│   ├── config.sh
-│   ├── backup_systemd_services.sh
-│   ├── restore_systemd_services.sh
-│   ├── setup_systemd_backup_cron.sh
-│   ├── install_nerd_fonts.sh
-│   └── configure_hyprpanel.sh
-└── link.sh
+│   ├── install.sh           # Reads packages/*.md based on hostname
+│   └── ...
+└── link.sh                  # Creates symlinks + hosts/current.conf
 ```
 
 ## Maintaining the Repository
