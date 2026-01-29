@@ -92,7 +92,25 @@ fi
 echo "✓ Dotfiles linked successfully!"
 
 # ============================================================================
-# Step 4: Fix Permissions & Reload Configs
+# Step 4: Setup Host-Specific Configs
+# ============================================================================
+echo ""
+echo "🖥️  Setting up host-specific configs..."
+
+HOSTNAME=$(cat /etc/hostname)
+HYPR_HOSTS_DIR="$HOME/.config/hypr/hosts"
+
+if [ -f "$HYPR_HOSTS_DIR/$HOSTNAME.conf" ]; then
+    ln -sf "$HOSTNAME.conf" "$HYPR_HOSTS_DIR/current.conf"
+    echo "  ✓ Hyprland host config linked: $HOSTNAME"
+else
+    echo "  ⚠ No host config found for '$HOSTNAME'"
+    echo "    Create one at: $HYPR_HOSTS_DIR/$HOSTNAME.conf"
+    echo "    (You can copy from an existing host config)"
+fi
+
+# ============================================================================
+# Step 5: Fix Permissions & Reload Configs
 # ============================================================================
 echo ""
 echo "🔧 Fixing permissions and reloading configs..."

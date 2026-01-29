@@ -1,188 +1,201 @@
 #!/bin/bash
 
-# Define an array of core programs to install
-PROGRAMS=(
-    "alacritty"
-    "neovim"
-    "tmux"
-    "waybar"
-    "yay"
-    "wezterm"
-    "zsh"
-    "kitty"
-    "fzf"
-    "lazygit"
-    "yazi"
-    "fish"
-    "fisher"
-    "starship"
-    "xclip"
-    "wl-clipboard"
-    "xsel"
-    "discord"
-    "fastfetch"
-    "borg"
-    "grim"
-    "hyprpaper"
-    "hypridle"
-    "hyprlock"
-    "inotify-tools"
-    "firefox"
-    "hyprland"
-    "git"
-    "dunst"
-    "rofi"
-    "wofi"
-    "zoxide"
-    "ripgrep"
-    "fd"
-    "jq"
-    "libnotify"
-    # Add any other core programs you need
-)
+# ============================================================================
+# DOTFILES INSTALL SCRIPT - Package Management
+# ============================================================================
+# Installs packages from packages/core.md + packages/$HOSTNAME.md
+# Supports pacman and AUR (prefix with AUR:)
+# ============================================================================
 
-# Additional essential packages to install with pacman
-ADDITIONAL_PACMAN_PACKAGES=(
-    "pipewire"
-    "libgtop"
-    "bluez"
-    "bluez-utils"
-    "btop"
-    "networkmanager"
-    "dart-sass"
-    "wl-clipboard"
-    "brightnessctl"
-    "swww"
-    "python"
-    "gnome-bluetooth-3.0"
-    "pacman-contrib"
-    "power-profiles-daemon"
-    "gvfs"
-    "btrbk"
-    "timeshift"
-    "tailscale"
-    "php"
-    "composer"
-    "nodejs"
-    "npm"
-    "python-pip"
-    "direnv"
-    "stylua"
-    "docker"
-    "base"
-    "base-devel"
-    "wireplumber"
-    "upower"
-    "gtksourceview3"
-    "libsoup3"
-    "wf-recorder"
-    "python-pywal"
-    "kvantum"
-    "qt5ct"
-    "qt6ct"
-    "breeze-icons"
-    "waypaper"
-    "thunar"
-    "tumbler"
-    "ffmpegthumbnailer"
-)
+set -e
 
-# AUR packages to install with yay
-AUR_PACKAGES=(
-    "grimblast-git"
-    "gpu-screen-recorder"
-    "hyprpicker"
-    "matugen-bin"
-    "python-gpustat"
-    "aylurs-gtk-shell-git"
-    "obsidian"
-    "ghostty-git"
-    "1password"
-    "1password-cli"
-    "ventoy-bin"
-    "agsv1"
-    "hyprsunset-git"
-    "catppuccin-gtk-theme-mocha"
-    "kvantum-theme-catppuccin-git"
-    "bibata-cursor-theme"
-)
+DOTFILES_DIR="$HOME/dotfiles"
+PACKAGES_DIR="$DOTFILES_DIR/packages"
+HOSTNAME=$(cat /etc/hostname)
 
-# Update the package database and upgrade the system
-echo "Updating package database and upgrading the system..."
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}╔════════════════════════════════════════════╗${NC}"
+echo -e "${BLUE}║     Dotfiles Package Installer             ║${NC}"
+echo -e "${BLUE}║     Host: ${GREEN}$HOSTNAME${BLUE}                        ║${NC}"
+echo -e "${BLUE}╚════════════════════════════════════════════╝${NC}"
+echo ""
+
+# ============================================================================
+# Parse Package Files
+# ============================================================================
+
+parse_packages() {
+    local file="$1"
+    local pacman_pkgs=()
+    local aur_pkgs=()
+
+    if [ ! -f "$file" ]; then
+        return
+    fi
+
+    while IFS= read -r line || [ -n "$line" ]; do
+        # Skip empty lines and comments
+        [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+
+        # Trim whitespace
+        line=$(echo "$line" | xargs)
+
+        if [[ "$line" == AUR:* ]]; then
+            aur_pkgs+=("${line#AUR:}")
+        else
+            pacman_pkgs+=("$line")
+        fi
+    done < "$file"
+
+    # Output arrays (space-separated for easy parsing)
+    echo "PACMAN:${pacman_pkgs[*]}"
+    echo "AUR:${aur_pkgs[*]}"
+}
+
+# Collect all packages
+ALL_PACMAN_PKGS=()
+ALL_AUR_PKGS=()
+
+echo -e "${YELLOW}📦 Reading package lists...${NC}"
+
+# Read core packages
+if [ -f "$PACKAGES_DIR/core.md" ]; then
+    echo "  → core.md"
+    while IFS= read -r line; do
+        if [[ "$line" == PACMAN:* ]]; then
+            read -ra pkgs <<< "${line#PACMAN:}"
+            ALL_PACMAN_PKGS+=("${pkgs[@]}")
+        elif [[ "$line" == AUR:* ]]; then
+            read -ra pkgs <<< "${line#AUR:}"
+            ALL_AUR_PKGS+=("${pkgs[@]}")
+        fi
+    done < <(parse_packages "$PACKAGES_DIR/core.md")
+fi
+
+# Read host-specific packages
+if [ -f "$PACKAGES_DIR/$HOSTNAME.md" ]; then
+    echo "  → $HOSTNAME.md"
+    while IFS= read -r line; do
+        if [[ "$line" == PACMAN:* ]]; then
+            read -ra pkgs <<< "${line#PACMAN:}"
+            ALL_PACMAN_PKGS+=("${pkgs[@]}")
+        elif [[ "$line" == AUR:* ]]; then
+            read -ra pkgs <<< "${line#AUR:}"
+            ALL_AUR_PKGS+=("${pkgs[@]}")
+        fi
+    done < <(parse_packages "$PACKAGES_DIR/$HOSTNAME.md")
+else
+    echo -e "  ${YELLOW}⚠ No host-specific packages for '$HOSTNAME'${NC}"
+fi
+
+echo ""
+echo -e "${GREEN}Found ${#ALL_PACMAN_PKGS[@]} pacman packages, ${#ALL_AUR_PKGS[@]} AUR packages${NC}"
+echo ""
+
+# ============================================================================
+# Update System
+# ============================================================================
+
+echo -e "${YELLOW}🔄 Updating system...${NC}"
 sudo pacman -Syu --noconfirm
 
-# Install core programs
-echo "Installing core programs..."
-for program in "${PROGRAMS[@]}"; do
-    if pacman -Qi $program &>/dev/null; then
-        echo "$program is already installed."
+# ============================================================================
+# Install Pacman Packages
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}📦 Installing pacman packages...${NC}"
+
+for pkg in "${ALL_PACMAN_PKGS[@]}"; do
+    [ -z "$pkg" ] && continue
+    if pacman -Qi "$pkg" &>/dev/null; then
+        echo -e "  ${GREEN}✓${NC} $pkg (installed)"
     else
-        echo "Installing $program..."
-        sudo pacman -S $program --noconfirm
+        echo -e "  ${BLUE}→${NC} Installing $pkg..."
+        if ! sudo pacman -S "$pkg" --noconfirm --needed 2>/dev/null; then
+            echo -e "  ${RED}✗${NC} Failed to install $pkg"
+        fi
     fi
 done
 
-# Install additional essential packages
-echo "Installing additional essential packages..."
-for package in "${ADDITIONAL_PACMAN_PACKAGES[@]}"; do
-    if pacman -Qi $package &>/dev/null; then
-        echo "$package is already installed."
+# ============================================================================
+# Install AUR Packages
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}📦 Installing AUR packages...${NC}"
+
+# Check for yay
+if ! command -v yay &>/dev/null; then
+    echo -e "${YELLOW}Installing yay first...${NC}"
+    sudo pacman -S --needed git base-devel --noconfirm
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    cd /tmp/yay && makepkg -si --noconfirm
+    cd - > /dev/null
+fi
+
+for pkg in "${ALL_AUR_PKGS[@]}"; do
+    [ -z "$pkg" ] && continue
+    if yay -Qi "$pkg" &>/dev/null; then
+        echo -e "  ${GREEN}✓${NC} $pkg (installed)"
     else
-        echo "Installing $package..."
-        sudo pacman -S $package --noconfirm
+        echo -e "  ${BLUE}→${NC} Installing $pkg..."
+        if ! yay -S "$pkg" --noconfirm --needed 2>/dev/null; then
+            echo -e "  ${RED}✗${NC} Failed to install $pkg"
+        fi
     fi
 done
 
-# Install AUR packages using yay
-echo "Installing AUR packages..."
-for aur_package in "${AUR_PACKAGES[@]}"; do
-    if yay -Qi $aur_package &>/dev/null; then
-        echo "$aur_package is already installed."
-    else
-        echo "Installing $aur_package..."
-        yay -S $aur_package --noconfirm
-    fi
-done
+# ============================================================================
+# Post-Install: HyprPanel
+# ============================================================================
 
-# Install HyprPanel to ~/.local/share and link to ~/.config/ags
-echo "Installing HyprPanel..."
+echo ""
+echo -e "${YELLOW}🎨 Setting up HyprPanel...${NC}"
+
 if [ ! -d "$HOME/.local/share/HyprPanel" ]; then
     git clone https://github.com/Jas-SinghFSU/HyprPanel.git "$HOME/.local/share/HyprPanel"
-    ln -s "$HOME/.local/share/HyprPanel" "$HOME/.config/ags"
-    
-    # Install NerdFonts needed by HyprPanel
+    ln -sf "$HOME/.local/share/HyprPanel" "$HOME/.config/ags"
+
     if [ -f "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh" ]; then
-        echo "Installing NerdFonts for HyprPanel..."
         chmod +x "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh"
         "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh"
     fi
-    
-    # Build and install HyprPanel if needed
-    if [ -x "$(command -v meson)" ]; then
-        echo "Building HyprPanel with meson..."
-        cd "$HOME/.local/share/HyprPanel"
-        meson setup build
-        meson compile -C build
-        meson install -C build
-    else
-        echo "Meson not found. Install meson to build HyprPanel from source."
-        echo "You can install meson with: sudo pacman -S meson"
-    fi
-    
-    echo "HyprPanel installed successfully!"
+    echo -e "  ${GREEN}✓${NC} HyprPanel installed"
 else
-    echo "HyprPanel is already installed."
+    echo -e "  ${GREEN}✓${NC} HyprPanel already installed"
 fi
 
-# Install Bun
-echo "Installing Bun..."
+# ============================================================================
+# Post-Install: Bun
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}📦 Setting up Bun...${NC}"
+
 if [ ! -d "$HOME/.bun" ]; then
     curl -fsSL https://bun.sh/install | bash
-    echo 'export PATH="$HOME/.bun/bin:$PATH"' >> "$HOME/.bashrc" # or ~/.zshrc if using Zsh
-    source "$HOME/.bashrc" # or source ~/.zshrc
-    echo "Bun installed successfully!"
+    echo -e "  ${GREEN}✓${NC} Bun installed"
 else
-    echo "Bun is already installed."
+    echo -e "  ${GREEN}✓${NC} Bun already installed"
 fi
 
-echo "All programs installed successfully!"
+# ============================================================================
+# Done
+# ============================================================================
+
+echo ""
+echo -e "${GREEN}╔════════════════════════════════════════════╗${NC}"
+echo -e "${GREEN}║     Installation complete!                 ║${NC}"
+echo -e "${GREEN}╚════════════════════════════════════════════╝${NC}"
+echo ""
+echo "Next steps:"
+echo "  1. Run: ~/dotfiles/link.sh"
+echo "  2. Run: ~/dotfiles/scripts/restore_systemd_services.sh"
+echo "  3. Reboot"
