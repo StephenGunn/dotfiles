@@ -17,6 +17,7 @@ if [ -e "$HYPRLAND_CONFIG" ] && [ ! -L "$HYPR_DIR" ]; then
 fi
 
 # Unstow all existing links to clean up old or accidental links
+echo "Unstowing existing links..."
 stow -D -t ~ .
 
 # Explicitly remove the .git folder in case it gets linked
@@ -26,7 +27,15 @@ if [ -L "$HOME/.git" ]; then
 fi
 
 # Run stow command to link all directories
-stow -t ~ .
+echo "Stowing dotfiles..."
+if ! stow -t ~ . 2>&1 | tee /tmp/stow_output.log; then
+    echo ""
+    echo "ERROR: Stow failed! Check /tmp/stow_output.log for details."
+    echo "Common issues:"
+    echo "  - Conflicting files exist in target locations"
+    echo "  - Run with --adopt flag to adopt existing files, or manually resolve conflicts"
+    exit 1
+fi
 
 echo "Dotfiles have been unlinked and re-linked!"
 
