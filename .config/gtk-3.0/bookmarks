@@ -1,15 +1,11 @@
 # GTK Bookmarks - Favorite directories in file dialogs
 # Format: file:///full/path Optional Label
-
 # Home directories
 file:///home/stephen/Downloads Downloads
 file:///home/stephen/Documents Documents
 file:///home/stephen/Pictures Pictures
 file:///home/stephen/Videos Videos
-
-# Projects
 file:///home/stephen/projects Projects
 file:///home/stephen/dotfiles Dotfiles
-
 # Common locations
 file:///tmp Temp
