@@ -48,6 +48,7 @@ show_menu() {
     options=(
         "📂 Open Dotfiles Terminal"
         "🔄 Restart HyprPanel"
+        "👆 Restart Trackpad Gestures"
         "🔗 Run link.sh (re-link dotfiles)"
         "🔖 Sync Bookmarks"
         "💾 Backup Systemd Services"
@@ -83,6 +84,9 @@ show_menu() {
                     notify-send "HyprPanel" "❌ Failed to restart HyprPanel!" -u critical -t 5000
                 fi
             ) &
+            ;;
+        "👆 Restart Trackpad Gestures")
+            "$HOME/dotfiles/scripts/restart-gestures.sh" &
             ;;
         "🔗 Run link.sh (re-link dotfiles)")
             run_in_background "./link.sh" "Running link.sh" "✅ Dotfiles linked successfully!" "❌ Link failed! Check /tmp/dotfiles-cmd.log"
