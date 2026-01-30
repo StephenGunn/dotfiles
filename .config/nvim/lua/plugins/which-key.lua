@@ -152,7 +152,10 @@ return {
       { "<C-A-j>", ":wincmd j<CR>", desc = "Go to lower split" },
       
       -- Other
-      { "<Esc>", ":nohlsearch<CR>", desc = "Clear search" },
+      { "<Esc>", function()
+        vim.cmd("nohlsearch")
+        require("notify").dismiss({ silent = true, pending = true })
+      end, desc = "Clear search & dismiss notifications" },
       
       -- Treesitter navigation
       { ")", desc = "Next function/block start" },

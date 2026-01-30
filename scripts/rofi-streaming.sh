@@ -6,7 +6,19 @@ CONFIG="$HOME/.config/streaming/config.sh"
 [[ -f "$CONFIG" ]] && source "$CONFIG"
 
 STATE_FILE="/tmp/streaming-mode-active"
+PRIVACY_FACE="/tmp/streaming-privacy-face"
+PRIVACY_TOPDOWN="/tmp/streaming-privacy-topdown"
+EXPAND_FACE="/tmp/streaming/webcam-face-expanded"
+EXPAND_TOPDOWN="/tmp/streaming/webcam-topdown-expanded"
 SCRIPTS="$HOME/dotfiles/scripts"
+
+# Check privacy status
+[[ -f "$PRIVACY_FACE" ]] && PRIV_FACE="ON" || PRIV_FACE="OFF"
+[[ -f "$PRIVACY_TOPDOWN" ]] && PRIV_HANDS="ON" || PRIV_HANDS="OFF"
+
+# Check expand status
+[[ -f "$EXPAND_FACE" ]] && EXP_FACE="ON" || EXP_FACE="OFF"
+[[ -f "$EXPAND_TOPDOWN" ]] && EXP_HANDS="ON" || EXP_HANDS="OFF"
 
 # Check streaming mode status
 if [[ -f "$STATE_FILE" ]]; then
@@ -23,6 +35,10 @@ fi
 main_menu() {
     local options="$STREAM_ICON Toggle Streaming Mode [$STREAM_STATUS]
 󰕧 Screenkey Toggle
+󰗹 Privacy Mode
+───────────────────
+󰹑 Expand Face Cam [$EXP_FACE]
+󰹑 Expand Keyboard Cam [$EXP_HANDS]
 ───────────────────
 󰄀 Face Camera
 󰄁 Top-down Camera
@@ -141,6 +157,24 @@ image_menu() {
     esac
 }
 
+# Privacy mode submenu
+privacy_menu() {
+    local options="󰄀 Face Cam [$PRIV_FACE]
+󰄁 Hand Cam [$PRIV_HANDS]
+󰄀 Toggle Both
+───────────────
+ Back to Main"
+
+    local choice=$(echo "$options" | rofi -dmenu -i -p "Privacy" -theme-str 'window {width: 300px;}')
+
+    case "$choice" in
+        *"Face Cam"*) "$SCRIPTS/streaming-mode.sh" privacy face ;;
+        *"Hand Cam"*) "$SCRIPTS/streaming-mode.sh" privacy hands ;;
+        *"Toggle Both"*) "$SCRIPTS/streaming-mode.sh" privacy both ;;
+        *"Back"*) exec "$0" ;;
+    esac
+}
+
 # Swap camera assignments in config
 swap_cameras() {
     local temp="$CAM_FACE"
@@ -174,6 +208,15 @@ case "$choice" in
         ;;
     *"Screenkey"*)
         toggle_screenkey
+        ;;
+    *"Privacy Mode"*)
+        privacy_menu
+        ;;
+    *"Expand Face"*)
+        "$SCRIPTS/webcam-expand.sh" face
+        ;;
+    *"Expand Keyboard"*)
+        "$SCRIPTS/webcam-expand.sh" topdown
         ;;
     *"Face Camera"*)
         camera_menu "Face Cam" "$CAM_FACE"

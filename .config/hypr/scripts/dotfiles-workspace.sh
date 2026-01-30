@@ -47,7 +47,7 @@ run_in_background() {
 show_menu() {
     options=(
         "📂 Open Dotfiles Terminal"
-        "🔄 Restart HyprPanel"
+        "🔄 Restart Quickshell"
         "👆 Restart Trackpad Gestures"
         "🔗 Run link.sh (re-link dotfiles)"
         "🔖 Sync Bookmarks"
@@ -62,26 +62,17 @@ show_menu() {
         "📂 Open Dotfiles Terminal")
             open_dotfiles_terminal
             ;;
-        "🔄 Restart HyprPanel")
-            # Kill and restart HyprPanel to fix ghost workspaces
+        "🔄 Restart Quickshell")
             (
-                notify-send "HyprPanel" "Restarting HyprPanel..." -t 2000
-
-                # Force kill all hyprpanel processes
-                pkill -9 -f hyprpanel-app 2>/dev/null
-                pkill -9 gjs 2>/dev/null
-
+                notify-send "Quickshell" "Restarting..." -t 2000
+                pkill -x quickshell
                 sleep 0.3
-
-                # Restart hyprpanel
-                hyprpanel &
-
+                quickshell &
                 sleep 0.5
-
-                if pgrep -f hyprpanel > /dev/null; then
-                    notify-send "HyprPanel" "✅ HyprPanel restarted successfully!" -t 3000
+                if pgrep -x quickshell > /dev/null; then
+                    notify-send "Quickshell" "✅ Restarted successfully!" -t 3000
                 else
-                    notify-send "HyprPanel" "❌ Failed to restart HyprPanel!" -u critical -t 5000
+                    notify-send "Quickshell" "❌ Failed to restart!" -u critical -t 5000
                 fi
             ) &
             ;;

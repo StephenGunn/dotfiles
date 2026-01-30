@@ -1,0 +1,80 @@
+[global]
+    # Display on vertical monitor only
+    monitor = DP-3
+    follow = none
+
+    # Geometry
+    width = 350
+    height = 150
+    origin = top-left
+    offset = 7x7
+
+    # Appearance
+    frame_width = 2
+    corner_radius = 12
+    separator_height = 2
+    padding = 12
+    horizontal_padding = 14
+    text_icon_padding = 12
+    gap_size = 8
+
+    # Text
+    font = JetBrainsMono Nerd Font 11
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = end
+
+    # Icons
+    icon_position = left
+    min_icon_size = 48
+    max_icon_size = 48
+    icon_corner_radius = 8
+    icon_theme = "Papirus-Dark"
+    enable_recursive_icon_lookup = true
+
+    # History
+    sticky_history = yes
+    history_length = 20
+
+    # Misc
+    sort = yes
+    indicate_hidden = yes
+    show_indicators = yes
+
+    # Mouse actions
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+    # Progress bar
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 4
+
+[urgency_low]
+    background = "#2d353b"
+    foreground = "#d3c6aa"
+    frame_color = "#3d484d"
+    highlight = "#a7c080"
+    timeout = 5
+
+[urgency_normal]
+    background = "#2d353b"
+    foreground = "#d3c6aa"
+    frame_color = "#3d484d"
+    highlight = "#7fbbb3"
+    timeout = 8
+
+[urgency_critical]
+    background = "#2d353b"
+    foreground = "#d3c6aa"
+    frame_color = "#e67e80"
+    highlight = "#e67e80"
+    timeout = 0

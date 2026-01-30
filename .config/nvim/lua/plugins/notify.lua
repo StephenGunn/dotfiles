@@ -40,10 +40,6 @@ return {
 				return notify(message, level, merged_opts)
 			end
 
-			-- Keybinding to dismiss all notifications with <leader><Esc>
-			vim.keymap.set("n", "<leader><Esc>", function()
-				require("notify").dismiss({ silent = true, pending = true })
-			end, { noremap = true, silent = true })
 
 			-- Update colors to match active colorscheme
 			local function apply_notify_colors()
