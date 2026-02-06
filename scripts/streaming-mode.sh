@@ -72,6 +72,18 @@ apply_gaps() {
     fi
 }
 
+# Move scratchpad to streaming position (left of sidebar)
+# NOTE: We use direct window manipulation instead of windowrules because
+# multiple rules matching the same window don't override cleanly - they conflict.
+# This approach bypasses the windowrule system entirely for reliable positioning.
+move_scratchpad() {
+    local scratchpad_addr=$(hyprctl clients -j | jq -r '.[] | select(.workspace.name == "special:magic") | .address')
+    if [[ -n "$scratchpad_addr" ]]; then
+        # Position: x=100 centers 1920px scratchpad in available 2090px area
+        hyprctl dispatch movewindowpixel exact 100 100,address:$scratchpad_addr
+    fi
+}
+
 # Check if OBS is running (cameras would be in use)
 check_obs() {
     if pgrep -x "obs" > /dev/null; then
@@ -121,11 +133,6 @@ streaming_on() {
     # Small delay for layout to adjust
     sleep 0.2
 
-    # Start scratchpad daemon (auto-hides cams when scratchpad opens)
-    pkill -f "streaming-scratchpad-daemon" 2>/dev/null
-    "$HOME/dotfiles/scripts/streaming-scratchpad-daemon.sh" start &
-    disown
-
     # Launch keystroke display (if screenkey is installed)
     if command -v screenkey &> /dev/null; then
         screenkey --position fixed \
@@ -152,15 +159,17 @@ streaming_on() {
     # Launch default widget
     launch_widget "$WIDGET"
 
+    # Move scratchpad if it exists
+    move_scratchpad
+
     # Mark as active
     touch "$STATE_FILE"
 }
 
 streaming_off() {
-    # Kill streaming windows and daemon
+    # Kill streaming windows
     pkill -f "screenkey" 2>/dev/null
     pkill -f "mpv.*webcam" 2>/dev/null
-    pkill -f "streaming-scratchpad-daemon" 2>/dev/null
     kill_widget
 
     # Write config file (survives hyprctl reload)
@@ -172,6 +181,7 @@ streaming_off() {
     # Remove state files
     rm -f "$STATE_FILE" "$WIDGET_FILE" "$PRIVACY_FACE" "$PRIVACY_TOPDOWN"
     rm -f /tmp/streaming/webcam-*-expanded /tmp/streaming-cams-hidden 2>/dev/null
+    rm -f /tmp/streaming-blur-active 2>/dev/null
 }
 
 # Restart just the webcam windows (keep gaps)
@@ -357,6 +367,12 @@ case "${1:-toggle}" in
             echo "Streaming mode: ON"
             [[ -f "$WIDGET_FILE" ]] && echo "Widget: $(cat "$WIDGET_FILE")"
             privacy_status
+            # Show content blur status
+            if [[ -f "/tmp/streaming-blur-active" ]]; then
+                echo "Content blur: ON"
+            else
+                echo "Content blur: OFF"
+            fi
             exit 0
         else
             echo "Streaming mode: OFF"

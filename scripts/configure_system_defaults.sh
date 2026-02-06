@@ -39,25 +39,25 @@ cat > "$MIMEAPPS" <<'EOF'
 [Added Associations]
 image/jpeg=org.kde.krita.desktop;
 video/quicktime=vlc.desktop;
-x-scheme-handler/chrome=zen.desktop;
-x-scheme-handler/http=zen.desktop;
-x-scheme-handler/https=zen.desktop;
+x-scheme-handler/chrome=waterfox.desktop;
+x-scheme-handler/http=waterfox.desktop;
+x-scheme-handler/https=waterfox.desktop;
 inode/directory=org.kde.dolphin.desktop;
 
 [Default Applications]
-# Web Browser - Zen
-application/x-extension-htm=zen.desktop
-application/x-extension-html=zen.desktop
-application/x-extension-shtml=zen.desktop
-application/x-extension-xht=zen.desktop
-application/x-extension-xhtml=zen.desktop
-application/xhtml+xml=zen.desktop
-text/html=zen.desktop
-x-scheme-handler/about=zen.desktop
-x-scheme-handler/chrome=zen.desktop
-x-scheme-handler/http=zen.desktop
-x-scheme-handler/https=zen.desktop
-x-scheme-handler/unknown=zen.desktop
+# Web Browser - Waterfox
+application/x-extension-htm=waterfox.desktop
+application/x-extension-html=waterfox.desktop
+application/x-extension-shtml=waterfox.desktop
+application/x-extension-xht=waterfox.desktop
+application/x-extension-xhtml=waterfox.desktop
+application/xhtml+xml=waterfox.desktop
+text/html=waterfox.desktop
+x-scheme-handler/about=waterfox.desktop
+x-scheme-handler/chrome=waterfox.desktop
+x-scheme-handler/http=waterfox.desktop
+x-scheme-handler/https=waterfox.desktop
+x-scheme-handler/unknown=waterfox.desktop
 
 # File Manager - Dolphin
 inode/directory=org.kde.dolphin.desktop
@@ -82,7 +82,7 @@ video/mp4=vlc.desktop
 video/x-matroska=vlc.desktop
 
 # PDF
-application/pdf=zen.desktop
+application/pdf=waterfox.desktop
 
 # Email
 x-scheme-handler/mailto=gmail-firefox.desktop

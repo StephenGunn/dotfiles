@@ -1,0 +1,13 @@
+[Unit]
+Description=OBS Privacy Blur Daemon
+After=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/stephen/projects/privacy-daemon
+ExecStart=/home/stephen/projects/privacy-daemon/privacy-daemon
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

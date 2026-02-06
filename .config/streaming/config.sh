@@ -8,8 +8,8 @@
 # Use v4l2-ctl --list-devices to find your cameras
 # Use rofi menu "Swap Cameras" to quickly switch these
 
-CAM_FACE="/dev/video0"      # Face camera
-CAM_TOPDOWN="/dev/video2"   # Top-down/desk camera
+CAM_FACE="/dev/video2"
+CAM_TOPDOWN="/dev/video0"
 
 ###################
 ### MONITOR     ###
@@ -71,3 +71,28 @@ KEYS_Y=556                  # Keystroke display (below cams)
 MPV_FORMAT="h264"           # h264 or mjpeg
 MPV_RESOLUTION="1920x1080"
 MPV_FRAMERATE="60"
+
+###################
+### OBS WEBSOCKET #
+###################
+# Settings for streaming-blur.sh OBS integration
+# Requires: websocat (yay -S websocat)
+# OBS Setup: Tools → WebSocket Server Settings → Enable, disable auth
+
+OBS_WS_HOST="localhost"
+OBS_WS_PORT="4455"
+OBS_SCENE_NAME="Desktop"         # Your main OBS scene name
+OBS_BLUR_SOURCE="FallbackPrivacyBlur"  # Full-screen blur for privacy
+OBS_CANVAS_WIDTH=1920            # OBS output canvas width
+OBS_CANVAS_HEIGHT=1080           # OBS output canvas height
+
+###################
+### PRIVACY BLUR ##
+###################
+# Additional sources to blur when privacy mode is active
+# These should have a "PrivacyBlur" shader filter added to them
+# Format: "source_name:filter_name"
+PRIVACY_EXTRA_BLURS=(
+    "Hand Cam:PrivacyBlur"       # Blur hand cam when .env open
+    # "Face Cam:PrivacyBlur"     # Uncomment to also blur face cam
+)

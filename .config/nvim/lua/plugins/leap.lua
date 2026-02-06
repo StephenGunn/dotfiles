@@ -15,9 +15,9 @@ return {
     vim.api.nvim_set_hl(0, "LeapBackdrop", { fg = "#585B70", blend = 30 })
 
     -- Create manual keymaps instead of deprecated create_default_mappings()
-    vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap-forward)')
-    vim.keymap.set({'n', 'x', 'o'}, 'S', '<Plug>(leap-backward)')
-    vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
+    vim.keymap.set({'n', 'x', 'o'}, '<leader>l', '<Plug>(leap-forward)')
+    vim.keymap.set({'n', 'x', 'o'}, '<leader>L', '<Plug>(leap-backward)')
+    vim.keymap.set({'n', 'x', 'o'}, '<leader>gl', '<Plug>(leap-from-window)')
 
     -- Set the repeat keys if you want them
     require("leap.user").set_repeat_keys("<enter>", "<backspace>")

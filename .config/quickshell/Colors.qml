@@ -4,36 +4,36 @@ import QtQuick
 
 QtObject {
     // Base colors
-    readonly property color background: "#1d2021"
-    readonly property color backgroundLight: "#282828"
-    readonly property color foreground: "#ebdbb2"
-    readonly property color foregroundDim: "#a89984"
+    readonly property color background: "#1f1f28"
+    readonly property color backgroundLight: "#2a2a37"
+    readonly property color foreground: "#dcd7ba"
+    readonly property color foregroundDim: "#727169"
 
     // Accent colors
-    readonly property color accent: "#d79921"
-    readonly property color accentBright: "#fabd2f"
+    readonly property color accent: "#e6c384"
+    readonly property color accentBright: "#e6c384"
 
     // Semantic colors
-    readonly property color red: "#cc241d"
-    readonly property color green: "#98971a"
-    readonly property color yellow: "#d79921"
-    readonly property color blue: "#458588"
-    readonly property color magenta: "#b16286"
-    readonly property color cyan: "#689d6a"
+    readonly property color red: "#c34043"
+    readonly property color green: "#76946a"
+    readonly property color yellow: "#e6c384"
+    readonly property color blue: "#7e9cd8"
+    readonly property color magenta: "#957fb8"
+    readonly property color cyan: "#7fb4ca"
 
     // Bright variants
-    readonly property color redBright: "#fb4934"
-    readonly property color greenBright: "#b8bb26"
-    readonly property color yellowBright: "#fabd2f"
-    readonly property color blueBright: "#83a598"
-    readonly property color magentaBright: "#d3869b"
-    readonly property color cyanBright: "#8ec07c"
+    readonly property color redBright: "#e82424"
+    readonly property color greenBright: "#98bb6c"
+    readonly property color yellowBright: "#ff9e3b"
+    readonly property color blueBright: "#7fb4ca"
+    readonly property color magentaBright: "#938aa9"
+    readonly property color cyanBright: "#7aa89f"
 
     // UI specific
-    readonly property color separator: "#504945"
-    readonly property color workspaceActive: "#fabd2f"
-    readonly property color workspaceOccupied: "#83a598"
-    readonly property color workspaceEmpty: "#504945"
+    readonly property color separator: "#2a2a37"
+    readonly property color workspaceActive: "#7e9cd8"
+    readonly property color workspaceOccupied: "#957fb8"
+    readonly property color workspaceEmpty: "#3a3a4d"
 
     // Font
     readonly property string fontFamily: "JetBrainsMono Nerd Font Mono"
