@@ -48,6 +48,7 @@ show_menu() {
     options=(
         "📂 Open Dotfiles Terminal"
         "🔄 Restart Quickshell"
+        "🖱️ Reconnect Trackpad"
         "👆 Restart Trackpad Gestures"
         "🔗 Run link.sh (re-link dotfiles)"
         "🔖 Sync Bookmarks"
@@ -73,6 +74,16 @@ show_menu() {
                     notify-send "Quickshell" "✅ Restarted successfully!" -t 3000
                 else
                     notify-send "Quickshell" "❌ Failed to restart!" -u critical -t 5000
+                fi
+            ) &
+            ;;
+        "🖱️ Reconnect Trackpad")
+            (
+                notify-send "Trackpad" "Reconnecting..." -t 2000
+                if "$HOME/dotfiles/scripts/trackpad-reconnect.sh"; then
+                    notify-send "Trackpad" "✅ Connected!" -t 3000
+                else
+                    notify-send "Trackpad" "❌ Connection failed!" -u critical -t 5000
                 fi
             ) &
             ;;
