@@ -1,13 +1,13 @@
 format = """
-[](fg:#1f1f28 bg:#957fb8)\
+[](fg:#1a1b26 bg:#bb9af7)\
 $os\
 $username\
-[](bg:#c34043 fg:#957fb8)\
+[](bg:#f7768e fg:#bb9af7)\
 $directory\
-[](fg:#c34043 bg:#c0a36e)\
+[](fg:#f7768e bg:#e0af68)\
 $git_branch\
 $git_status\
-[](fg:#c0a36e bg:#7e9cd8)\
+[](fg:#e0af68 bg:#7aa2f7)\
 $c\
 $elixir\
 $elm\
@@ -20,11 +20,11 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[](fg:#7e9cd8 bg:#7fb4ca)\
+[](fg:#7aa2f7 bg:#7dcfff)\
 $docker_context\
-[](fg:#7fb4ca bg:#7fb4ca)\
+[](fg:#7dcfff bg:#7dcfff)\
 $time\
-[ ](fg:#7fb4ca)\n
+[ ](fg:#7dcfff)\n
 """
 
 # Disable the blank line at the start of the prompt (so the bar is at the top)
@@ -36,20 +36,20 @@ disabled = false
 # Username configuration
 [username]
 show_always = true
-style_user = "fg:#1f1f28 bg:#957fb8"  # Dark text color
-style_root = "fg:#1f1f28 bg:#957fb8"  # Dark text color
+style_user = "fg:#1a1b26 bg:#bb9af7"  # Dark text color
+style_root = "fg:#1a1b26 bg:#bb9af7"  # Dark text color
 format = '[$user ]($style)'
 disabled = false
 
 # OS configuration (if enabled)
 [os]
-style = "fg:#1f1f28 bg:#957fb8"  # Dark text color with pywal colors
+style = "fg:#1a1b26 bg:#bb9af7"  # Dark text color with pywal colors
 format = '[  $os ]($style)'  # Use the Arch logo
 disabled = false  # Enable the OS module
 
 # Directory module
 [directory]
-style = "fg:#1f1f28 bg:#c34043"  # Dark text color
+style = "fg:#1a1b26 bg:#f7768e"  # Dark text color
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -63,79 +63,79 @@ truncation_symbol = "…/"
 # Programming language modules
 [c]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "fg:#1f1f28 bg:#7fb4ca"
+style = "fg:#1a1b26 bg:#7dcfff"
 format = '[ $symbol $context ]($style)'
 
 [elixir]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "fg:#1f1f28 bg:#c0a36e"
+style = "fg:#1a1b26 bg:#e0af68"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:#1f1f28 bg:#c0a36e"
+style = "fg:#1a1b26 bg:#e0af68"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = "󰆥 "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "fg:#1f1f28 bg:#7e9cd8"
+style = "fg:#1a1b26 bg:#7aa2f7"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "fg:#1f1f28 bg:#7fb4ca"
+style = "fg:#1a1b26 bg:#7dcfff"
 format = '[ ♥ $time ]($style)'

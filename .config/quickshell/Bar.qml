@@ -168,7 +168,7 @@ PanelWindow {
                     property var hyprMonitor: Hyprland.monitors.values.find(m => m.name === screen?.name)
                     // DP-2 (main) = workspaces 1-5, DP-3 (vertical) = workspaces 6-10
                     property int wsStart: screen?.name === "DP-3" ? 6 : 1
-                    property int wsEnd: screen?.name === "DP-3" ? 10 : 5
+                    property int wsEnd: screen?.name === "DP-3" ? 10 : (Quickshell.screens.length === 1 ? 10 : 5)
 
                     Repeater {
                         model: parent.wsEnd - parent.wsStart + 1

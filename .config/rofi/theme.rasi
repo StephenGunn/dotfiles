@@ -1,1 +1,67 @@
-/home/stephen/.cache/wal/rofi.rasi
+/**
+ * Tokyo Night theme for Rofi
+ */
+
+* {
+    bg: #1a1b26;
+    bg-alt: #1f2335;
+    fg: #c0caf5;
+    fg-alt: #565f89;
+
+    red: #f7768e;
+    green: #9ece6a;
+    yellow: #e0af68;
+    blue: #7aa2f7;
+    purple: #bb9af7;
+    aqua: #7dcfff;
+    orange: #ff9e64;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    background-color: @bg;
+    border: 2px;
+    border-color: @blue;
+    padding: 10px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    padding: 10px;
+    children: [prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @blue;
+    padding: 0 10px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+listview {
+    background-color: transparent;
+    padding: 10px 0 0 0;
+    lines: 10;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg-alt;
+    padding: 5px;
+}
+
+element selected {
+    background-color: @bg-alt;
+    text-color: @blue;
+}
