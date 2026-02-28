@@ -4,8 +4,8 @@
 # Generated from pywal and saved to ~/.config/ghostty/themes/pywal
 
 background-opacity=0.95
-window-padding-x=4
-window-padding-y=4
+window-padding-x=10
+window-padding-y=10
 window-decoration=false
 font-size=15
 

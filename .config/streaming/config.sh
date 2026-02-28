@@ -8,8 +8,8 @@
 # Use v4l2-ctl --list-devices to find your cameras
 # Use rofi menu "Swap Cameras" to quickly switch these
 
-CAM_FACE="/dev/video2"
-CAM_TOPDOWN="/dev/video0"
+CAM_FACE="/dev/video0"
+CAM_TOPDOWN="/dev/video2"
 
 ###################
 ### MONITOR     ###
