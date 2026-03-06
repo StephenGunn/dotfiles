@@ -26,7 +26,21 @@ echo
 
 clone_if_missing "theme-switcher"
 clone_if_missing "privacy-daemon"
-clone_if_missing "nvim-svelte-snippets"
+
+# nvim-svelte plugins are from a different org
+if [ -d "nvim-svelte-snippets" ]; then
+    echo "✓ nvim-svelte-snippets already exists, skipping"
+else
+    echo "Cloning nvim-svelte-snippets..."
+    git clone "git@github.com:nvim-svelte/nvim-svelte-snippets.git"
+fi
+
+if [ -d "nvim-svelte-check" ]; then
+    echo "✓ nvim-svelte-check already exists, skipping"
+else
+    echo "Cloning nvim-svelte-check..."
+    git clone "git@github.com:nvim-svelte/nvim-svelte-check.git"
+fi
 
 echo
 echo "Done! All required projects are in $PROJECTS_DIR"
