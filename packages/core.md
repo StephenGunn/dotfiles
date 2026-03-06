@@ -4,12 +4,15 @@
 
 # === Shell & Terminal ===
 fish
+fisher
 starship
 tmux
 neovim
 fzf
 zoxide
 eza
+tree
+lsd
 
 # === File Management ===
 yazi
@@ -17,8 +20,13 @@ thunar
 tumbler
 ffmpegthumbnailer
 gvfs
+gvfs-smb
+gvfs-nfs
 unzip
 unrar
+imv
+chafa
+ueberzugpp
 
 # === System Tools ===
 htop
@@ -28,10 +36,18 @@ stow
 tealdeer
 inotify-tools
 jq
+wget
+man-db
+dos2unix
+usbutils
+smartmontools
+traceroute
 
 # === Development ===
 git
+git-filter-repo
 lazygit
+lazydocker
 ripgrep
 fd
 base
@@ -47,7 +63,9 @@ rustup
 ruby
 docker
 docker-compose
+podman-compose
 mkcert
+vim
 
 # === Hyprland Core ===
 hyprland
@@ -65,6 +83,14 @@ grim
 slurp
 wf-recorder
 wtype
+wev
+
+# === Wayland/XDG ===
+xdg-desktop-portal-hyprland
+xdg-utils
+qt5-wayland
+qt6-wayland
+egl-wayland
 
 # === Clipboard ===
 wl-clipboard
@@ -73,17 +99,43 @@ AUR:rofi-emoji
 
 # === Audio/Video ===
 pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+libpulse
 wireplumber
+mpv
+gst-libav
+gst-plugin-pipewire
+gst-plugins-bad
 
 # === Networking ===
 networkmanager
+network-manager-applet
+iwd
+wireless_tools
 bluez
 bluez-utils
+bluez-tools
+bluetui
 tailscale
+dnsmasq
 
 # === System Services ===
 upower
 power-profiles-daemon
+polkit-gnome
+
+# === Boot & Kernel ===
+linux
+linux-firmware
+linux-headers
+grub
+grub-btrfs
+os-prober
+efibootmgr
+btrfs-progs
+snap-pac
 
 # === Theming ===
 kvantum
@@ -97,7 +149,7 @@ AUR:python-pywal16
 
 # === Browsers ===
 firefox
-AUR:zen-browser-bin
+AUR:waterfox-bin
 
 # === Core Apps ===
 AUR:1password
@@ -120,6 +172,9 @@ btrbk
 timeshift
 syncthing
 AUR:pika-backup
+
+# === AUR Helper ===
+yay
 
 # === Dev Tools (CLI) ===
 AUR:claude-code
