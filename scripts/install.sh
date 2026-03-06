@@ -187,6 +187,22 @@ else
 fi
 
 # ============================================================================
+# Post-Install: Clone Required Projects
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}📁 Cloning required projects...${NC}"
+"$DOTFILES_DIR/scripts/clone_projects.sh"
+
+# ============================================================================
+# Post-Install: Set Default Shell
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}🐟 Setting up fish shell...${NC}"
+"$DOTFILES_DIR/scripts/set_default_shell.sh"
+
+# ============================================================================
 # Done
 # ============================================================================
 
@@ -198,4 +214,5 @@ echo ""
 echo "Next steps:"
 echo "  1. Run: ~/dotfiles/link.sh"
 echo "  2. Run: ~/dotfiles/scripts/restore_systemd_services.sh"
-echo "  3. Reboot"
+echo "  3. Log out and back in (for fish shell)"
+echo "  4. Reboot"
