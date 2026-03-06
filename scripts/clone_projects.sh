@@ -17,7 +17,7 @@ clone_if_missing() {
         echo "✓ $repo already exists, skipping"
     else
         echo "Cloning $repo..."
-        git clone "https://github.com/$GITHUB_USER/$repo.git"
+        git clone "git@github.com:$GITHUB_USER/$repo.git"
     fi
 }
 
