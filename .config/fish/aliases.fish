@@ -18,6 +18,9 @@ alias server "ssh 192.168.86.33"
 # a better ls
 alias ls "eza -l --icons -a --group-directories-first"
 
+# network
+alias wifi "nmtui"
+
 # fun programs
 alias stars 'astroterm --city "Kansas City" --color -u'
 alias bonsai 'cbonsai -l -i'

@@ -41,7 +41,9 @@ set -Ux XDG_DATA_HOME "$HOME/.local/share"
 set -Ux MIME_TYPES_PATH "$XDG_DATA_HOME/mime/types"
 xdg-mime default org.kde.krita.desktop image/jpeg image/png image/gif
 
-eval $(opam env)
+if command -q opam
+    eval (opam env)
+end
 
 # postgresql setup
 set -Ux PATH /usr/bin/postgres /usr/bin/psql $PATH

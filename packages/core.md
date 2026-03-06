@@ -61,6 +61,7 @@ stylua
 luarocks
 rustup
 ruby
+opam
 docker
 docker-compose
 podman-compose

@@ -155,5 +155,34 @@ if pgrep -x Hyprland > /dev/null; then
     hyprctl reload > /dev/null 2>&1 && echo "  ✓ Hyprland config reloaded"
 fi
 
+# ============================================================================
+# Step 6: Setup Theme Switcher
+# ============================================================================
+echo ""
+echo "🎨 Setting up theme switcher..."
+
+THEME_SWITCHER_DIR="$HOME/projects/theme-switcher"
+
+# Symlink theme-switch to PATH
+if [ -x "$THEME_SWITCHER_DIR/scripts/theme-switch" ]; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$THEME_SWITCHER_DIR/scripts/theme-switch" "$HOME/.local/bin/theme-switch"
+    echo "  ✓ theme-switch linked to ~/.local/bin/"
+else
+    echo "  ⚠ theme-switcher not found at $THEME_SWITCHER_DIR"
+    echo "    Clone it: git clone https://github.com/StephenGunn/theme-switcher.git $THEME_SWITCHER_DIR"
+fi
+
+# Apply a default theme if none is set (fresh install)
+if [ ! -f "$HOME/.config/current-theme" ]; then
+    echo "  ⚠ No theme set (fresh install detected)"
+    if [ -x "$HOME/.local/bin/theme-switch" ]; then
+        echo "  → Applying default theme: gruvbox-dark"
+        "$HOME/.local/bin/theme-switch" gruvbox-dark > /dev/null 2>&1 && \
+            echo "  ✓ Default theme applied" || \
+            echo "  ⚠ Failed to apply default theme (run 'theme-switch' manually)"
+    fi
+fi
+
 echo ""
 echo "🎉 Done! Your dotfiles are linked and ready."
