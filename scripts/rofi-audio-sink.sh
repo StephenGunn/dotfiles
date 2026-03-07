@@ -4,8 +4,8 @@
 # Get current default sink
 default_sink=$(pactl get-default-sink)
 
-# Get list of sinks with their descriptions, filtered to preferred devices
-sinks=$(pactl list sinks | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -E "PRO X|RODECaster")
+# Get list of sinks with their descriptions
+sinks=$(pactl list sinks | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /')
 
 # Format for rofi: show description, store name
 options=""

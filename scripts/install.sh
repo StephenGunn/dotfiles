@@ -195,6 +195,21 @@ echo -e "${YELLOW}📁 Cloning required projects...${NC}"
 "$DOTFILES_DIR/scripts/clone_projects.sh"
 
 # ============================================================================
+# Post-Install: User Groups
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}👤 Setting up user groups...${NC}"
+
+# input group is required for libinput-gestures (touchpad multitouch)
+if ! groups "$USER" | grep -q '\binput\b'; then
+    sudo usermod -aG input "$USER"
+    echo -e "  ${GREEN}✓${NC} Added $USER to input group (logout required)"
+else
+    echo -e "  ${GREEN}✓${NC} Already in input group"
+fi
+
+# ============================================================================
 # Post-Install: Set Default Shell
 # ============================================================================
 
