@@ -1,20 +1,20 @@
 /**
- * Kanagawa Dark theme for Rofi
+ * Everforest theme for Rofi
  */
 
 * {
-    bg: #1f1f28;
-    bg-alt: #2a2a37;
-    fg: #dcd7ba;
-    fg-alt: #a6a69c;
+    bg: #2b3339;
+    bg-alt: #323d43;
+    fg: #d3c6aa;
+    fg-alt: #859289;
 
-    red: #c34043;
-    green: #98bb6b;
-    yellow: #c0a36e;
-    blue: #7e9cd8;
-    purple: #957fb8;
-    aqua: #7fb4ca;
-    orange: #ffa066;
+    red: #e67e80;
+    green: #a7c080;
+    yellow: #dbbc7f;
+    blue: #7fbbb3;
+    purple: #d699b6;
+    aqua: #83c092;
+    orange: #e69875;
 
     background-color: transparent;
     text-color: @fg;
@@ -23,7 +23,7 @@
 window {
     background-color: @bg;
     border: 2px;
-    border-color: @blue;
+    border-color: @green;
     padding: 10px;
 }
 
@@ -40,7 +40,7 @@ inputbar {
 
 prompt {
     background-color: transparent;
-    text-color: @blue;
+    text-color: @green;
     padding: 0 10px 0 0;
 }
 
@@ -63,5 +63,5 @@ element {
 
 element selected {
     background-color: @bg-alt;
-    text-color: @blue;
+    text-color: @green;
 }

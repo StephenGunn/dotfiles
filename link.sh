@@ -47,6 +47,12 @@ if [ -f "$HOME/.config/hypr/hyprland.conf" ] && ! is_dotfiles_managed "$HOME/.co
     rm -f "$HOME/.config/hypr/hyprland.conf"
 fi
 
+# Git creates a default .gitconfig on first use
+if [ -f "$HOME/.gitconfig" ] && ! is_dotfiles_managed "$HOME/.gitconfig"; then
+    echo "  → Removing auto-generated .gitconfig (dotfiles version will replace it)"
+    rm -f "$HOME/.gitconfig"
+fi
+
 # Add other known auto-generated files here as you discover them
 # Use the is_dotfiles_managed function to safely check:
 #

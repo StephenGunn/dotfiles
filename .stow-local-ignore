@@ -1,9 +1,39 @@
 # Ignore specific files and directories. For more info on regular expressions in Stow, see the documentation:
 # https://www.gnu.org/software/stow/manual/stow.html
 
+# Build/meta files
 ^scripts/
 ^README\.md
 ^\.git
 ^\.gitignore
 ^link\.sh
+^\.stow-local-ignore
+
+# Documentation files
+^BOOKMARKS_SYNC\.md
+^DISPLAY_SLEEP_SETUP\.md
+^GPU_PASSTHROUGH_PLAN\.md
+^GPU_PASSTHROUGH_PROGRESS\.md
+^GTK_BOOKMARKS\.md
+^SETUP_COMPLETE\.md
+^SSH_CLIPBOARD_SETUP\.md
+^STOW_EXPLAINED\.md
+^SYSTEM_DEFAULTS\.md
+^TRACKPAD_GESTURES_FIX\.md
+^html-svelte-tools\.md
+^nvim-keybinds\.md
+
+# Non-config files that shouldn't be stowed to $HOME
+^docs/
+^grub/
+^packages/
+^wallpapers/
+^example\.http
+^hyprpanel_config.*\.json
+^iommu\.sh
+^j\.lua
+^keys\.keymap
+^login_image\.jpg
+
+# Old xfce config
 ^\.config/xfce4/xfconf/xfce-perchannel-xml/thunar\.xml
