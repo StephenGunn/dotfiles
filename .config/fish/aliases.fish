@@ -1,6 +1,9 @@
 # fast program access
 alias gg="lazygit"
 
+# virtual machien bs
+alias lg='looking-glass-client -f /dev/shm/looking-glass -m KEY_F12'
+
 # dotfile aliases
 alias link_dots="bash ~/dotfiles/link.sh"
 
@@ -24,4 +27,9 @@ alias wifi "nmtui"
 # fun programs
 alias stars 'astroterm --city "Kansas City" --color -u'
 alias bonsai 'cbonsai -l -i'
+
+# zmk keyboard firmware
+alias zmk-build="~/zmk/build.sh"
+alias zmk-env="source ~/zmk/.venv/bin/activate.fish"
+alias zmk="cd ~/zmk"
 
