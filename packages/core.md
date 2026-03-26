@@ -70,7 +70,6 @@ vim
 
 # === Hyprland Core ===
 hyprland
-hyprpaper
 hypridle
 hyprlock
 hyprcursor
@@ -79,7 +78,7 @@ rofi
 dunst
 libnotify
 brightnessctl
-swww
+awww
 grim
 slurp
 wf-recorder

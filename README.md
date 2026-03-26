@@ -206,7 +206,7 @@ ln -sf ~/projects/theme-switcher/scripts/theme-switch ~/.local/bin/theme-switch
 - Yazi (TUI file manager) - Flavor system
 - Starship (prompt) - Pywal-generated colors
 - Dunst (notifications) - Pywal-generated config
-- Wallpapers - Random selection with smooth transitions (swww)
+- Wallpapers - Random selection with smooth transitions (awww)
 
 ### Adding New Themes
 Each theme needs the following files in `~/projects/theme-switcher/themes/<theme-name>/`:

@@ -9,7 +9,6 @@ gcr-ssh-agent.service
 gpu-screen-recorder.service
 hypridle.service
 hyprpanel.service
-hyprpaper.service
 kde-baloo.service
 libinput-gestures.service
 mpris-proxy.service

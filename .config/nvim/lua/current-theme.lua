@@ -4,10 +4,10 @@
 vim.opt.background = "dark"
 
 -- Set colorscheme
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("gruvbox")
 
 -- Catppuccin flavor
-if "" ~= "" and "kanagawa" == "catppuccin" then
+if "" ~= "" and "gruvbox" == "catppuccin" then
     require("catppuccin").setup({ flavour = "" })
     vim.cmd.colorscheme("catppuccin")
 end

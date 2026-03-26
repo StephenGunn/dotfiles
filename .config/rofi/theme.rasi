@@ -1,20 +1,20 @@
 /**
- * Kanagawa Dark theme for Rofi
+ * Gruvbox Dark theme for Rofi
  */
 
 * {
-    bg: #1f1f28;
-    bg-alt: #2a2a37;
-    fg: #dcd7ba;
-    fg-alt: #a6a69c;
+    bg: #282828;
+    bg-alt: #3c3836;
+    fg: #ebdbb2;
+    fg-alt: #a89984;
 
-    red: #c34043;
-    green: #98bb6b;
-    yellow: #c0a36e;
-    blue: #7e9cd8;
-    purple: #957fb8;
-    aqua: #7fb4ca;
-    orange: #ffa066;
+    red: #cc241d;
+    green: #98971a;
+    yellow: #d79921;
+    blue: #458588;
+    purple: #b16286;
+    aqua: #689d6a;
+    orange: #d65d0e;
 
     background-color: transparent;
     text-color: @fg;
@@ -23,7 +23,7 @@
 window {
     background-color: @bg;
     border: 2px;
-    border-color: @blue;
+    border-color: @aqua;
     padding: 10px;
 }
 
@@ -40,7 +40,7 @@ inputbar {
 
 prompt {
     background-color: transparent;
-    text-color: @blue;
+    text-color: @aqua;
     padding: 0 10px 0 0;
 }
 
@@ -63,5 +63,5 @@ element {
 
 element selected {
     background-color: @bg-alt;
-    text-color: @blue;
+    text-color: @aqua;
 }
