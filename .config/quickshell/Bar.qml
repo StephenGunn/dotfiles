@@ -29,6 +29,10 @@ PanelWindow {
         color: Qt.rgba(Colors.background.r, Colors.background.g, Colors.background.b, 0.25)
     }
 
+    // VM state
+    property string vmState: "unknown"
+    property bool vmRunning: false
+
     // System data (main bar only)
     property int cpuUsage: 0
     property int memUsage: 0
@@ -120,6 +124,29 @@ PanelWindow {
             volProc.running = true
             micProc.running = true
         }
+    }
+
+    Process {
+        id: vmProc
+        running: false
+        command: ["virsh", "-c", "qemu:///system", "domstate", "win11"]
+        stdout: SplitParser {
+            onRead: data => {
+                if (!data) return
+                var state = data.trim()
+                if (state.length === 0) return
+                root.vmState = state
+                root.vmRunning = (state === "running")
+            }
+        }
+    }
+
+    Timer {
+        interval: 5000
+        running: !isVertical
+        repeat: true
+        triggeredOnStart: true
+        onTriggered: vmProc.running = true
     }
 
     RowLayout {
@@ -378,6 +405,49 @@ PanelWindow {
                     Text { text: "\udb80\udf5b"; color: Colors.magenta; font.family: Colors.fontFamily; font.pixelSize: 22 }
                     Text { text: root.memUsage + "%"; color: Colors.foreground; font.family: Colors.fontFamily; font.pixelSize: 14 }
                 }
+            }
+        }
+
+        // Badge: VM Status - main only
+        Rectangle {
+            visible: !isVertical
+            color: Colors.backgroundLight
+            radius: 8
+            implicitWidth: vmContent.implicitWidth + 16
+            implicitHeight: 32
+
+            RowLayout {
+                id: vmContent
+                anchors.centerIn: parent
+                spacing: 6
+
+                Text {
+                    text: "\udb80\udd79"
+                    color: root.vmRunning ? Colors.green : Colors.foregroundDim
+                    font.family: Colors.fontFamily
+                    font.pixelSize: 22
+
+                    Behavior on color {
+                        ColorAnimation { duration: 200 }
+                    }
+                }
+
+                Text {
+                    text: root.vmRunning ? "ON" : "OFF"
+                    color: root.vmRunning ? Colors.green : Colors.foregroundDim
+                    font.family: Colors.fontFamily
+                    font.pixelSize: 14
+
+                    Behavior on color {
+                        ColorAnimation { duration: 200 }
+                    }
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+                onClicked: Hyprland.dispatch("exec ~/dotfiles/scripts/rofi-vm.sh")
             }
         }
 
