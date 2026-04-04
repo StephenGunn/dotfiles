@@ -4,7 +4,7 @@
 VM_NAME="win11"
 VIRSH="virsh -c qemu:///system"
 LG_CMD="looking-glass-client"
-LG_ARGS="-S -m 28"
+LG_ARGS="-f /dev/shm/looking-glass -S -m 88"
 
 # Get VM state
 VM_STATE=$($VIRSH domstate "$VM_NAME" 2>/dev/null | tr -d '[:space:]')
