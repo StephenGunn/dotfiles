@@ -137,6 +137,14 @@ else
     echo "    (You can copy from an existing host config)"
 fi
 
+# Link host-specific hypridle config
+if [ -f "$HYPR_HOSTS_DIR/hypridle-$HOSTNAME.conf" ]; then
+    ln -sf "$HYPR_HOSTS_DIR/hypridle-$HOSTNAME.conf" "$HOME/.config/hypr/hypridle.conf"
+    echo "  ✓ Hypridle config linked: $HOSTNAME (host-specific)"
+else
+    echo "  ⚠ No hypridle config found for '$HOSTNAME', using default"
+fi
+
 # ============================================================================
 # Step 5: Fix Permissions & Reload Configs
 # ============================================================================

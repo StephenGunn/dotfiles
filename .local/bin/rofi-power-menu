@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
 # Rofi Power Menu with Suspend option
 
-options="󰒲 Suspend\n󰍃 Logout\n󰜉 Restart\n󰐥 Shutdown"
+# Check display state
+if [[ -f /tmp/display-off ]]; then
+    DISPLAY_LABEL="󰛧 Display On"
+else
+    DISPLAY_LABEL="󰶐 Display Off"
+fi
+
+options="$DISPLAY_LABEL\n󰒲 Suspend\n󰍃 Logout\n󰜉 Restart\n󰐥 Shutdown"
 
 chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power" -theme-str 'window {width: 250px;}')
 
 case $chosen in
+    "$DISPLAY_LABEL")
+        ~/dotfiles/scripts/display-toggle.sh
+        ;;
     "󰒲 Suspend")
         systemctl suspend
         ;;
