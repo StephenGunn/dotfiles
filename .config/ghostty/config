@@ -33,3 +33,4 @@ keybind = shift+enter=text:\n
 
 # Theme (managed by theme-switcher, gitignored)
 config-file = ?theme.conf
+theme = Nord
