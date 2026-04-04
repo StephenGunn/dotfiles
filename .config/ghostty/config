@@ -30,4 +30,6 @@ keybind = ctrl+minus=decrease_font_size:1
 keybind = ctrl+shift+minus=reset_font_size
 
 keybind = shift+enter=text:\n
-theme = Gruvbox Dark
+
+# Theme (managed by theme-switcher, gitignored)
+config-file = ?theme.conf

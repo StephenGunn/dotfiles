@@ -137,6 +137,14 @@ efibootmgr
 btrfs-progs
 snap-pac
 
+# === Fonts ===
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+ttf-nerd-fonts-symbols
+ttf-jetbrains-mono-nerd
+
 # === Theming ===
 kvantum
 imagemagick
