@@ -26,6 +26,7 @@ alias wifi "nmtui"
 
 # fun programs
 alias stars 'astroterm --city "Kansas City" --color -u'
+alias weather 'curl wttr.in/Kansas+City'
 alias bonsai 'cbonsai -l -i'
 
 # zmk keyboard firmware

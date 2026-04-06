@@ -56,7 +56,8 @@ main_menu() {
 󰃟 Image Settings
 󰒓 Edit Config
 ───────────────────
- Swap Cameras"
+ Swap Cameras
+󰑓 Restart Sidebar Daemon"
 
     echo "$options" | rofi -dmenu -i -p "Streaming" -theme-str 'window {width: 350px;}'
 }
@@ -271,5 +272,11 @@ case "$choice" in
         ;;
     *"Swap Cameras"*)
         swap_cameras
+        ;;
+    *"Restart Sidebar Daemon"*)
+        pkill -f "streaming-scratchpad-daemon.sh" 2>/dev/null
+        sleep 0.3
+        "$SCRIPTS/streaming-scratchpad-daemon.sh" start &
+        notify-send "Streaming" "Sidebar daemon restarted" -t 1500
         ;;
 esac

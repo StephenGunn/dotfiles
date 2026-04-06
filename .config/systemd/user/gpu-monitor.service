@@ -1,0 +1,12 @@
+[Unit]
+Description=AMD GPU Monitor (RX 7900 XTX)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/dotfiles/scripts/gpu-monitor.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
