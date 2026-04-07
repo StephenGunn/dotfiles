@@ -24,6 +24,9 @@ gvfs-smb
 gvfs-nfs
 unzip
 unrar
+xarchiver
+thunar-archive-plugin
+ark
 imv
 chafa
 ueberzugpp

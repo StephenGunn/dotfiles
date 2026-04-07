@@ -46,10 +46,5 @@ hyprctl dispatch moveworkspacetomonitor 8 DP-3
 hyprctl dispatch moveworkspacetomonitor 9 DP-3
 hyprctl dispatch moveworkspacetomonitor 10 DP-3
 
-# Restart Quickshell to ensure it's on the correct monitor
-pkill -x quickshell
-sleep 0.3
-quickshell &
-
 # Log completion
 echo "$(date): Hyprland wake-up restoration complete" >> /tmp/hyprland-wake.log
