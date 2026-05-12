@@ -1,5 +1,6 @@
 # fast program access
 alias gg="lazygit"
+alias tasks="kairo"
 
 # virtual machien bs
 alias lg='looking-glass-client -f /dev/shm/looking-glass -m KEY_F12'
@@ -23,6 +24,7 @@ alias ls "eza -l --icons -a --group-directories-first"
 
 # network
 alias wifi "nmtui"
+alias net "netorbit"
 
 # fun programs
 alias stars 'astroterm --city "Kansas City" --color -u'

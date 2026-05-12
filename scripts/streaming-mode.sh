@@ -158,6 +158,9 @@ streaming_on() {
     # Move scratchpad if it exists
     move_scratchpad
 
+    # Start privacy daemon (OBS blur integration)
+    systemctl --user start privacy-daemon.service 2>/dev/null
+
     # Start sidebar daemon (repositions windows after workspace switches)
     pkill -f "streaming-scratchpad-daemon.sh" 2>/dev/null
     "$SCRIPT_DIR/streaming-scratchpad-daemon.sh" start &
@@ -167,6 +170,9 @@ streaming_on() {
 }
 
 streaming_off() {
+    # Stop privacy daemon
+    systemctl --user stop privacy-daemon.service 2>/dev/null
+
     # Kill sidebar daemon
     pkill -f "streaming-scratchpad-daemon.sh" 2>/dev/null
 

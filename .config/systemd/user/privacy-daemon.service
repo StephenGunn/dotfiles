@@ -8,6 +8,7 @@ WorkingDirectory=/home/stephen/projects/privacy-daemon
 ExecStart=/home/stephen/projects/privacy-daemon/privacy-daemon
 Restart=on-failure
 RestartSec=5
+StartLimitBurst=5
+StartLimitIntervalSec=60
 
 [Install]
-WantedBy=default.target

@@ -10,6 +10,25 @@ return {
 			require("nvim-treesitter.install").prefer_git = true
 			require("nvim-treesitter.install").command_extra_args = {}
 
+			-- Fix nvim-treesitter's markdown injection directive for Neovim 0.11+.
+			-- In newer Neovim, match[capture_id] is a list of TSNodes, not a single
+			-- node; the { all = false } compat shim was removed in 0.12, so
+			-- nvim-treesitter's directive crashes with `attempt to call method 'range'
+			-- (a nil value)` on markdown files containing fenced code blocks with a
+			-- language info string (e.g. ```ts). nvim-treesitter master is archived,
+			-- so we patch the directive here.
+			vim.treesitter.query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+				local nodes = match[pred[2]]
+				local node = type(nodes) == "table" and nodes[1] or nodes
+				if not node then
+					return
+				end
+				local alias = vim.treesitter.get_node_text(node, bufnr):lower()
+				local aliases = { ex = "elixir", pl = "perl", sh = "bash", ts = "typescript", uxn = "uxntal" }
+				local ft = vim.filetype.match({ filename = "a." .. alias })
+				metadata["injection.language"] = ft or aliases[alias] or alias
+			end, { force = true })
+
 			-- Add custom query for code title syntax
 			local query = [[
 				(fenced_code_block
