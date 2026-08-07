@@ -183,6 +183,10 @@ AUR:ghostty-git
 # every other machine with no bar at all. In extra/, not the AUR.
 quickshell
 AUR:hyprpicker
+# pyprland: the `magnify` plugin behind Super+X / Super+Z zoom, configured in
+# .config/hypr/pyprland.toml and started from autostart.conf. Was bound and
+# configured but never actually installed on any host.
+AUR:pyprland
 
 # === Backups ===
 borg

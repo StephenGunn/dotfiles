@@ -2,11 +2,13 @@
 
 ## Needs your password (blocking)
 
-- [ ] `sudo pacman -S quickshell papirus-icon-theme`
+- [ ] `sudo pacman -S quickshell papirus-icon-theme && yay -S pyprland`
       `quickshell` is in `extra/` and is the only thing between you and the
       bar — `exec-once = quickshell` is already in `autostart.conf:18` and
       `Colors.qml` is generated, so a Hyprland restart brings it up.
       `papirus-icon-theme` is what `dunst` wants for notification icons.
+      `pyprland` is the Super+X / Super+Z zoom; it was bound in
+      `keybinds.conf` and configured in `pyprland.toml` but never installed.
 - [ ] `~/dotfiles/scripts/set_default_shell.sh` — runs `chsh -s /usr/bin/fish`.
       Fish is installed and in `/etc/shells`; passwd still says bash.
 - [ ] Restart Hyprland, confirm the bar appears.
@@ -45,12 +47,13 @@
       `~/wallpapers` and `~/grub` are symlinked into `$HOME` despite being
       listed. Fix = drop the `^`; the consequence is those five symlinks
       disappear on next restow.
-- [ ] **Two dead autostart lines** left in `autostart.conf` after `1fcc874`
-      removed the `agsv1` one: `exec = eww daemon` (line 30) and
-      `exec-once = /usr/local/bin/pypr` (line 42, path does not exist).
-      `eww` is an ags-era leftover now that the bar is quickshell; pyprland
-      you may actually want back for scratchpads, and `keybinds.conf:143-144`
-      still binds Super+X and Super+Z to `pypr zoom`.
+- [ ] **One dead autostart line** left in `autostart.conf` after `1fcc874`
+      removed `agsv1` and pyprland was fixed: `exec = eww daemon` (line 30),
+      an ags-era leftover now that the bar is quickshell.
+- [ ] **`pypr expose` is configured but unbound.** `pyprland.toml` enables the
+      `expose` plugin, but the only binding for it (`keybinds.conf:142`,
+      Super+H) is commented out as "(disabled)". Either bind it or drop the
+      plugin.
 - [ ] **`config.fish` appends to `fish_user_paths` on every shell start**
       (lines 37, 79, 93: `set -U fish_user_paths ... $fish_user_paths`).
       Universal var, so it grows without bound — titan's copy already had
