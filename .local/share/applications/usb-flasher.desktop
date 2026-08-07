@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=USB Flasher
+GenericName=USB Flasher
+Comment=Flash ISO images to USB drives (with admin privileges)
+Exec=ghostty -e bash -c "sudo -E WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR popsicle-gtk %f 2>&1; read -p 'Press enter to close...'"
+Icon=com.system76.Popsicle
+Categories=System;
+Keywords=USB;Flash;Drive;ISO;
+MimeType=application/x-cd-image;application/x-raw-disk-image;
+Terminal=false
+StartupNotify=true

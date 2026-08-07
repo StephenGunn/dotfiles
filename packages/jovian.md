@@ -66,13 +66,13 @@ v4l2loopback-dkms
 v4l2loopback-utils
 
 # === KDE Apps ===
-plasma-meta
+plasma-workspace
 konsole
 kate
 ark
 
 # === QuickShell ===
-AUR:quickshell-git
+quickshell
 blueprint-compiler
 
 # === Browsers (Desktop) ===
@@ -101,6 +101,8 @@ AUR:streamcontroller-plugin-tools-git
 # === Printing ===
 cups
 cups-pdf
+AUR:epson-inkjet-printer-escpr
+AUR:epson-inkjet-printer-escpr2
 
 # === Other Desktop Tools ===
 waybar
@@ -116,6 +118,31 @@ AUR:stripe-cli
 AUR:doctl
 AUR:ngrok
 AUR:beekeeper-studio-bin
+
+# === GPU Passthrough / VM ===
+AUR:looking-glass
+AUR:looking-glass-module-dkms
+swtpm
+
+# === CTF / Forensics ===
+binwalk
+fcrackzip
+foremost
+AUR:pngcheck
+AUR:stegano
+AUR:stegsolve
+
+# === Streaming Widgets ===
+cmatrix
+cava
+AUR:cbonsai-git
+AUR:pipes.sh
+
+# === Game Modding ===
+AUR:r2modman
+
+# === Network Management ===
+AUR:unifi
 
 # === X11 Compat ===
 xorg-xhost

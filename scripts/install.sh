@@ -203,6 +203,22 @@ echo -e "${YELLOW}📁 Cloning required projects...${NC}"
 "$DOTFILES_DIR/scripts/clone_projects.sh"
 
 # ============================================================================
+# Post-Install: Theme Switcher
+# ============================================================================
+
+echo ""
+echo -e "${YELLOW}🎨 Setting up Theme Switcher...${NC}"
+
+THEME_SWITCHER_DIR="$HOME/projects/theme-switcher"
+if [ -d "$THEME_SWITCHER_DIR" ] && [ -f "$THEME_SWITCHER_DIR/install.sh" ]; then
+    chmod +x "$THEME_SWITCHER_DIR/install.sh"
+    "$THEME_SWITCHER_DIR/install.sh"
+    echo -e "  ${GREEN}✓${NC} Theme Switcher installed"
+else
+    echo -e "  ${YELLOW}⚠${NC} Theme Switcher not found, skipping (clone it to ~/projects/theme-switcher)"
+fi
+
+# ============================================================================
 # Post-Install: Set Default Shell
 # ============================================================================
 
@@ -222,5 +238,7 @@ echo ""
 echo "Next steps:"
 echo "  1. Run: ~/dotfiles/link.sh"
 echo "  2. Run: ~/dotfiles/scripts/restore_systemd_services.sh"
-echo "  3. Log out and back in (for fish shell)"
-echo "  4. Reboot"
+echo "  3. Run: ~/dotfiles/scripts/restore_system_services.sh"
+echo "  4. Log out and back in (for fish shell)"
+echo "  5. Reboot"
+echo "  6. Run: theme-switch kanagawa-dark  (or your preferred theme)"

@@ -44,6 +44,8 @@ man-db
 dos2unix
 usbutils
 smartmontools
+gparted
+lshw
 traceroute
 
 # === Development ===
@@ -122,17 +124,21 @@ bluez-utils
 bluez-tools
 bluetui
 tailscale
+openbsd-netcat
 dnsmasq
 
 # === System Services ===
+sddm
 upower
 power-profiles-daemon
-polkit-gnome
+hyprpolkitagent
 
 # === Boot & Kernel ===
 linux
+linux-zen
 linux-firmware
 linux-headers
+linux-zen-headers
 grub
 grub-btrfs
 os-prober

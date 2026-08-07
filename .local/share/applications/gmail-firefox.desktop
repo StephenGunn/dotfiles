@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Gmail (Firefox)
+Exec=firefox "https://mail.google.com/mail/?view=cm&fs=1&to=%u"
+StartupNotify=false
+MimeType=x-scheme-handler/mailto;
