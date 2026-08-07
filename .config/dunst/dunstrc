@@ -1,0 +1,106 @@
+# Base dunst config.
+#
+# This file is tracked. Colors are NOT set here at theme-switch time -- they
+# are written to the gitignored drop-in
+#
+#     .config/dunst/dunstrc.d/99-colors.conf
+#
+# which dunst loads after this file and which therefore wins. The values in
+# the urgency sections below are only the fallback for a fresh machine that
+# has not run theme-switch yet.
+#
+# Drop-ins load in lexical order, most important last. To pin notifications
+# to a particular output on one host, add an untracked drop-in such as
+# .config/dunst/dunstrc.d/10-host.conf containing:
+#
+#     [global]
+#         follow = none
+#         monitor = DP-3
+#
+# Do not hardcode `monitor` here -- these dotfiles are shared across machines
+# and an output name that does not exist on a given host breaks notifications
+# on it.
+
+[global]
+    follow = mouse
+
+    # Geometry
+    # height/offset use the post-1.12 tuple syntax. The old `height = 150`
+    # and `offset = 7x7` forms still parse but log a deprecation warning on
+    # every start; (0, 150) is the documented equivalent of legacy height.
+    width = 350
+    height = (0, 150)
+    origin = top-left
+    offset = (7, 7)
+
+    # Appearance
+    frame_width = 2
+    corner_radius = 12
+    separator_height = 2
+    padding = 12
+    horizontal_padding = 14
+    text_icon_padding = 12
+    gap_size = 8
+
+    # Text
+    font = JetBrainsMono Nerd Font 11
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = end
+
+    # Icons
+    icon_position = left
+    min_icon_size = 48
+    max_icon_size = 48
+    icon_corner_radius = 8
+    icon_theme = "Papirus-Dark"
+    enable_recursive_icon_lookup = true
+
+    # History
+    sticky_history = yes
+    history_length = 20
+
+    # Misc
+    sort = yes
+    indicate_hidden = yes
+    show_indicators = yes
+
+    # Mouse actions
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+    # Progress bar
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 4
+
+# Fallback colors only -- 99-colors.conf overrides all of these once
+# theme-switch has run at least once.
+[urgency_low]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    frame_color = "#458588"
+    highlight = "#a7c080"
+    timeout = 5
+
+[urgency_normal]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    frame_color = "#689d6a"
+    highlight = "#7fbbb3"
+    timeout = 8
+
+[urgency_critical]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    frame_color = "#cc241d"
+    highlight = "#e67e80"
+    timeout = 0

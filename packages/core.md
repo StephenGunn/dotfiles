@@ -163,6 +163,9 @@ AUR:catppuccin-gtk-theme-mocha
 AUR:kvantum-theme-catppuccin-git
 AUR:bibata-cursor-theme-bin
 AUR:python-pywal16
+# .config/dunst/dunstrc asks for the Papirus-Dark icon theme; without this
+# dunst logs "Could not find theme Papirus-Dark" and notifications lose icons.
+papirus-icon-theme
 
 # === Browsers ===
 firefox
@@ -174,6 +177,11 @@ AUR:1password-cli
 AUR:ghostty-git
 
 # === Panel/Bar Utilities ===
+# quickshell is the bar. autostart.conf runs `exec-once = quickshell` on every
+# host and theme-switch generates .config/quickshell/Colors.qml, so it is
+# required everywhere -- it was previously listed only in jovian.md, which left
+# every other machine with no bar at all. In extra/, not the AUR.
+quickshell
 AUR:hyprpicker
 
 # === Backups ===

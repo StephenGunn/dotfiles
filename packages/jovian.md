@@ -72,7 +72,7 @@ kate
 ark
 
 # === QuickShell ===
-quickshell
+# quickshell itself moved to core.md -- every host runs the bar.
 blueprint-compiler
 
 # === Browsers (Desktop) ===
