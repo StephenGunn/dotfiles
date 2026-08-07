@@ -31,6 +31,12 @@ keybind = ctrl+shift+minus=reset_font_size
 
 keybind = shift+enter=text:\n
 
-# Theme (managed by theme-switcher, gitignored)
-config-file = ?theme.conf
+# Theme. The fallback below is what a fresh machine gets; theme-switcher writes
+# theme.conf (gitignored) and the include comes AFTER, so it wins when present.
+# Order matters here — ghostty takes the last value for a scalar key.
 theme = Nord
+config-file = ?theme.conf
+
+# Per-host overrides (gitignored). Anything that differs per machine — font-size
+# on a high-DPI panel, say — belongs here, not in this tracked file.
+config-file = ?local.conf
