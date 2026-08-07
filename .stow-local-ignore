@@ -35,5 +35,14 @@
 ^keys\.keymap
 ^login_image\.jpg
 
+# Host-specific, linked explicitly by link.sh Step 4 (not by stow).
+# If stow owned this path it would collide with the per-host symlink
+# link.sh creates, breaking every run after the first.
+#
+# NOTE: patterns containing a "/" must NOT be anchored with ^ or $. Stow
+# matches them as (^|/)(pattern)(/|$) against "/<path>", so a leading ^
+# lands before that slash and the pattern can never fire. See Stow.pm:1500.
+\.config/hypr/hypridle\.conf
+
 # Old xfce config
 ^\.config/xfce4/xfconf/xfce-perchannel-xml/thunar\.xml
