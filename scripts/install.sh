@@ -161,26 +161,6 @@ echo -e "${YELLOW}🔤 Installing Nerd Fonts...${NC}"
 "$DOTFILES_DIR/scripts/install_nerd_fonts.sh"
 
 # ============================================================================
-# Post-Install: HyprPanel
-# ============================================================================
-
-echo ""
-echo -e "${YELLOW}🎨 Setting up HyprPanel...${NC}"
-
-if [ ! -d "$HOME/.local/share/HyprPanel" ]; then
-    git clone https://github.com/Jas-SinghFSU/HyprPanel.git "$HOME/.local/share/HyprPanel"
-    ln -sf "$HOME/.local/share/HyprPanel" "$HOME/.config/ags"
-
-    if [ -f "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh" ]; then
-        chmod +x "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh"
-        "$HOME/.local/share/HyprPanel/scripts/install_fonts.sh"
-    fi
-    echo -e "  ${GREEN}✓${NC} HyprPanel installed"
-else
-    echo -e "  ${GREEN}✓${NC} HyprPanel already installed"
-fi
-
-# ============================================================================
 # Post-Install: Bun
 # ============================================================================
 

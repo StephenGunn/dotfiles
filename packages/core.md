@@ -173,14 +173,7 @@ AUR:1password
 AUR:1password-cli
 AUR:ghostty-git
 
-# === HyprPanel Dependencies ===
-libgtop
-gtksourceview3
-libsoup3
-pacman-contrib
-gnome-bluetooth-3.0
-AUR:ags-hyprpanel-git
-AUR:agsv1
+# === Panel/Bar Utilities ===
 AUR:hyprpicker
 
 # === Backups ===
