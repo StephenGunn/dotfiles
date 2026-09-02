@@ -5,7 +5,7 @@
 default_sink=$(pactl get-default-sink)
 
 # Get list of sinks with their descriptions, filtered to preferred devices
-sinks=$(pactl list sinks | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -E "PRO X|RODECaster")
+sinks=$(pactl list sinks | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -E "PRO X|BEHRINGER" | grep -v "Line B\|Line2")
 
 # Format for rofi: show description, store name
 options=""
@@ -13,10 +13,16 @@ while IFS= read -r line; do
     [ -z "$line" ] && continue
     name=$(echo "$line" | sed 's/.*Name: \([^ ]*\).*/\1/' | tr -d '\t')
     desc=$(echo "$line" | sed 's/.*| //')
+    # Friendly display names
+    display="$desc"
+    case "$desc" in
+        *"Line A"*|*"Line1"*) display="Speakers" ;;
+        *"PRO X"*) display="Headphones" ;;
+    esac
     if [ "$name" = "$default_sink" ]; then
-        options+="● $desc\n"
+        options+="● $display\n"
     else
-        options+="  $desc\n"
+        options+="  $display\n"
     fi
 done <<< "$sinks"
 
@@ -32,7 +38,12 @@ if [ -n "$chosen" ]; then
         [ -z "$line" ] && continue
         name=$(echo "$line" | sed 's/.*Name: \([^ ]*\).*/\1/' | tr -d '\t')
         desc=$(echo "$line" | sed 's/.*| //')
-        if [ "$desc" = "$chosen_desc" ]; then
+        display="$desc"
+        case "$desc" in
+            *"Line A"*|*"Line1"*) display="Speakers" ;;
+            *"PRO X"*) display="Headphones" ;;
+        esac
+        if [ "$display" = "$chosen_desc" ]; then
             pactl set-default-sink "$name"
             notify-send "Audio Output" "Switched to: $desc" -t 2000
             break
