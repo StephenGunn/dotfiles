@@ -34,15 +34,17 @@ end
 set -Ux EDITOR "nvim"
 set -Ux VISUAL "nvim"
 
-set -Ux fish_user_paths $HOME/.cargo/bin $fish_user_paths
+contains -- $HOME/.cargo/bin $fish_user_paths; or set -Ua fish_user_paths $HOME/.cargo/bin
 
-# open images in krita
+# open images in krita (run `xdg-mime default org.kde.krita.desktop image/jpeg image/png image/gif` once manually)
 set -Ux XDG_DATA_HOME "$HOME/.local/share"
 set -Ux MIME_TYPES_PATH "$XDG_DATA_HOME/mime/types"
-xdg-mime default org.kde.krita.desktop image/jpeg image/png image/gif
 
-if command -q opam
-    eval (opam env)
+# opam: lazy-load only when needed
+function opam
+    functions -e opam
+    eval (command opam env)
+    command opam $argv
 end
 
 # postgresql setup
@@ -76,7 +78,7 @@ function y
 end
 
 # Add ~/.local/bin to the PATH for stream deck
-set -U fish_user_paths $HOME/.local/bin $fish_user_paths
+contains -- $HOME/.local/bin $fish_user_paths; or set -Ua fish_user_paths $HOME/.local/bin
 
 # pnpm
 set -gx PNPM_HOME "/home/stephen/.local/share/pnpm"
@@ -90,7 +92,7 @@ zoxide init fish | source
 # fly ctl
 set -x FLYCTL_INSTALL /home/stephen/.fly
 set -x PATH $FLYCTL_INSTALL/bin $PATH
-set -U fish_user_paths $fish_user_paths $HOME/.turso/bin
+contains -- $HOME/.turso/bin $fish_user_paths; or set -Ua fish_user_paths $HOME/.turso/bin
 
 # man pages
 set -gx MANPAGER "nvim +Man!"
