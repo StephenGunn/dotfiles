@@ -44,5 +44,8 @@
 # lands before that slash and the pattern can never fire. See Stow.pm:1500.
 \.config/hypr/hypridle\.conf
 
+# Absolute symlink managed outside stow
+\.local/bin/theme-switch
+
 # Old xfce config
 ^\.config/xfce4/xfconf/xfce-perchannel-xml/thunar\.xml

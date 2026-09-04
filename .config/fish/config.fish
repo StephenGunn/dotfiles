@@ -80,8 +80,8 @@ set -U fish_user_paths $HOME/.local/bin $fish_user_paths
 
 # pnpm
 set -gx PNPM_HOME "/home/stephen/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
 end
 # pnpm end
 

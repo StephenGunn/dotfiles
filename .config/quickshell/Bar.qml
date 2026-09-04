@@ -11,6 +11,7 @@ PanelWindow {
     id: root
 
     property bool isVertical: false
+    property bool isTiny: false
 
     anchors.top: true
     anchors.left: true
@@ -80,10 +81,10 @@ PanelWindow {
 
     Timer {
         interval: 2000
-        running: !isVertical
+        running: !isVertical && !isTiny
         repeat: true
         onTriggered: { cpuProc.running = true; memProc.running = true }
-        Component.onCompleted: if (!isVertical) { cpuProc.running = true; memProc.running = true }
+        Component.onCompleted: if (!isVertical && !isTiny) { cpuProc.running = true; memProc.running = true }
     }
 
     Process {
@@ -117,7 +118,7 @@ PanelWindow {
 
     Timer {
         interval: 500
-        running: !isVertical
+        running: !isVertical && !isTiny
         repeat: true
         triggeredOnStart: true
         onTriggered: {
@@ -143,7 +144,7 @@ PanelWindow {
 
     Timer {
         interval: 5000
-        running: !isVertical
+        running: !isVertical && !isTiny
         repeat: true
         triggeredOnStart: true
         onTriggered: vmProc.running = true
@@ -169,7 +170,7 @@ PanelWindow {
 
                 // Arch logo (main only) - opens power menu
                 Text {
-                    visible: !isVertical
+                    visible: !isVertical && !isTiny
                     text: "\uf303"
                     color: mouseArea.containsMouse ? Colors.accentBright : Colors.accent
                     font.family: Colors.fontFamily
@@ -193,9 +194,9 @@ PanelWindow {
 
                     // Find this bar's Hyprland monitor
                     property var hyprMonitor: Hyprland.monitors.values.find(m => m.name === screen?.name)
-                    // DP-2 (main) = workspaces 1-5, DP-3 (vertical) = workspaces 6-10
-                    property int wsStart: screen?.name === "DP-3" ? 6 : 1
-                    property int wsEnd: screen?.name === "DP-3" ? 10 : 5
+                    // DP-3 (vertical/left) = workspaces 1-5, DP-2 (main/right) = workspaces 6-10, HDMI-A-1 (tiny) = 11-12
+                    property int wsStart: isTiny ? 11 : (screen?.name === "DP-3" ? 1 : 6)
+                    property int wsEnd: isTiny ? 12 : (screen?.name === "DP-3" ? 5 : 10)
 
                     Repeater {
                         model: parent.wsEnd - parent.wsStart + 1
@@ -238,6 +239,7 @@ PanelWindow {
 
         // Badge: Window title
         Rectangle {
+            visible: !isTiny
             Layout.fillWidth: true
             color: Colors.backgroundLight
             radius: 8
@@ -260,7 +262,7 @@ PanelWindow {
 
         // Badge: System Tray
         Rectangle {
-            visible: SystemTray.items.length > 0
+            visible: SystemTray.items.length > 0 && !isTiny
             color: Colors.backgroundLight
             radius: 8
             implicitWidth: trayContent.implicitWidth + 16
@@ -299,7 +301,7 @@ PanelWindow {
 
         // Badge: Audio (Volume + Mic) - main only
         Rectangle {
-            visible: !isVertical
+            visible: !isVertical && !isTiny
             color: Colors.backgroundLight
             radius: 8
             implicitWidth: audioContent.implicitWidth + 16
@@ -381,7 +383,7 @@ PanelWindow {
 
         // Badge: System Stats (CPU + Memory) - main only
         Rectangle {
-            visible: !isVertical
+            visible: !isVertical && !isTiny
             color: Colors.backgroundLight
             radius: 8
             implicitWidth: statsContent.implicitWidth + 16
@@ -410,7 +412,7 @@ PanelWindow {
 
         // Badge: VM Status - main only
         Rectangle {
-            visible: !isVertical
+            visible: !isVertical && !isTiny
             color: Colors.backgroundLight
             radius: 8
             implicitWidth: vmContent.implicitWidth + 16
@@ -453,7 +455,7 @@ PanelWindow {
 
         // Badge: Network + Bluetooth - vertical only
         Rectangle {
-            visible: isVertical
+            visible: isVertical && !isTiny
             color: Colors.backgroundLight
             radius: 8
             implicitWidth: netBtContent.implicitWidth + 16
@@ -482,6 +484,7 @@ PanelWindow {
 
         // Badge: Clock
         Rectangle {
+            visible: !isTiny
             color: Colors.backgroundLight
             radius: 8
             implicitWidth: clockContent.implicitWidth + 16
@@ -493,7 +496,7 @@ PanelWindow {
                 spacing: 8
 
                 Text {
-                    visible: !isVertical
+                    visible: !isVertical && !isTiny
                     text: "\udb82\udd54"
                     color: Colors.blue
                     font.family: Colors.fontFamily

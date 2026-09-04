@@ -5,7 +5,7 @@
 default_sink=$(pactl get-default-sink)
 
 # Get list of sinks with their descriptions, filtered to preferred devices
-sinks=$(pactl list sinks | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -E "PRO X|BEHRINGER" | grep -v "Line B\|Line2")
+sinks=$(pactl list sinks | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -E "PRO X|RODE AI-1")
 
 # Format for rofi: show description, store name
 options=""
@@ -16,8 +16,8 @@ while IFS= read -r line; do
     # Friendly display names
     display="$desc"
     case "$desc" in
-        *"Line A"*|*"Line1"*) display="Speakers" ;;
-        *"PRO X"*) display="Headphones" ;;
+        *"RODE AI-1"*) display="Speakers (Rode)" ;;
+        *"PRO X"*) display="Headset (PRO X)" ;;
     esac
     if [ "$name" = "$default_sink" ]; then
         options+="● $display\n"
@@ -40,8 +40,10 @@ if [ -n "$chosen" ]; then
         desc=$(echo "$line" | sed 's/.*| //')
         display="$desc"
         case "$desc" in
-            *"Line A"*|*"Line1"*) display="Speakers" ;;
-            *"PRO X"*) display="Headphones" ;;
+            *"USB Audio Speakers"*) display="Speakers (Rode)" ;;
+            *"USB Audio Front Headphones"*) display="Headphones (Rode)" ;;
+            *"USB Audio S/PDIF"*) display="S/PDIF (Rode)" ;;
+            *"PRO X"*) display="Headset (PRO X)" ;;
         esac
         if [ "$display" = "$chosen_desc" ]; then
             pactl set-default-sink "$name"

@@ -25,25 +25,22 @@
     follow = mouse
 
     # Geometry
-    # height/offset use the post-1.12 tuple syntax. The old `height = 150`
-    # and `offset = 7x7` forms still parse but log a deprecation warning on
-    # every start; (0, 150) is the documented equivalent of legacy height.
-    width = 350
-    height = (0, 150)
-    origin = top-left
-    offset = (7, 7)
+    width = 500
+    height = (0, 250)
+    origin = top-right
+    offset = (10, 10)
 
     # Appearance
-    frame_width = 2
-    corner_radius = 12
-    separator_height = 2
-    padding = 12
-    horizontal_padding = 14
-    text_icon_padding = 12
-    gap_size = 8
+    frame_width = 3
+    corner_radius = 16
+    separator_height = 3
+    padding = 18
+    horizontal_padding = 20
+    text_icon_padding = 16
+    gap_size = 10
 
     # Text
-    font = JetBrainsMono Nerd Font 11
+    font = JetBrainsMono Nerd Font 22
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -54,9 +51,9 @@
 
     # Icons
     icon_position = left
-    min_icon_size = 48
-    max_icon_size = 48
-    icon_corner_radius = 8
+    min_icon_size = 64
+    max_icon_size = 64
+    icon_corner_radius = 10
     icon_theme = "Papirus-Dark"
     enable_recursive_icon_lookup = true
 
