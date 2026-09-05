@@ -13,6 +13,8 @@ PanelWindow {
     property bool isVertical: false
     property bool isTiny: false
 
+    focusable: true
+
     anchors.top: true
     anchors.left: true
     anchors.right: true
@@ -185,7 +187,7 @@ PanelWindow {
                         anchors.fill: parent
                         hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
-                        onClicked: Hyprland.dispatch("exec rofi-power-menu")
+                        onClicked: Hyprland.dispatch('hl.dsp.exec_cmd("rofi-power-menu")')
                     }
                 }
 
@@ -229,7 +231,7 @@ PanelWindow {
                             MouseArea {
                                 anchors.fill: parent
                                 cursorShape: Qt.PointingHandCursor
-                                onClicked: Hyprland.dispatch("workspace " + wsId)
+                                onClicked: Hyprland.dispatch("hl.dsp.focus({workspace = " + wsId + "})")
                             }
                         }
                     }
@@ -331,17 +333,17 @@ PanelWindow {
                             cursorShape: Qt.PointingHandCursor
                             onClicked: event => {
                                 if (event.button === Qt.RightButton) {
-                                    Hyprland.dispatch("exec ~/dotfiles/scripts/rofi-audio-sink.sh")
+                                    Hyprland.dispatch('hl.dsp.exec_cmd("~/dotfiles/scripts/rofi-audio-sink.sh")')
                                 } else {
-                                    Hyprland.dispatch("exec pactl set-sink-mute @DEFAULT_SINK@ toggle")
+                                    Hyprland.dispatch('hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle")')
                                     volProc.running = true
                                 }
                             }
                             onWheel: event => {
                                 if (event.angleDelta.y > 0) {
-                                    Hyprland.dispatch("exec pactl set-sink-volume @DEFAULT_SINK@ +5%")
+                                    Hyprland.dispatch('hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%")')
                                 } else {
-                                    Hyprland.dispatch("exec pactl set-sink-volume @DEFAULT_SINK@ -5%")
+                                    Hyprland.dispatch('hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%")')
                                 }
                                 volProc.running = true
                             }
@@ -370,9 +372,9 @@ PanelWindow {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: event => {
                             if (event.button === Qt.RightButton) {
-                                Hyprland.dispatch("exec ~/dotfiles/scripts/rofi-audio-source.sh")
+                                Hyprland.dispatch('hl.dsp.exec_cmd("~/dotfiles/scripts/rofi-audio-source.sh")')
                             } else {
-                                Hyprland.dispatch("exec pactl set-source-mute @DEFAULT_SOURCE@ toggle")
+                                Hyprland.dispatch('hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle")')
                                 micProc.running = true
                             }
                         }
@@ -449,7 +451,7 @@ PanelWindow {
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
-                onClicked: Hyprland.dispatch("exec ~/dotfiles/scripts/rofi-vm.sh")
+                onClicked: Hyprland.dispatch('hl.dsp.exec_cmd("~/dotfiles/scripts/rofi-vm.sh")')
             }
         }
 
