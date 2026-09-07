@@ -1,0 +1,4 @@
+# Only track global.ini — everything else is transient or machine-specific
+*
+!.gitignore
+!global.ini
