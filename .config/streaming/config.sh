@@ -15,7 +15,7 @@ MONITOR_HEIGHT=1440
 ### WORKSPACES  ###
 ###################
 # Workspaces that get sidebar gaps when streaming mode is on
-STREAMING_WORKSPACES="6 7 8 9"
+STREAMING_WORKSPACES="6 7 8 9 10"
 
 ###################
 ### LAYOUT      ###

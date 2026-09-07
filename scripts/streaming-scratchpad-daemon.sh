@@ -94,12 +94,7 @@ main() {
 
     socat -U - UNIX-CONNECT:"$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
         case "$line" in
-            workspace\>\>10)
-                # Hide sidebar on scroll workspace
-                touch "$WS_HIDDEN"
-                update_sidebar
-                ;;
-            workspace\>\>[6-9])
+            workspace\>\>[6-9]|workspace\>\>10)
                 # Show sidebar on streaming workspaces
                 rm -f "$WS_HIDDEN"
                 update_sidebar
