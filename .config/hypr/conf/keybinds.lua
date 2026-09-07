@@ -31,9 +31,6 @@ hl.bind(mainMod .. " + K", hl.dsp.exec_cmd("~/dotfiles/scripts/show-keymap.sh"))
 -- Panel controls
 hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("pkill -x quickshell; sleep 0.3 && quickshell &"))
 
--- Streaming
-hl.bind(mainMod .. " + ALT + CTRL + N", hl.dsp.exec_cmd("~/dotfiles/scripts/streaming-blur.sh toggle"))
-
 -------------
 -- Windows --
 -------------

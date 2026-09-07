@@ -1,16 +1,6 @@
 -- Window rules and workspace rules
 
 --------------
--- Privacy  --
---------------
-
-hl.window_rule({
-    name = "privacy-blur-border",
-    match = { tag = "privacy-blur" },
-    border_color = "rgb(ff5555)",
-})
-
---------------
 -- General  --
 --------------
 
@@ -35,8 +25,8 @@ hl.window_rule({
 -----------------
 
 -- Scratchpad workspace rules
-hl.workspace_rule({ workspace = "special:magic",    ["on-created-empty"] = "ghostty",  persistent = false })
-hl.workspace_rule({ workspace = "special:browser",  ["on-created-empty"] = "firefox",  persistent = false })
+hl.workspace_rule({ workspace = "special:magic",    on_created_empty = "ghostty",  persistent = false })
+hl.workspace_rule({ workspace = "special:browser",  on_created_empty = "firefox",  persistent = false })
 hl.workspace_rule({ workspace = "special:wallpaper", persistent = false })
 hl.workspace_rule({ workspace = "special:dotfiles",  persistent = false })
 

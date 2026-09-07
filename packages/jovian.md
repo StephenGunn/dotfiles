@@ -21,8 +21,6 @@ audacity
 shotcut
 AUR:obs-studio-git
 AUR:obs-cmd
-AUR:obs-composite-blur
-AUR:obs-shaderfilter-git
 AUR:obs-source-clone
 
 # === Media ===

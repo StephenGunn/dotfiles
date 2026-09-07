@@ -64,13 +64,9 @@ KEYS_Y=556                  # Keystroke display (below cams)
 ###################
 ### OBS WEBSOCKET #
 ###################
-# Settings for streaming-blur.sh OBS integration
 # Requires: websocat (yay -S websocat)
 # OBS Setup: Tools → WebSocket Server Settings → Enable, disable auth
 
 OBS_WS_HOST="localhost"
 OBS_WS_PORT="4455"
 OBS_SCENE_NAME="Desktop"         # Your main OBS scene name
-OBS_BLUR_SOURCE="FallbackPrivacyBlur"  # Full-screen blur for privacy
-OBS_CANVAS_WIDTH=1920            # OBS output canvas width
-OBS_CANVAS_HEIGHT=1080           # OBS output canvas height
