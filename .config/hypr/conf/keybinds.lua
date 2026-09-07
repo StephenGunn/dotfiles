@@ -142,5 +142,3 @@ end
 
 hl.bind(mainMod .. " + comma",          hl.dsp.exec_cmd("~/dotfiles/scripts/rofi-streaming.sh"))
 hl.bind(mainMod .. " + G",              hl.dsp.exec_cmd("~/dotfiles/scripts/rofi-vm.sh"))
-hl.bind(mainMod .. " + SHIFT + comma",  hl.dsp.exec_cmd("~/dotfiles/scripts/webcam-expand.sh face"))
-hl.bind(mainMod .. " + CTRL + comma",   hl.dsp.exec_cmd("~/dotfiles/scripts/webcam-expand.sh topdown"))

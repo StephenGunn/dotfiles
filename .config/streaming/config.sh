@@ -3,15 +3,6 @@
 # Edit these values to match your setup
 
 ###################
-### CAMERAS     ###
-###################
-# Use v4l2-ctl --list-devices to find your cameras
-# Use rofi menu "Swap Cameras" to quickly switch these
-
-CAM_FACE="/dev/video2"
-CAM_TOPDOWN="/dev/video0"
-
-###################
 ### MONITOR     ###
 ###################
 
@@ -19,6 +10,12 @@ MONITOR="DP-2"
 MONITOR_RES="2560x1440@165"
 MONITOR_WIDTH=2560
 MONITOR_HEIGHT=1440
+
+###################
+### WORKSPACES  ###
+###################
+# Workspaces that get sidebar gaps when streaming mode is on
+STREAMING_WORKSPACES="6 7 8 9"
 
 ###################
 ### LAYOUT      ###
@@ -65,14 +62,6 @@ KEYS_Y=556                  # Keystroke display (below cams)
 # TOPDOWN_Y=365
 
 ###################
-### MPV SETTINGS ##
-###################
-
-MPV_FORMAT="h264"           # h264 or mjpeg
-MPV_RESOLUTION="1920x1080"
-MPV_FRAMERATE="60"
-
-###################
 ### OBS WEBSOCKET #
 ###################
 # Settings for streaming-blur.sh OBS integration
@@ -85,14 +74,3 @@ OBS_SCENE_NAME="Desktop"         # Your main OBS scene name
 OBS_BLUR_SOURCE="FallbackPrivacyBlur"  # Full-screen blur for privacy
 OBS_CANVAS_WIDTH=1920            # OBS output canvas width
 OBS_CANVAS_HEIGHT=1080           # OBS output canvas height
-
-###################
-### PRIVACY BLUR ##
-###################
-# Additional sources to blur when privacy mode is active
-# These should have a "PrivacyBlur" shader filter added to them
-# Format: "source_name:filter_name"
-PRIVACY_EXTRA_BLURS=(
-    "Hand Cam:PrivacyBlur"       # Blur hand cam when .env open
-    # "Face Cam:PrivacyBlur"     # Uncomment to also blur face cam
-)

@@ -30,10 +30,7 @@ get_streaming_windows() {
 }
 
 # Move all streaming windows to their correct sidebar positions
-# Uses "exact X Y,address:ADDR" syntax (quotes required)
 reposition_sidebar() {
-    ~/dotfiles/scripts/webcam-expand.sh collapse-all 2>/dev/null
-
     local batch=""
     while IFS=$'\t' read -r title addr; do
         [[ -z "$addr" ]] && continue
@@ -97,11 +94,13 @@ main() {
 
     socat -U - UNIX-CONNECT:"$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
         case "$line" in
-            workspace\>\>[45])
+            workspace\>\>10)
+                # Hide sidebar on scroll workspace
                 touch "$WS_HIDDEN"
                 update_sidebar
                 ;;
-            workspace\>\>[1-3])
+            workspace\>\>[6-9])
+                # Show sidebar on streaming workspaces
                 rm -f "$WS_HIDDEN"
                 update_sidebar
                 ;;
