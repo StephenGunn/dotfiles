@@ -17,7 +17,7 @@ require("conf.keybinds")
 -- Window and workspace rules
 require("conf.windowrules")
 
--- Streaming mode gap overrides (parsed from streaming.conf)
+-- Streaming mode gap overrides (loads streaming_gen.lua)
 require("conf.streaming")
 
 -- Autostart applications
