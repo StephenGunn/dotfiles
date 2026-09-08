@@ -5,7 +5,7 @@
 default_source=$(pactl get-default-source)
 
 # Get list of sources with their descriptions, filtered to preferred devices
-sources=$(pactl list sources | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -v "Monitor" | grep -E "PRO X|RODE AI-1")
+sources=$(pactl list sources | grep -E "Name:|Description:" | paste - - | sed 's/\tDescription: / | /' | grep -v "Monitor" | grep -E "PRO X|RODE AI-1|Wireless ME")
 
 # Format for rofi: show description, store name
 options=""
@@ -17,6 +17,7 @@ while IFS= read -r line; do
     display="$desc"
     case "$desc" in
         *"RODE AI-1"*) display="Mic (Rode)" ;;
+        *"Wireless ME"*) display="Wireless Mic (Rode)" ;;
         *"PRO X"*) display="Headset Mic (PRO X)" ;;
     esac
     if [ "$name" = "$default_source" ]; then
@@ -40,8 +41,7 @@ if [ -n "$chosen" ]; then
         desc=$(echo "$line" | sed 's/.*| //')
         display="$desc"
         case "$desc" in
-            *"USB Audio Microphone"*) display="Mic (Rode)" ;;
-            *"USB Audio Line"*) display="Line In (Rode)" ;;
+            *"RODE AI-1"*) display="Mic (Rode)" ;;
             *"PRO X"*) display="Headset Mic (PRO X)" ;;
         esac
         if [ "$display" = "$chosen_desc" ]; then
