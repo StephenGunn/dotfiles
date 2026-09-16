@@ -133,6 +133,28 @@ for key, msg in pairs(scroll_binds) do
     hl.bind("CTRL + SHIFT + ALT + " .. key, hl.dsp.layout(msg))
 end
 
+----------------
+-- Glasscope --
+----------------
+
+if hl.plugin.glasscope ~= nil then
+    hl.bind(mainMod .. " + ALT + mouse:274", function()
+        hl.plugin.glasscope.toggle()
+    end, { description = "Toggle Glasscope lens" })
+
+    hl.bind(mainMod .. " + ALT + P", function()
+        hl.plugin.glasscope.begin_color_probe()
+    end, { description = "Glasscope colour picker" })
+
+    hl.bind(mainMod .. " + ALT + mouse_up", function()
+        hl.plugin.glasscope.adjust_radius(15)
+    end, { description = "Glasscope increase radius" })
+
+    hl.bind(mainMod .. " + ALT + mouse_down", function()
+        hl.plugin.glasscope.adjust_radius(-15)
+    end, { description = "Glasscope decrease radius" })
+end
+
 ---------------
 -- Streaming --
 ---------------
