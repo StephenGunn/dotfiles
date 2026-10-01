@@ -45,7 +45,7 @@ hl.config({
         gaps_out = 15,
         border_size = 2,
         col = {
-            active_border = C.teal,
+            active_border = C.cyan,
             inactive_border = C.surface2,
         },
         resize_on_border = false,

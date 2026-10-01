@@ -182,14 +182,9 @@ HYPR_HOSTS_DIR="$HOME/.config/hypr/hosts"
 # Hyprland host config (monitors, workspaces) is handled by hosts/init.lua
 # at runtime — no symlink needed.
 
-# Seed an empty colors.conf if theme-switch has never run here.
-# colors.lua parses this file for palette overrides; without it, the
-# hardcoded Catppuccin Mocha baseline is used.
-if [ ! -f "$HOME/.config/hypr/colors.conf" ]; then
-    printf '# Placeholder - overwritten by theme-switch.\n# Colours fall through to the Mocha baseline in colors.lua until then.\n' \
-        > "$HOME/.config/hypr/colors.conf"
-    echo "  ✓ Seeded empty hypr colors.conf (no theme applied yet)"
-fi
+# Hyprland colors are handled by colors.lua + colors_override.lua (written
+# by theme-switch). No seeding needed — colors.lua falls back to Catppuccin
+# Mocha baseline if the override file doesn't exist.
 
 # Link hypridle config. This path is in .stow-local-ignore — stow must not own
 # it, or the per-host symlink below would collide with stow's own link on every

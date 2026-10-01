@@ -1,50 +1,53 @@
 -- Color palette module
 -- Baseline: Catppuccin Mocha. Overridden at runtime by theme-switch
--- via conf/colors_override.lua (or legacy colors.conf parsed below).
+-- which writes colors_override.lua (a Lua table of the active palette).
 
 local C = {
-    -- Catppuccin Mocha baseline
-    rosewater = "rgb(f5e0dc)", rosewaterAlpha = "f5e0dc",
-    flamingo  = "rgb(f2cdcd)", flamingoAlpha  = "f2cdcd",
-    pink      = "rgb(f5c2e7)", pinkAlpha      = "f5c2e7",
-    mauve     = "rgb(cba6f7)", mauveAlpha     = "cba6f7",
-    red       = "rgb(f38ba8)", redAlpha        = "f38ba8",
-    maroon    = "rgb(eba0ac)", maroonAlpha    = "eba0ac",
-    peach     = "rgb(fab387)", peachAlpha     = "fab387",
-    yellow    = "rgb(f9e2af)", yellowAlpha    = "f9e2af",
-    green     = "rgb(a6e3a1)", greenAlpha     = "a6e3a1",
-    teal      = "rgb(94e2d5)", tealAlpha      = "94e2d5",
-    sky       = "rgb(89dceb)", skyAlpha       = "89dceb",
-    sapphire  = "rgb(74c7ec)", sapphireAlpha  = "74c7ec",
-    blue      = "rgb(89b4fa)", blueAlpha      = "89b4fa",
-    lavender  = "rgb(b4befe)", lavenderAlpha  = "b4befe",
-    text      = "rgb(cdd6f4)", textAlpha      = "cdd6f4",
-    subtext1  = "rgb(bac2de)", subtext1Alpha  = "bac2de",
-    subtext0  = "rgb(a6adc8)", subtext0Alpha  = "a6adc8",
-    overlay2  = "rgb(9399b2)", overlay2Alpha  = "9399b2",
-    overlay1  = "rgb(7f849c)", overlay1Alpha  = "7f849c",
-    overlay0  = "rgb(6c7086)", overlay0Alpha  = "6c7086",
-    surface2  = "rgb(585b70)", surface2Alpha  = "585b70",
-    surface1  = "rgb(45475a)", surface1Alpha  = "45475a",
-    surface0  = "rgb(313244)", surface0Alpha  = "313244",
-    base      = "rgb(1e1e2e)", baseAlpha      = "1e1e2e",
-    mantle    = "rgb(181825)", mantleAlpha    = "181825",
-    crust     = "rgb(11111b)", crustAlpha     = "11111b",
+    -- Catppuccin Mocha baseline (used when no theme has been applied)
+    background     = "rgb(1e1e2e)",
+    background_alt = "rgb(313244)",
+    background_dark = "rgb(181825)",
+    foreground     = "rgb(cdd6f4)",
+    foreground_dim = "rgb(bac2de)",
+    cursor         = "rgb(f5e0dc)",
+
+    black          = "rgb(45475a)",
+    red            = "rgb(f38ba8)",
+    green          = "rgb(a6e3a1)",
+    yellow         = "rgb(f9e2af)",
+    blue           = "rgb(89b4fa)",
+    magenta        = "rgb(f5c2e7)",
+    cyan           = "rgb(94e2d5)",
+    white          = "rgb(bac2de)",
+
+    bright_black   = "rgb(585b70)",
+    bright_red     = "rgb(f38ba8)",
+    bright_green   = "rgb(a6e3a1)",
+    bright_yellow  = "rgb(f9e2af)",
+    bright_blue    = "rgb(89b4fa)",
+    bright_magenta = "rgb(f5c2e7)",
+    bright_cyan    = "rgb(94e2d5)",
+    bright_white   = "rgb(a6adc8)",
+
+    accent         = "rgb(f9e2af)",
+    accent_bright  = "rgb(f9e2af)",
+    border         = "rgb(cba6f7)",
+    separator      = "rgb(45475a)",
+
+    surface0       = "rgb(313244)",
+    surface1       = "rgb(45475a)",
+    surface2       = "rgb(585b70)",
 }
 
 -- Apply overrides from theme-switch.
--- theme-switch writes colors.conf in hyprlang format ($var = value).
--- Parse it and overlay onto the baseline palette.
-local colors_conf = os.getenv("HOME") .. "/.config/hypr/colors.conf"
-local f = io.open(colors_conf, "r")
-if f then
-    for line in f:lines() do
-        local name, value = line:match("^%$(%w+)%s*=%s*(.+)%s*$")
-        if name and value and C[name] ~= nil then
-            C[name] = value
-        end
+-- theme-switch generates colors_override.lua returning a table of the same
+-- keys as C above. Overlay any values it provides onto the baseline.
+local override_path = os.getenv("HOME") .. "/.config/hypr/colors_override.lua"
+local ok, overrides = pcall(dofile, override_path)
+if ok and type(overrides) == "table" then
+    for k, v in pairs(overrides) do
+        C[k] = v
     end
-    f:close()
 end
 
 return C
